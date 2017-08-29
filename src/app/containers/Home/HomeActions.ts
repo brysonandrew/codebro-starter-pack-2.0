@@ -32,12 +32,6 @@ export namespace OPEN__MENU {
 export interface OPEN__MENU {
     isMenuOpen: boolean
 }
-export namespace EXTEND__PREVIEW {
-    export const type = "EXTEND__PREVIEW";
-}
-export interface EXTEND__PREVIEW {
-    isPreviewExtended: boolean
-}
 export namespace UPDATE__VIEWPORT_DIMENSIONS {
     export let type = "UPDATE__VIEWPORT_DIME";
 }

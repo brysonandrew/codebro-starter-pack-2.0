@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
-import { portfolioProjectList, portfolioPagesInner } from '../../../../../../../data/content/pages/PagesInner/portfolio';
-import { IParams, IDictionary } from "../../../../../../../data/models";
-import { togglePreview, toggleScrollAnimation, toggleWheel } from '../../../../HomeActionCreators';
-import { MotionScroll } from "../../../../../../widgets/MotionScroll/MotionScroll";
-import { ProjectFromStore } from "./Project/Project";
-import { IStore } from '../../../../../../../redux/IStore';
-import { ProjectOptions } from './Options/ProjectOptions';
+import { IParams, IDictionary } from "../../../../../data/models";
+import { toggleScrollAnimation, toggleWheel } from '../../HomeActionCreators';
+import { MotionScroll } from "../../../../widgets/MotionScroll/MotionScroll";
+import { PageFromStore } from "./Page/Page";
+import { IStore } from '../../../../../redux/IStore';
+import { pageList } from '../../../../../data/content/pages/pages';
 
 interface IProperties {
     height?: number
@@ -21,7 +20,6 @@ interface IProperties {
 }
 
 interface ICallbacks {
-    onBackClick?: () => void
     onAnimationEnd?: () => void
     onWheel?: () => void
     onWheelStop?: () => void
@@ -97,8 +95,8 @@ export class PagesInner extends React.Component<IProps, IState> {
                                 ?   PagesInnerScrolledPastOffsets.length - 1
                                 :   -1;
 
-        if (currentIndex > -1 && portfolioProjectList[currentIndex].path !== savedParams.activeProjectPath) {
-            const nextPath = `/portfolio/${portfolioProjectList[currentIndex].path}`;
+        if (currentIndex > -1 && pageList[currentIndex].path !== savedParams.activePagePath) {
+            const nextPath = `/${pageList[currentIndex].path}`;
             browserHistory.push(nextPath);
         }
     }
@@ -114,43 +112,42 @@ export class PagesInner extends React.Component<IProps, IState> {
     }
 
     projectOffsetList(): number[] {
-        return portfolioProjectList.map((project, i) => i * this.props.width);
+        return pageList.map((project, i) => i * this.props.width);
     };
 
     projectOffsets(): IDictionary<number> {
         return this.projectOffsetList().reduce((acc, curr, i) => {
-            acc[portfolioProjectList[i].path] = curr;
+            acc[pageList[i].path] = curr;
             return acc;
         }, {});
     }
 
     render(): JSX.Element {
         const { docScroll } = this.state;
-        const { onAnimationEnd, savedParams, isAnimating, width, height, isMobile, isTablet, isLaptop
-            , isPreviewExtended, onBackClick } = this.props;
+        const { onAnimationEnd, savedParams, isAnimating, width, height, isMobile, isTablet, isLaptop } = this.props;
 
-        const activeProjectPath = !!savedParams.activeProjectPath
-                                    ?   savedParams.activeProjectPath
-                                    :   portfolioProjectList[0].path;
+        const activePagePath = !!savedParams.activePagePath
+                                    ?   savedParams.activePagePath
+                                    :   pageList[0].path;
 
-        const scrollHeight = width * (portfolioProjectList.length - 1);
+        const scrollHeight = width * (pageList.length - 1);
         const widthMarginFactor = PagesInner.calcWidthMarginFactor(isMobile, isTablet, isLaptop);
         const widthMargin = widthMarginFactor * width;
         const adjustedWidth = width - widthMargin * 2;
         const adjustedScroll = docScroll - (widthMarginFactor * docScroll * 2);
 
         const styles = {
-            PagesInner: {
+            pagesInner: {
                 position: "relative",
                 height: height + scrollHeight
             },
-            PagesInner__inner: {
+            pagesInner__inner: {
                 position: "fixed",
                 left: widthMargin,
                 top: 0,
-                width: portfolioProjectList.length * adjustedWidth
+                width: pageList.length * adjustedWidth
             },
-            PagesInner__project: {
+            pagesInner__page: {
                 display: "inline-block",
                 position: "relative",
                 verticalAlign: "top",
@@ -161,28 +158,20 @@ export class PagesInner extends React.Component<IProps, IState> {
         } as any;
 
         return (
-            <div style={ styles.PagesInner }>
-                {isPreviewExtended
-                &&  <ProjectOptions
-                        isMobile={isMobile}
-                        isTablet={isTablet}
-                        isLaptop={isLaptop}
-                        activeProjectPath={activeProjectPath}
-                        onBackClick={onBackClick}
-                    />}
-                <div style={ styles.PagesInner__inner }>
+            <div style={ styles.pagesInner }>
+                <div style={ styles.pagesInner__inner }>
                     {!!this.projectOffsets() && <MotionScroll
                                                     docScroll={docScroll}
                                                     isAnimating={isAnimating}
-                                                    scrollTarget={this.projectOffsets()[activeProjectPath]}
+                                                    scrollTarget={this.projectOffsets()[activePagePath]}
                                                     onRest={onAnimationEnd}
                                                 />}
-                    {portfolioProjectList.map((project, i) =>
-                        <div key={i}
-                             style={ styles.PagesInner__project }>
-                            <ProjectFromStore
+                    {pageList.map((page, i) =>
+                        <div key={`page-${i}`}
+                             style={ styles.pagesInner__page }>
+                            <PageFromStore
                                 index={i}
-                                project={project}
+                                page={page}
                                 previewWidth={adjustedWidth}
                             />
                         </div>)}
@@ -202,16 +191,12 @@ function mapStateToProps(state: IStore, ownProps: IProps): IProperties {
         isTablet: state.homeStore.isTablet,
         isLaptop: state.homeStore.isLaptop,
         isAnimating: state.homeStore.isAnimating,
-        savedParams: state.homeStore.savedParams,
-        isPreviewExtended: state.homeStore.isPreviewExtended
+        savedParams: state.homeStore.savedParams
     };
 }
 
 function mapDispatchToProps(dispatch, ownProps: IProps): ICallbacks {
     return {
-        onBackClick: () => {
-            dispatch(togglePreview(false));
-        },
         onAnimationEnd: () => {
             dispatch(toggleScrollAnimation(false));
         },

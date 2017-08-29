@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import createHistory from 'history/createBrowserHistory';
 import { IParams } from "../../../data/models";
 import { IStore } from '../../../redux/IStore';
-import { Pages } from './Body/Pages/Pages';
+import { PagesFromStore } from './Body/Pages/Pages';
 import { browserHistory } from 'react-router';
 import { ScreenSaver } from '../../widgets/ScreenSaver';
 import { toParams } from "../../../data/helpers/toParams";
@@ -124,7 +124,6 @@ export class Home extends React.Component<IProps, IState> {
     }
 
     render(): JSX.Element {
-        const { savedParams } = this.props;
         const { isMounted } = this.state;
 
         const styles = {
@@ -144,9 +143,7 @@ export class Home extends React.Component<IProps, IState> {
             <div style={ styles.home }
                  ref={el => el ? (this.home = el) : null}>
                 <div style={ styles.home__pages }>
-                    <Pages
-                        savedParams={savedParams}
-                    />
+                    <PagesFromStore/>
                 </div>
                 {!isMounted
                     &&  <div>
@@ -168,7 +165,6 @@ function mapStateToProps(state: IStore): IProperties {
         isMobile: state.homeStore.isMobile,
         isTablet: state.homeStore.isTablet,
         isLaptop: state.homeStore.isLaptop,
-        isPreviewExtended: state.homeStore.isPreviewExtended,
         savedLocation: state.homeStore.savedLocation,
         savedParams: state.homeStore.savedParams
     };

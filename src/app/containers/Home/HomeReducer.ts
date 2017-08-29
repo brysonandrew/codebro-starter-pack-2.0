@@ -7,7 +7,6 @@ import {
     UPDATE__WHEEL_EVENT,
     // v i e w s
     OPEN__MENU,
-    EXTEND__PREVIEW,
     UPDATE__VIEWPORT_DIMENSIONS
 } from './HomeActions';
 import { createReducer } from "../../../redux/utils/reducers";
@@ -24,7 +23,6 @@ export interface IHomeState {
     isAnimating: boolean
     isWheel: boolean
     isMenuOpen: boolean
-    isPreviewExtended: boolean
     isMobile: boolean
     isTablet: boolean
     isLaptop: boolean
@@ -34,14 +32,11 @@ const initialState: IHomeState = {
     content: AsyncGet.init(null),
     savedLocation: {} as Location,
     savedParams: {
-        activePagePath: "",
-        activeProjectPath: "",
-        activeViewPath: ""
+        activePagePath: ""
     },
     isAnimating: false,
     isWheel: false,
     isMenuOpen: false,
-    isPreviewExtended: false,
     width: 1024,
     height: 720,
     isMobile: false,
@@ -81,12 +76,6 @@ export const homeReducer = createReducer<IHomeState>(initialState, [
         action: OPEN__MENU,
         handler: (state: IHomeState, action: OPEN__MENU) =>  {
             return {...state, isMenuOpen: action.isMenuOpen};
-        }
-    },
-    {
-        action: EXTEND__PREVIEW,
-        handler: (state: IHomeState, action: EXTEND__PREVIEW) =>  {
-            return {...state, isPreviewExtended: action.isPreviewExtended};
         }
     },
     {
