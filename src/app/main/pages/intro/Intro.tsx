@@ -42,7 +42,6 @@ interface IProps {
 
 export function Intro(props: IProps) {
     const { isParentMounted, docScroll } = props;
-    console.log(docScroll);
     return (
         <section
             className={s.section}

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {ITeamMemberProps, TeamMember} from './TeamMember';
+import {ITeamMemberProps, TeamMember} from '../shared/TeamMember';
 
 interface IProps {}
 
