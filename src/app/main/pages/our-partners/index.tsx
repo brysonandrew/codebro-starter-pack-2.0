@@ -33,6 +33,7 @@ export function OurPartners(props: IProps) {
             </h2>
             {PARTNERS.map((member, i) =>
                 <img
+                    key={`partner-${i}`}
                     className={s.image}
                     style={{
                         maxHeight: 100,

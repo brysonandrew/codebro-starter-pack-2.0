@@ -6,6 +6,7 @@ import {OurAdvisors} from './our-advisors/index';
 import {INTRO_HEIGHT} from './intro/Intro';
 import {colors} from '../../../data/themeOptions';
 import {OurPartners} from './our-partners/index';
+import {Footer} from './footer/Footer';
 
 interface IProps {
     isParentMounted: boolean;
@@ -16,6 +17,11 @@ export const pages: string[] = [
     'Intro',
     'Our Team'
 ];
+
+const line = (isParentMounted) => <Line
+    isInvisible={!isParentMounted}
+    orientation={EOrientation.Horizontal}
+/>;
 
 export function Pages(props: IProps) {
     const { isParentMounted, docScroll } = props;
@@ -29,21 +35,14 @@ export function Pages(props: IProps) {
                 transform: `translate3d(0, ${docScroll / INTRO_HEIGHT  * -500}px, 0)`,
                 background: colors.wht
             }}>
-                <Line
-                    isInvisible={!isParentMounted}
-                    orientation={EOrientation.Horizontal}
-                />
+                {line(isParentMounted)}
                 <OurTeam/>
-                <Line
-                    isInvisible={!isParentMounted}
-                    orientation={EOrientation.Horizontal}
-                />
+                {line(isParentMounted)}
                 <OurAdvisors/>
-                <Line
-                    isInvisible={!isParentMounted}
-                    orientation={EOrientation.Horizontal}
-                />
+                {line(isParentMounted)}
                 <OurPartners/>
+                {line(isParentMounted)}
+                <Footer/>
             </div>
         </div>
     );
