@@ -1,8 +1,9 @@
 import * as React from 'react';
 import {StaggeredMotion, spring} from 'react-motion';
-import {EOrientation, Line} from '../../widgets/Line';
-import {colors} from '../../../data/themeOptions';
+import {EOrientation, Line} from '../../../widgets/Line';
+import {colors} from '../../../../data/themeOptions';
 const s = require('./Intro.css');
+export const INTRO_HEIGHT = 650;
 
 interface IIntroContent {
     side: string;
@@ -14,7 +15,7 @@ const CONTENT: IIntroContent[] = [
         side: 'left',
         components: [
             <h1 className={s.heading}>
-                Sourcing Bot
+                SourcingBot
             </h1>,
             <h2 className={s.subHeading}>
                 Procurement Risk Management
@@ -36,12 +37,17 @@ const CONTENT: IIntroContent[] = [
 
 interface IProps {
     isParentMounted: boolean;
+    docScroll: number;
 }
 
 export function Intro(props: IProps) {
-    const { isParentMounted } = props;
+    const { isParentMounted, docScroll } = props;
+    console.log(docScroll);
     return (
-        <section className={s.section}>
+        <section
+            className={s.section}
+            style={{filter: `blur(${docScroll / INTRO_HEIGHT * 10}px)`}}
+        >
             <div className={s.line}>
                 <Line
                     orientation={EOrientation.Vertical}

@@ -41,7 +41,6 @@ export class Main extends React.Component<IProps, IState> {
     home;
     isIdle = true;
     isFirstRender = true;
-    scrollMethod: number = document[!!document.scrollingElement ? "scrollingElement" : !!document.documentElement ? "documentElement" : "body"].scrollTop;
 
     constructor(props?: any, context?: any) {
         super(props, context);
@@ -97,7 +96,7 @@ export class Main extends React.Component<IProps, IState> {
     }
 
     handleScroll = () => {
-        this.setState({docScroll: this.scrollMethod});
+        this.setState({docScroll: document[!!document.scrollingElement ? "scrollingElement" : !!document.documentElement ? "documentElement" : "body"].scrollTop});
     };
 
     render(): JSX.Element {

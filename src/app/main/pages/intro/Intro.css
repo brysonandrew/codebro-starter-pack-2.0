@@ -1,4 +1,7 @@
 .section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 650px;
 }
 
@@ -8,13 +11,6 @@
     left: 50%;
     width: 1px;
     height: 100%;
-}
-
-.content {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
 }
 
 .side {
@@ -33,7 +29,6 @@
     text-align: left;
 }
 
-
 .heading {
     margin: 20px 0;
     font-size: 66px;
@@ -48,4 +43,5 @@
     margin: 20px 0;
     text-align: left;
     font-size: 24px;
+    max-width: 400px;
 }

@@ -1,6 +1,10 @@
 import * as React from 'react';
-import {Intro} from './Intro';
-import {OurTeam} from './OurTeam';
+import {Intro} from './intro/index';
+import {OurTeam} from './our-team/index';
+import {EOrientation, Line} from '../../widgets/Line';
+import {OurAdvisors} from './our-advisors/index';
+import {INTRO_HEIGHT} from './intro/Intro';
+import {colors} from '../../../data/themeOptions';
 
 interface IProps {
     isParentMounted: boolean;
@@ -14,13 +18,31 @@ export const pages: string[] = [
 
 export function Pages(props: IProps) {
     const { isParentMounted, docScroll } = props;
-    console.log(docScroll);
     return (
         <div>
             <Intro
                 isParentMounted={isParentMounted}
+                docScroll={docScroll}
             />
-            <OurTeam/>
+            <div style={{
+                transform: `translate3d(0, ${docScroll / INTRO_HEIGHT  * -500}px, 0)`,
+                background: colors.wht
+            }}>
+                <Line
+                    isInvisible={!isParentMounted}
+                    orientation={EOrientation.Horizontal}
+                />
+                <OurTeam/>
+                <Line
+                    isInvisible={!isParentMounted}
+                    orientation={EOrientation.Horizontal}
+                />
+                <OurAdvisors/>
+                <Line
+                    isInvisible={!isParentMounted}
+                    orientation={EOrientation.Horizontal}
+                />
+            </div>
         </div>
     );
 }
