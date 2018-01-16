@@ -2,6 +2,14 @@
     height: 650px;
 }
 
+.line {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 1px;
+    height: 100%;
+}
+
 .content {
     position: absolute;
     left: 50%;
@@ -12,16 +20,16 @@
 .side {
     display: inline-block;
     vertical-align: middle;
-    width: calc(50% - 40px);
+    width: calc(50% - 80px);
 }
 
 .leftSide {
-    margin-right: 40px;
+    margin-right: 80px;
     text-align: right;
 }
 
 .rightSide {
-    margin-left: 40px;
+    margin-left: 80px;
     text-align: left;
 }
 

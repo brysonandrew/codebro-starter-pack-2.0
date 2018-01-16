@@ -6,7 +6,8 @@ import { IParams } from "../../data/models";
 import { IStore } from '../../redux/IStore';
 import { changeViewportDimensions, saveParams, toggleScrollAnimation } from './main-action-creators';
 import { Pages } from './pages';
-import { toParams } from '../../data/utils/routing';
+import { toParams } from '../../utils/routing';
+import {defined} from '../../utils/variable_evaluation';
 
 interface IProperties {
     savedParams?: IParams
@@ -29,7 +30,8 @@ interface ICallbacks {
 interface IProps extends IProperties, ICallbacks {}
 
 interface IState extends IProperties, ICallbacks {
-    isMounted: boolean
+    isMounted: boolean;
+    docScroll: number;
 }
 
 export class Main extends React.Component<IProps, IState> {
@@ -43,7 +45,8 @@ export class Main extends React.Component<IProps, IState> {
     constructor(props?: any, context?: any) {
         super(props, context);
         this.state = {
-            isMounted: false
+            isMounted: false,
+            docScroll: 0
         };
     }
 
@@ -68,6 +71,8 @@ export class Main extends React.Component<IProps, IState> {
 
         this.mountTimeout = setTimeout(() => this.setState({ isMounted: true }), 0);
 
+        window.addEventListener("scroll", this.handleScroll);
+        window.addEventListener("wheel", this.handleScroll);
         window.addEventListener("resize"
             , () => onResizeViewport(window.innerWidth, window.innerHeight));
         window.addEventListener("load"
@@ -77,11 +82,12 @@ export class Main extends React.Component<IProps, IState> {
     componentWillUnmount() {
         const { onResizeViewport } = this.props;
 
-        if (!!this.activeTimeout) {
+        if (defined(this.activeTimeout)) {
             clearTimeout(this.activeTimeout);
             this.activeTimeout = false;
         }
-
+        window.removeEventListener("scroll", this.handleScroll);
+        window.removeEventListener("wheel", this.handleScroll);
         window.removeEventListener("resize"
             , () => onResizeViewport(window.innerWidth, window.innerHeight));
         window.removeEventListener("load"
@@ -89,19 +95,20 @@ export class Main extends React.Component<IProps, IState> {
 
     }
 
+    handleScroll = () => {
+        this.setState({docScroll: document.scrollingElement.scrollTop});
+    };
+
     render(): JSX.Element {
         const { isMounted } = this.state;
 
         return (
             <div
                 className='main'
-                style={{
-                    opacity: isMounted ? 1 : 0,
-                    filter: isMounted ? "none" : "blur(10px)",
-                    transition: "opacity 1600ms, filter 1600ms"
-                }}
             >
-                <Pages/>
+                <Pages
+                    isParentMounted={isMounted}
+                />
             </div>
         );
     }

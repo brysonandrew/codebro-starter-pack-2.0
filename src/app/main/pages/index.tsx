@@ -1,16 +1,21 @@
 import * as React from 'react';
 import {Intro} from './Intro';
 
-interface IProps {}
+interface IProps {
+    isParentMounted: boolean;
+}
 
 export const pages: string[] = [
     'Intro'
 ];
 
 export function Pages(props: IProps) {
+    const { isParentMounted } = props;
     return (
         <div>
-            <Intro/>
+            <Intro
+                isParentMounted={isParentMounted}
+            />
         </div>
     );
 }

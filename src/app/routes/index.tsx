@@ -3,7 +3,7 @@ import { IndexRoute, Route } from 'react-router';
 import {App} from '..';
 import {MainFromStore} from '../main';
 import {pages} from '../main/pages';
-import {toPath} from '../../data/utils/routing';
+import {toPath} from '../../utils/routing';
 
 export default (
   <Route path="/" component={App}>

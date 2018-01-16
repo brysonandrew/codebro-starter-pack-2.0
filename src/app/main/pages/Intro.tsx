@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {StaggeredMotion, spring} from 'react-motion';
-import {EOrientation, Line} from '../../widgets/VerticalLine';
+import {EOrientation, Line} from '../../widgets/Line';
 import {colors} from '../../../data/themeOptions';
 const s = require('./Intro.css');
 
@@ -34,11 +34,21 @@ const CONTENT: IIntroContent[] = [
     }
 ];
 
-interface IProps {}
+interface IProps {
+    isParentMounted: boolean;
+}
 
 export function Intro(props: IProps) {
+    const { isParentMounted } = props;
     return (
         <section className={s.section}>
+            <div className={s.line}>
+                <Line
+                    orientation={EOrientation.Vertical}
+                    isInvisible={!isParentMounted}
+                    color={colors.gry}
+                />
+            </div>
             <div className={s.content}>
                 <StaggeredMotion
                     defaultStyles={CONTENT.map((content) => ({y: 0}))}
@@ -121,7 +131,6 @@ export function Intro(props: IProps) {
                     }
                 </StaggeredMotion>
             </div>
-            <Line orientation={EOrientation.Vertical} color={colors.gry}/>
         </section>
     );
 }

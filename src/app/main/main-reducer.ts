@@ -11,7 +11,7 @@ import {
 } from './main-actions';
 import { createReducer } from "../../redux/utils/reducers";
 import { IParams } from "../../data/models";
-import { breakPointTests } from "../../data/utils/breakPoints";
+import { breakPointTests } from "../../utils/breakPoints";
 import { AsyncGet } from "../../redux/utils/async_get";
 
 export interface IHomeState {
