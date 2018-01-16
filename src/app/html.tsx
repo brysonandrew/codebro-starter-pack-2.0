@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import * as serialize from 'serialize-javascript';
-import { IStore } from '../../../redux/IStore';
+import { IStore } from '../redux/IStore';
 
 interface IHtmlProps {
   manifest?: any;
@@ -50,7 +50,7 @@ class Html extends React.Component<IHtmlProps, {}> {
           <meta name="author" content="Andrew Bryson" />
           <meta property="og:image" content="http://codebro.io/images/Home/logo.png"/>
           <meta property="og:image:secure_url" content="http://codebro.io/images/Home/logo.png"/>
-          <link href="https://fonts.googleapis.com/css?family=Palanquin+Dark" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/css?family=Comfortaa|Rosario" rel="stylesheet" />
           <link rel="shortcut icon" href="/favicon.ico" />
         </head>
         <body>

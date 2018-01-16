@@ -1,13 +1,11 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import createHistory from 'history/createBrowserHistory';
-import { IParams } from "../../../data/models";
-import { IStore } from '../../../redux/IStore';
-import { PagesFromStore } from './Body/Pages/Pages';
 import { browserHistory } from 'react-router';
-import { ScreenSaver } from '../../widgets/ScreenSaver';
-import { toParams } from "../../../data/helpers/toParams";
-import { changeViewportDimensions, saveParams, toggleScrollAnimation } from './HomeActionCreators';
+import createHistory from 'history/createBrowserHistory';
+import { IParams } from "../../data/models";
+import { IStore } from '../../redux/IStore';
+import { toParams } from "../../data/helpers/toParams";
+import { changeViewportDimensions, saveParams, toggleScrollAnimation } from './main-action-creators';
 
 interface IProperties {
     savedParams?: IParams
@@ -33,7 +31,7 @@ interface IState extends IProperties, ICallbacks {
     isMounted: boolean
 }
 
-export class Home extends React.Component<IProps, IState> {
+export class Main extends React.Component<IProps, IState> {
 
     activeTimeout;
     mountTimeout;
@@ -46,7 +44,6 @@ export class Home extends React.Component<IProps, IState> {
         this.state = {
             isMounted: false
         };
-        this.resetIdle = this.resetIdle.bind(this);
     }
 
     componentDidMount() {
@@ -74,30 +71,6 @@ export class Home extends React.Component<IProps, IState> {
             , () => onResizeViewport(window.innerWidth, window.innerHeight));
         window.addEventListener("load"
             , () => onResizeViewport(window.innerWidth, window.innerHeight));
-        this.home.addEventListener("mousemove"
-            , this.resetIdle);
-        this.home.addEventListener("click"
-            , this.resetIdle);
-        this.home.addEventListener("scroll"
-            , this.resetIdle);
-        this.home.addEventListener("wheel"
-            , this.resetIdle);
-    }
-
-    resetIdle() {
-        if (this.isIdle) {
-            this.setState({
-                isMounted: true
-            });
-        }
-        this.isIdle = false;
-        clearTimeout(this.activeTimeout);
-        this.activeTimeout = setTimeout(() => {
-            this.isIdle = true;
-            this.setState({
-                isMounted: false
-            });
-        }, 300000); // 300000ms = 5 minutes
     }
 
     componentWillUnmount() {
@@ -112,45 +85,26 @@ export class Home extends React.Component<IProps, IState> {
             , () => onResizeViewport(window.innerWidth, window.innerHeight));
         window.removeEventListener("load"
             , () => onResizeViewport(window.innerWidth, window.innerHeight));
-        this.home.removeEventListener("mousemove"
-            , this.resetIdle);
-        this.home.removeEventListener("click"
-            , this.resetIdle);
-        this.home.removeEventListener("scroll"
-            , this.resetIdle);
-        this.home.removeEventListener("wheel"
-            , this.resetIdle);
 
     }
 
     render(): JSX.Element {
         const { isMounted } = this.state;
 
-        const styles = {
-            home: {
+        return (
+            <div style={{
                 position: "relative",
                 background: "#eeeeee",
                 overflow: "hidden"
-            },
-            home__pages: {
-                opacity: isMounted ? 1 : 0,
-                filter: isMounted ? "none" : "blur(10px)",
-                transition: "opacity 1600ms, filter 1600ms"
-            }
-        } as any;
-
-        return (
-            <div style={ styles.home }
+            }}
                  ref={el => el ? (this.home = el) : null}>
-                <div style={ styles.home__pages }>
-                    <PagesFromStore/>
+                <div style={{
+                    opacity: isMounted ? 1 : 0,
+                    filter: isMounted ? "none" : "blur(10px)",
+                    transition: "opacity 1600ms, filter 1600ms"
+                }}>
+                    Hello
                 </div>
-                {!isMounted
-                    &&  <div>
-                            <ScreenSaver
-                                isFirstRender={this.isFirstRender}
-                            />
-                        </div>}
             </div>
         );
     }
@@ -188,6 +142,6 @@ function mapDispatchToProps(dispatch): ICallbacks {
     };
 }
 
-export const HomeFromStore = connect(
+export const MainFromStore = connect(
     mapStateToProps, mapDispatchToProps
-)(Home);
+)(Main);

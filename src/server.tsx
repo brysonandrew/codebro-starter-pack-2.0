@@ -1,3 +1,5 @@
+import {Html} from './app/html';
+
 const appConfig = require('../config/main.js');
 
 import * as e6p from 'es6-promise';
@@ -14,7 +16,6 @@ const { ReduxAsyncConnect, loadOnServer } = require('redux-connect');
 import { configureStore } from './redux/store';
 import routes from './app/routes';
 
-import { Html } from './app/containers';
 const manifest = require('../build/manifest.json');
 
 const express = require('express');

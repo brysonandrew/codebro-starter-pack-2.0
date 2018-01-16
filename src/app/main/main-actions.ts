@@ -1,4 +1,4 @@
-import {IParams} from "../../../data/models";
+import {IParams} from "../../data/models";
 // r o u t i n g
 export namespace UPDATE__LOCATION {
     export let type = "UPDATE__LOCATION";

@@ -8,11 +8,11 @@ import {
     // v i e w s
     OPEN__MENU,
     UPDATE__VIEWPORT_DIMENSIONS
-} from './HomeActions';
-import { createReducer } from "../../../redux/utils/reducers";
-import { IParams } from "../../../data/models";
-import { breakPointTests } from "../../../data/helpers/breakPoints";
-import { AsyncGet } from "../../../redux/utils/async_get";
+} from './main-actions';
+import { createReducer } from "../../redux/utils/reducers";
+import { IParams } from "../../data/models";
+import { breakPointTests } from "../../data/helpers/breakPoints";
+import { AsyncGet } from "../../redux/utils/async_get";
 
 export interface IHomeState {
     content: AsyncGet<any>

@@ -8,8 +8,8 @@ import {
     // v i e w s
     OPEN__MENU,
     UPDATE__VIEWPORT_DIMENSIONS
-} from './HomeActions';
-import { createAction } from "../../../redux/utils/actions";
+} from './main-actions';
+import { createAction } from "../../redux/utils/actions";
 
 // r o u t i n g
 export function saveLocation(nextLocation) {

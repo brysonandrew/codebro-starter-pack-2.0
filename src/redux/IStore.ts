@@ -1,4 +1,4 @@
-import {IHomeState} from '../app/containers/Home/HomeReducer';
+import {IHomeState} from '../app/main/main-reducer';
 
 export interface IStore {
   homeStore: IHomeState;
