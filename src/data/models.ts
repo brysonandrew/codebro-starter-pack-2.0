@@ -5,8 +5,3 @@ export interface IDictionary<T> {
 export interface IParams {
     activePagePath?: string
 }
-
-export interface IPage {
-    name: string
-    path: string
-}

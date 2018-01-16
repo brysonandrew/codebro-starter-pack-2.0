@@ -1,19 +1,22 @@
 import * as React from 'react';
 import { IndexRoute, Route } from 'react-router';
-import { pageList } from '../../data/content/pages/pages';
-import {App} from '../index';
+import {App} from '..';
 import {MainFromStore} from '../main';
+import {pages} from '../main/pages';
+import {toPath} from '../../data/utils/routing';
 
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={MainFromStore}/>
 
     {/*pages*/}
-    {pageList.map((page, i) =>
+    {pages.map((page, i) =>
       <Route
-        key={`pages-${i}`}
-        path={page.path}
-        component={MainFromStore} />)}
+        key={`page-${i}`}
+        path={toPath(page)}
+        component={MainFromStore}
+      />
+    )}
 
   </Route>
 );

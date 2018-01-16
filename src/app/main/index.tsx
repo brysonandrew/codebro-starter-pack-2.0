@@ -4,8 +4,9 @@ import { browserHistory } from 'react-router';
 import createHistory from 'history/createBrowserHistory';
 import { IParams } from "../../data/models";
 import { IStore } from '../../redux/IStore';
-import { toParams } from "../../data/helpers/toParams";
 import { changeViewportDimensions, saveParams, toggleScrollAnimation } from './main-action-creators';
+import { Pages } from './pages';
+import { toParams } from '../../data/utils/routing';
 
 interface IProperties {
     savedParams?: IParams
@@ -92,19 +93,15 @@ export class Main extends React.Component<IProps, IState> {
         const { isMounted } = this.state;
 
         return (
-            <div style={{
-                position: "relative",
-                background: "#eeeeee",
-                overflow: "hidden"
-            }}
-                 ref={el => el ? (this.home = el) : null}>
-                <div style={{
+            <div
+                className='main'
+                style={{
                     opacity: isMounted ? 1 : 0,
                     filter: isMounted ? "none" : "blur(10px)",
                     transition: "opacity 1600ms, filter 1600ms"
-                }}>
-                    Hello
-                </div>
+                }}
+            >
+                <Pages/>
             </div>
         );
     }

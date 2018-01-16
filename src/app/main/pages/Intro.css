@@ -1,0 +1,43 @@
+.section {
+    height: 650px;
+}
+
+.content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.side {
+    display: inline-block;
+    vertical-align: middle;
+    width: calc(50% - 40px);
+}
+
+.leftSide {
+    margin-right: 40px;
+    text-align: right;
+}
+
+.rightSide {
+    margin-left: 40px;
+    text-align: left;
+}
+
+
+.heading {
+    margin: 20px 0;
+    font-size: 66px;
+}
+
+.subHeading {
+    margin: 20px 0;
+    font-size: 38px;
+}
+
+.description {
+    margin: 20px 0;
+    text-align: left;
+    font-size: 24px;
+}

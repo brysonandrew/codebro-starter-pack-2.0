@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { IStore } from '../redux/IStore';
+import { IStore } from '../../redux/IStore';
 
 interface IProperties {}
 
