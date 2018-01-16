@@ -1,3 +1,8 @@
+.item {
+    display: inline-block;
+    vertical-align: middle;
+}
+
 .footerSocialMedia {
-    max-height: 100px;
+    height: 100px;
 }
