@@ -3,14 +3,14 @@ const s = require('./TeamMember.css');
 
 export interface ITeamMemberProps {
     name: string;
-    position: string;
+    position?: string;
     image: string;
 }
 
 export function TeamMember(props: ITeamMemberProps) {
     return (
         <div className={s.teamMember}>
-            <img className={s.image} src={props.image}/>
+            <img className={s.image} src={props.image} alt={`Team Member: ${props.name}`}/>
             <div className={s.name}>{props.name}</div>
             <div className={s.position}>{props.position}</div>
         </div>

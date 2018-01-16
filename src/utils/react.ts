@@ -1,8 +1,9 @@
-import {IDictionary} from '../models';
+import {IDictionary} from '../data/models';
 
 /**
  * Renders the appropriate content depending if the predicate is true or false
  */
+
 export function renderIf(condition: boolean, content: {
     ifTrue?: () => JSX.Element | JSX.Element[],
     ifFalse?: () => JSX.Element | JSX.Element[]

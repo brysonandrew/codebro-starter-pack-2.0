@@ -5,6 +5,7 @@ import {EOrientation, Line} from '../../widgets/Line';
 import {OurAdvisors} from './our-advisors/index';
 import {INTRO_HEIGHT} from './intro/Intro';
 import {colors} from '../../../data/themeOptions';
+import {OurPartners} from './our-partners/index';
 
 interface IProps {
     isParentMounted: boolean;
@@ -42,6 +43,7 @@ export function Pages(props: IProps) {
                     isInvisible={!isParentMounted}
                     orientation={EOrientation.Horizontal}
                 />
+                <OurPartners/>
             </div>
         </div>
     );
