@@ -6,6 +6,7 @@
 }
 
 .line {
+    display: none;
     position: absolute;
     top: 0;
     left: 50%;
@@ -14,34 +15,65 @@
 }
 
 .side {
-    display: inline-block;
-    vertical-align: middle;
-    width: calc(50% - 80px);
+    display: block;
 }
 
-.leftSide {
-    margin-right: 80px;
-    text-align: right;
+.sideOne {
+    text-align: center;
 }
 
-.rightSide {
-    margin-left: 80px;
-    text-align: left;
+.sideTwo {
+    text-align: center;
 }
 
 .heading {
     margin-bottom: 20px;
-    font-size: 66px;
+    font-size: 32px;
 }
 
 .subHeading {
     margin: 20px 0;
-    font-size: 38px;
+    font-size: 24px;
 }
 
 .description {
     margin: 20px 0;
-    text-align: left;
-    font-size: 24px;
+    text-align: center;
+    font-size: 18px;
     max-width: 400px;
+}
+
+@media (min-width: 1000px) {
+    .side {
+        display: inline-block;
+        vertical-align: middle;
+        width: calc(50% - 80px);
+    }
+
+    .heading {
+        font-size: 66px;
+    }
+
+    .subHeading {
+        font-size: 38px;
+    }
+
+    .description {
+        text-align: left;
+        font-size: 24px;
+    }
+
+    .sideOne {
+        margin-right: 80px;
+        text-align: right;
+    }
+
+    .sideTwo {
+        margin-left: 80px;
+        text-align: left;
+    }
+
+    .line {
+        display: block;
+    }
 }

@@ -8,9 +8,11 @@ import {colors} from '../../../data/themeOptions';
 import {OurPartners} from './our-partners/index';
 import {Footer} from './footer/Footer';
 import {renderIfTrue} from '../../../utils/react';
+import {Project} from './project/Project';
 
 interface IProps {
     isParentMounted: boolean;
+    isTablet: boolean;
     docScroll: number;
 }
 
@@ -25,7 +27,7 @@ const line = (isParentMounted) => <Line
 />;
 
 export function Pages(props: IProps) {
-    const { isParentMounted, docScroll } = props;
+    const { isParentMounted, isTablet, docScroll } = props;
     return (
         <div>
             <div
@@ -35,6 +37,7 @@ export function Pages(props: IProps) {
             >
                 <Intro
                     isParentMounted={isParentMounted}
+                    isTablet={isTablet}
                     docScroll={docScroll}
                 />
             </div>
@@ -44,9 +47,13 @@ export function Pages(props: IProps) {
                 zIndex: 1
             }}>
                 {line(isParentMounted)}
-                <OurTeam/>
+                <OurTeam
+                    docScroll={docScroll}
+                />
                 {line(isParentMounted)}
                 <OurAdvisors/>
+                {line(isParentMounted)}
+                <Project/>
                 {line(isParentMounted)}
                 <OurPartners/>
                 {line(isParentMounted)}

@@ -3,6 +3,7 @@ import {StaggeredMotion, spring} from 'react-motion';
 import {EOrientation, Line} from '../../../widgets/Line';
 import {colors} from '../../../../data/themeOptions';
 import {Logo} from '../../../widgets/Logo';
+import {renderIfFalse} from '../../../../utils/react';
 const s = require('./Intro.css');
 export const INTRO_HEIGHT = 650;
 
@@ -13,7 +14,7 @@ interface IIntroContent {
 
 const CONTENT: IIntroContent[] = [
     {
-        side: 'left',
+        side: 'one',
         components: [
             <Logo/>,
             <h1 className={s.heading}>
@@ -25,7 +26,7 @@ const CONTENT: IIntroContent[] = [
         ]
     },
     {
-        side: 'right',
+        side: 'two',
         components: [
             <p className={s.description}>
                 A risk management platform for Original equipment manufacturers to manage their sourcing process in a better way.
@@ -39,6 +40,7 @@ const CONTENT: IIntroContent[] = [
 
 interface IProps {
     isParentMounted: boolean;
+    isTablet: boolean;
     docScroll: number;
 }
 
@@ -47,7 +49,7 @@ export function Intro(props: IProps) {
     return (
         <section
             className={s.section}
-            style={{filter: docScroll > INTRO_HEIGHT ?  'none' : `blur(${docScroll / INTRO_HEIGHT * 10}px)`}}
+            style={{filter: docScroll > INTRO_HEIGHT * 1.5 ?  'none' : `blur(${docScroll / INTRO_HEIGHT * 10}px)`}}
         >
             <div className={s.line}>
                 <Line
@@ -68,14 +70,14 @@ export function Intro(props: IProps) {
                     {interpolatingStyles =>
                         <div>
                             {interpolatingStyles.map((mainStyle, mainIndex) =>
-                                (CONTENT[mainIndex].side === 'left')
+                                (CONTENT[mainIndex].side === 'one')
                                     ?   <div
                                             key={`style-${mainIndex}`}
                                             style={{
                                                 opacity: mainStyle.y,
                                                 transform: `translate3d(0, ${(mainStyle.y - 1) * -100}px, 0)`
                                             }}
-                                            className={`${s.side} ${s.leftSide}`}
+                                            className={`${s.side} ${s.sideOne}`}
                                         >
                                             <StaggeredMotion
                                                 defaultStyles={CONTENT[mainIndex].components.map((content) => ({y: 0}))}
@@ -107,7 +109,7 @@ export function Intro(props: IProps) {
                                                 opacity: mainStyle.y,
                                                 transform: `translate3d(0, ${(mainStyle.y - 1) * -100}px, 0)`
                                             }}
-                                            className={`${s.side} ${s.right}`}
+                                            className={`${s.side} ${s.sideTwo}`}
                                         >
                                             <StaggeredMotion
                                                 defaultStyles={CONTENT[mainIndex].components.map((content) => ({y: 0}))}

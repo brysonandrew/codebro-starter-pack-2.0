@@ -1,7 +1,9 @@
 import * as React from 'react';
 import {ITeamMemberProps, TeamMember} from '../shared/TeamMember';
 
-interface IProps {}
+interface IProps {
+    docScroll: number;
+}
 
 const IMAGE_ROOT = '/images/team';
 
@@ -38,6 +40,7 @@ export function OurTeam(props: IProps) {
                     name={member.name}
                     position={member.position}
                     image={member.image}
+                    docScroll={props.docScroll}
                 />
             )}
         </section>

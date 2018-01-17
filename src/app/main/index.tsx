@@ -100,7 +100,7 @@ export class Main extends React.Component<IProps, IState> {
     };
 
     render(): JSX.Element {
-        const { isMounted, docScroll } = this.state;
+        const { isMounted, isTablet, docScroll } = this.state;
 
         return (
             <div
@@ -108,6 +108,7 @@ export class Main extends React.Component<IProps, IState> {
             >
                 <Pages
                     isParentMounted={isMounted}
+                    isTablet={isTablet}
                     docScroll={docScroll}
                 />
             </div>
