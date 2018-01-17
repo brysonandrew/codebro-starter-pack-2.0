@@ -46,11 +46,13 @@ interface IProps {
 
 export function Intro(props: IProps) {
     const { isParentMounted, docScroll } = props;
+    const springValue = docScroll > INTRO_HEIGHT * 0.5 ? 0 : 1;
     return (
         <section
             className={s.section}
             style={{filter: docScroll > INTRO_HEIGHT * 1.5 ?  'none' : `blur(${docScroll / INTRO_HEIGHT * 10}px)`}}
         >
+            <div className={s.background}/>
             <div className={s.line}>
                 <Line
                     orientation={EOrientation.Vertical}
@@ -63,7 +65,7 @@ export function Intro(props: IProps) {
                     defaultStyles={CONTENT.map((content) => ({y: 0}))}
                     styles={prevInterpolatedStyles => prevInterpolatedStyles.map((_, i) =>
                         i === 0
-                            ? {y: spring(1)}
+                            ? {y: spring(springValue)}
                             : {y: spring(prevInterpolatedStyles[i - 1].y)}
                     )}
                 >
@@ -83,7 +85,7 @@ export function Intro(props: IProps) {
                                                 defaultStyles={CONTENT[mainIndex].components.map((content) => ({y: 0}))}
                                                 styles={prevInterpolatedStyles => prevInterpolatedStyles.map((_, i) =>
                                                     i === 0
-                                                        ? {y: spring(1)}
+                                                        ? {y: spring(springValue)}
                                                         : {y: spring(prevInterpolatedStyles[i - 1].y)}
                                                 )}
                                             >
@@ -115,7 +117,7 @@ export function Intro(props: IProps) {
                                                 defaultStyles={CONTENT[mainIndex].components.map((content) => ({y: 0}))}
                                                 styles={prevInterpolatedStyles => prevInterpolatedStyles.map((_, i) =>
                                                     i === 0
-                                                        ? {y: spring(1)}
+                                                        ? {y: spring(springValue)}
                                                         : {y: spring(prevInterpolatedStyles[i - 1].y)}
                                                 )}
                                             >

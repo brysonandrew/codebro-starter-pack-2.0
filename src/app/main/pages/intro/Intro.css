@@ -5,6 +5,16 @@
     height: 650px;
 }
 
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    opacity: 0.22;
+    background: linear-gradient(#edf4ec,#c6e2e9);
+}
+
 .line {
     display: none;
     position: absolute;

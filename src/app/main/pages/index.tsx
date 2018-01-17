@@ -30,17 +30,11 @@ export function Pages(props: IProps) {
     const { isParentMounted, isTablet, docScroll } = props;
     return (
         <div>
-            <div
-                style={{
-                    transform: `translate3d(0, ${docScroll / INTRO_HEIGHT  * 500}px, 0)`,
-                }}
-            >
-                <Intro
-                    isParentMounted={isParentMounted}
-                    isTablet={isTablet}
-                    docScroll={docScroll}
-                />
-            </div>
+            <Intro
+                isParentMounted={isParentMounted}
+                isTablet={isTablet}
+                docScroll={docScroll}
+            />
             <div style={{
                 position: 'relative',
                 background: colors.wht,

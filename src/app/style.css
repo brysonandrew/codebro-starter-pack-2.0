@@ -7,7 +7,7 @@
 
 body {
     background: #FFFFFF;
-    color: #000000;
+    color: #37383c;
 }
 
 section {
@@ -23,6 +23,7 @@ button, input, a {
 }
 
 h1, h2, h3, h4 {
+    color: #263238;
     font-family: 'Comfortaa', 'arial', sans-serif;
 }
 

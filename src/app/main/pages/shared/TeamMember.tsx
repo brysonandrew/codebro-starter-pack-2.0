@@ -20,9 +20,21 @@ export function TeamMember(props: ITeamMemberProps) {
             }}
             className={s.teamMember}
         >
-            <img className={s.image} src={props.image} alt={`Team Member: ${props.name}`}/>
-            <div className={s.name}>{props.name}</div>
-            <div className={s.position}>{props.position}</div>
+            <img
+                className={s.image}
+                src={props.image}
+                alt={`Team Member: ${props.name}`}
+            />
+            <div
+                className={s.name}
+            >
+                {props.name}
+            </div>
+            <div
+                className={s.position}
+            >
+                {props.position}
+            </div>
         </div>
     );
 }

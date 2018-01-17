@@ -27,10 +27,7 @@ const PARTNERS: ITeamMemberProps[] = [
 
 export function OurPartners(props: IProps) {
     return (
-        <section>
-            <h2 style={{paddingBottom: 35}}>
-                Our Partners
-            </h2>
+        <section className={s.ourPartners}>
             {PARTNERS.map((member, i) =>
                 <img
                     key={`partner-${i}`}

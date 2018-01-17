@@ -1,3 +1,11 @@
 .teamMember {
     display: inline-block;
 }
+
+.name {
+    line-height: 22px;
+}
+
+.position {
+    line-height: 22px;
+}

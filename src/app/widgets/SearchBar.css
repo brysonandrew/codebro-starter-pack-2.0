@@ -1,7 +1,7 @@
 .sw {
     width: 100%;
     height: 80px;
-    background: #6A1B9A;
+    background: #64FFDA;
     padding: 15px;
     display: flex;
     align-items: center;
@@ -59,7 +59,7 @@ svg {
     margin-right: 15px;
     max-width: 40px;
     padding: 0 20px;
-    color: #6A1B9A;
+    color: #64FFDA;
 }
 
 .go {
