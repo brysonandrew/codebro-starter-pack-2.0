@@ -39,7 +39,9 @@ export function Footer(props: IProps) {
                         width: `${100 / DIVISIONS.length}%`
                     }}
                 >
-                    <h2>{div.name}</h2>
+                    <h2 className={s.heading}>
+                        {div.name}
+                    </h2>
                     {div.component}
                 </div>
             )}

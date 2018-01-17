@@ -2,6 +2,7 @@ import * as React from 'react';
 import {StaggeredMotion, spring} from 'react-motion';
 import {EOrientation, Line} from '../../../widgets/Line';
 import {colors} from '../../../../data/themeOptions';
+import {Logo} from '../../../widgets/Logo';
 const s = require('./Intro.css');
 export const INTRO_HEIGHT = 650;
 
@@ -14,7 +15,7 @@ const CONTENT: IIntroContent[] = [
     {
         side: 'left',
         components: [
-            <img src='./'/>,
+            <Logo/>,
             <h1 className={s.heading}>
                 SourcingBot
             </h1>,

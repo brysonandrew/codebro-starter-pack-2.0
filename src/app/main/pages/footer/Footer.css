@@ -3,8 +3,8 @@
     vertical-align: middle;
 }
 
-.footerSocialMedia {
-    height: 100px;
+.heading {
+    margin: 20px 0;
 }
 
 .line {
@@ -13,4 +13,11 @@
     left: 50%;
     width: 1px;
     height: 100%;
+}
+
+.footerSocialMediaItem {
+    display: inline-block;
+    vertical-align: middle;
+    height: 40px;
+    width: auto;
 }

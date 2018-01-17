@@ -10,11 +10,8 @@ export interface ISocialMediaItemProps {
 export function FooterSocialMediaItem(props: ISocialMediaItemProps) {
     const { name, link, icon } = props;
     return (
-        <a href={link}>
-            <div>{name}</div>
-            <div className={s.footerSocialMedia}>
-                {icon}
-            </div>
+        <a className={s.footerSocialMediaItem} href={link}>
+            {icon}
         </a>
     );
 }
