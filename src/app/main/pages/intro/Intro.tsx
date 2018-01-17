@@ -14,6 +14,7 @@ const CONTENT: IIntroContent[] = [
     {
         side: 'left',
         components: [
+            <img src='./'/>,
             <h1 className={s.heading}>
                 SourcingBot
             </h1>,
@@ -45,7 +46,7 @@ export function Intro(props: IProps) {
     return (
         <section
             className={s.section}
-            style={{filter: `blur(${docScroll / INTRO_HEIGHT * 10}px)`}}
+            style={{filter: docScroll > INTRO_HEIGHT ?  'none' : `blur(${docScroll / INTRO_HEIGHT * 10}px)`}}
         >
             <div className={s.line}>
                 <Line

@@ -48,8 +48,8 @@ class Html extends React.Component<IHtmlProps, {}> {
 
           {renderStyles}
           <meta name="author" content="Andrew Bryson" />
-          <meta property="og:image" content="http://codebro.io/images/Home/logo.png"/>
-          <meta property="og:image:secure_url" content="http://codebro.io/images/Home/logo.png"/>
+          <meta property="og:image" content="http://sourcingbot.com/images/logo.svg"/>
+          <meta property="og:image:secure_url" content="http://sourcingbot.com//images/logo.svg"/>
           <link href="https://fonts.googleapis.com/css?family=Comfortaa|Roboto" rel="stylesheet" />
           <link rel="shortcut icon" href="/favicon.ico" />
         </head>

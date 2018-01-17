@@ -1,9 +1,13 @@
 import * as React from 'react';
 import { FooterInfo } from './FooterInfo';
 import { FooterSocialMedia } from './FooterSocialMedia';
+import {EOrientation, Line} from '../../../widgets/Line';
+import {colors} from '../../../../data/themeOptions';
 const s = require('./Footer.css');
 
-interface IProps {}
+interface IProps {
+    isParentMounted: boolean;
+}
 
 const DIVISIONS = [
     {
@@ -17,8 +21,16 @@ const DIVISIONS = [
 ];
 
 export function Footer(props: IProps) {
+    const { isParentMounted } = props;
     return (
         <section>
+            <div className={s.line}>
+                <Line
+                    orientation={EOrientation.Vertical}
+                    isInvisible={!isParentMounted}
+                    color={colors.gry}
+                />
+            </div>
             {DIVISIONS.map((div, i) =>
                 <div
                     key={`div-${i}`}

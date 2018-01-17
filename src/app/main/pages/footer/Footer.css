@@ -6,3 +6,11 @@
 .footerSocialMedia {
     height: 100px;
 }
+
+.line {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 1px;
+    height: 100%;
+}
