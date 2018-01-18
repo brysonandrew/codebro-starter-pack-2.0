@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 285px;
+    height: 190px;
     color: #FFFFFF;
     background: #212121 url(/images/backgrounds/img-noise-white.png);
 }
@@ -20,7 +20,8 @@
 }
 
 .line {
-    width: 320px;
+    width: 100%;
+    margin: 0 20px;
 }
 
 .boldItalic {

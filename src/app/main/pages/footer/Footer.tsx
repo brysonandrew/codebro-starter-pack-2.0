@@ -23,7 +23,7 @@ const DIVISIONS = [
 export function Footer(props: IProps) {
     const { isParentMounted } = props;
     return (
-        <section>
+        <section className={s.footer}>
             <div className={s.line}>
                 <Line
                     orientation={EOrientation.Vertical}

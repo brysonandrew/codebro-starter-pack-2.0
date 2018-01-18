@@ -2,15 +2,11 @@ import * as React from 'react';
 import {StaggeredMotion, spring} from 'react-motion';
 import {TransitionColumnItem} from './TransitionColumnItem';
 const s = require('./TransitionColumn.css');
-export const TRANSITION_SCROLLING_BUFFER = 200;
-
-export interface ITransitionColumn {
-    components: JSX.Element[];
-}
+export const TRANSITION_SCROLLING_BUFFER = 160;
 
 export interface ITransitionColumnProps {
     springValue: number;
-    columns: ITransitionColumn[];
+    columns: JSX.Element[][];
 }
 
 export function TransitionColumn(props: ITransitionColumnProps) {
@@ -28,12 +24,16 @@ export function TransitionColumn(props: ITransitionColumnProps) {
                 {interpolatingStyles =>
                     <div>
                         {interpolatingStyles.map((mainStyle, mainIndex) => (
-                            <TransitionColumnItem
+                            <div
                                 key={`TransitionColumnItem-${mainIndex}`}
+                                className={s.side}
                                 style={mainStyle}
-                                index={mainIndex}
-                                {...props}
-                            />
+                            >
+                                <TransitionColumnItem
+                                    springValue={springValue}
+                                    column={columns[mainIndex]}
+                                />
+                            </div>
                         ))}
                     </div>
                 }

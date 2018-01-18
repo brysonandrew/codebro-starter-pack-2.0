@@ -1,3 +1,7 @@
+.footer {
+    background: #FAFAFA url(/images/backgrounds/img-noise-black.png);
+}
+
 .item {
     display: inline-block;
     vertical-align: middle;

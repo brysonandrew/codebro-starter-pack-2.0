@@ -1,25 +1,18 @@
 import * as React from 'react';
 import {StaggeredMotion, spring} from 'react-motion';
-import {ITransitionColumnProps} from './TransitionColumn';
 const s = require('./TransitionColumn.css');
 
-interface IProps extends ITransitionColumnProps {
-    style: any;
-    index: number;
+interface IProps {
+    springValue: number;
+    column: JSX.Element[];
 }
 
 export function TransitionColumnItem(props: IProps) {
-    const { style, index, springValue , columns } = props;
+    const { column, springValue } = props;
     return (
-        <div
-            className={s.side}
-            style={{
-                opacity: style.y,
-                transform: `translate3d(0, ${(style.y - 1) * -100}px, 0)`
-            }}
-        >
+
             <StaggeredMotion
-                defaultStyles={columns[index].components.map((_) => ({y: 0}))}
+                defaultStyles={column.map((_) => ({y: 0}))}
                 styles={prevInterpolatedStyles => prevInterpolatedStyles.map((_, i) =>
                     i === 0
                         ? {y: spring(springValue)}
@@ -28,19 +21,19 @@ export function TransitionColumnItem(props: IProps) {
             >
                 {interpolatingStyles =>
                     <div>
-                        {interpolatingStyles.map((subStyle, subIndex) =>
+                        {interpolatingStyles.map((subStyle, index) =>
                             <div
-                                key={`component-${index}-${subIndex}`}
+                                key={`component-${index}`}
                                 style={{
+                                    display: 'inline-block',
                                     opacity: subStyle.y,
                                     transform: `translate3d(0, ${(subStyle.y - 1) * -100}px, 0)`
                                 }}
                             >
-                                {columns[index].components[subIndex]}
+                                {column[index]}
                             </div>
                         )}
                     </div>}
             </StaggeredMotion>
-        </div>
     );
 }

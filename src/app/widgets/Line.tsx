@@ -19,7 +19,7 @@ export function Line(props: IProps) {
             style={{
                 display: 'block',
                 height: orientation === EOrientation.Vertical ? '100%' : 1,
-                background: color || colors.gry,
+                background: colors.hi,
                 width: orientation === EOrientation.Vertical ? 1 : '100%',
                 opacity: isInvisible ? 0 : 1,
                 transition: '1000ms opacity 400ms'

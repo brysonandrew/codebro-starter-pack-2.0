@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {
-    ITransitionColumn, TRANSITION_SCROLLING_BUFFER,
-    TransitionColumn
+    TRANSITION_SCROLLING_BUFFER,
 } from '../../../widgets/transition-column/TransitionColumn';
 import {defined} from '../../../../utils/variable_evaluation';
+import {TransitionColumnItem} from '../../../widgets/transition-column/TransitionColumnItem';
 const s = require('./ExamplePageOne.css');
 
 interface IProps {
@@ -24,16 +24,9 @@ const STAGGERED_TEXT = [
     <div
         key={`line-${i}`}
         className={`${s.line} ${i === 2 ? s.boldItalic : ''}`}
-
     >
         {line}
     </div>);
-
-const COLUMNS: ITransitionColumn[] = [
-    {
-        components: STAGGERED_TEXT
-    }
-];
 
 export class ExamplePageOne extends React.Component<IProps, IState> {
 
@@ -47,9 +40,9 @@ export class ExamplePageOne extends React.Component<IProps, IState> {
 
         return (
             <section className={s.section}>
-                <TransitionColumn
+                <TransitionColumnItem
                     springValue={springValue}
-                    columns={COLUMNS}
+                    column={STAGGERED_TEXT}
                 />
             </section>
         );

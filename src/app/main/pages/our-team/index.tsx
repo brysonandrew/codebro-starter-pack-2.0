@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {ITeamMemberProps, TeamMember} from '../shared/TeamMember';
 import {defined} from '../../../../utils/variable_evaluation';
+import {TransitionColumnItem} from '../../../widgets/transition-column/TransitionColumnItem';
 
 interface IProps {
     docScroll?: number;
@@ -39,14 +40,17 @@ export function OurTeam(props: IProps) {
     return (
         <section>
             <h2>Our Team</h2>
-            {TEAM.map((member, i) =>
-                <TeamMember
-                    key={`TeamMember-${i}`}
-                    name={member.name}
-                    position={member.position}
-                    image={member.image}
-                />
-            )}
+            <TransitionColumnItem
+                springValue={springValue}
+                column={TEAM.map((member, i) =>
+                    <TeamMember
+                        key={`TeamMember-${i}`}
+                        name={member.name}
+                        position={member.position}
+                        image={member.image}
+                    />
+                )}
+            />
         </section>
     );
 }
