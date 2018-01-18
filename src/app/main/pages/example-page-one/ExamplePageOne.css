@@ -1,0 +1,8 @@
+.section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 325px;
+    color: #FFFFFF;
+    background: linear-gradient(to left, rgba(0,0,0, 0.44) 0%, rgba(0,0,0, 0.22) 100%), url(/images/backgrounds/components.png) center / cover no-repeat;
+}

@@ -26,12 +26,19 @@ export function FooterSocialMedia(props: IProps) {
     return (
         <div>
             {SOCIAL_MEDIA_ITEMS.map((item, i) =>
-                <FooterSocialMediaItem
+                <div
                     key={`FooterSocialMediaItem-${i}`}
-                    name={item.name}
-                    link={item.link}
-                    icon={item.icon}
-                />
+                    style={{
+                        display: 'inline-block',
+                        width: `${100 / SOCIAL_MEDIA_ITEMS.length}%`
+                    }}
+                >
+                    <FooterSocialMediaItem
+                        name={item.name}
+                        link={item.link}
+                        icon={item.icon}
+                    />
+                </div>
             )}
         </div>
     );

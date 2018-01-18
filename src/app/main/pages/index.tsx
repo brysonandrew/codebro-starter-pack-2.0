@@ -1,19 +1,21 @@
 import * as React from 'react';
+import {colors} from '../../../data/themeOptions';
+import {defined} from '../../../utils';
+import {EOrientation, Line} from '../../widgets/Line';
 import {Intro} from './intro/index';
 import {OurTeam} from './our-team/index';
-import {EOrientation, Line} from '../../widgets/Line';
 import {OurAdvisors} from './our-advisors/index';
-import {INTRO_HEIGHT} from './intro/Intro';
-import {colors} from '../../../data/themeOptions';
 import {OurPartners} from './our-partners/index';
 import {Footer} from './footer/Footer';
-import {renderIfTrue} from '../../../utils/react';
 import {Project} from './project/Project';
+import {ExamplePageOne} from './example-page-one/ExamplePageOne';
+import {ExamplePageTwo} from './example-page-two/ExamplePageTwo';
 
 interface IProps {
     isParentMounted: boolean;
     isTablet: boolean;
     docScroll: number;
+    clientRectPages: (values: ClientRect[]) => void;
 }
 
 export const pages: string[] = [
@@ -26,35 +28,53 @@ const line = (isParentMounted) => <Line
     orientation={EOrientation.Horizontal}
 />;
 
-export function Pages(props: IProps) {
-    const { isParentMounted, isTablet, docScroll } = props;
-    return (
-        <div>
-            <Intro
+export class Pages extends React.Component<IProps, {}> {
+
+    clientRectPages = [];
+
+    componentDidMount() {
+        console.log(this.clientRectPages);
+    }
+
+    mainPages(): JSX.Element[] {
+        const { isParentMounted, isTablet, docScroll } = this.props;
+        return [
+            <OurTeam/>,
+            <ExamplePageOne/>,
+            <OurAdvisors/>,
+            <ExamplePageTwo/>,
+            <Project/>,
+            <OurPartners/>,
+            <Footer
                 isParentMounted={isParentMounted}
-                isTablet={isTablet}
-                docScroll={docScroll}
             />
-            <div style={{
-                position: 'relative',
-                background: colors.wht,
-                zIndex: 1
-            }}>
-                {line(isParentMounted)}
-                <OurTeam
+        ]
+    }
+
+    render(): JSX.Element {
+        const { isParentMounted, isTablet, docScroll } = this.props;
+        return (
+            <div>
+                <Intro
+                    isParentMounted={isParentMounted}
+                    isTablet={isTablet}
                     docScroll={docScroll}
                 />
-                {line(isParentMounted)}
-                <OurAdvisors/>
-                {line(isParentMounted)}
-                <Project/>
-                {line(isParentMounted)}
-                <OurPartners/>
-                {line(isParentMounted)}
-                <Footer
-                    isParentMounted={isParentMounted}
-                />
+                <div style={{
+                    position: 'relative',
+                    background: colors.wht,
+                    zIndex: 1
+                }}>
+                    {this.mainPages().map((page, i) =>
+                        <div
+                            key={`page-${i}`}
+                            ref={el => defined(el) && (this.clientRectPages[i] = el.getBoundingClientRect())}
+                        >
+                            {line(isParentMounted)}
+                            {page}
+                        </div>)}
+                </div>
             </div>
-        </div>
-    );
+        );
+    }
 }

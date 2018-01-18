@@ -3,6 +3,10 @@
     vertical-align: middle;
 }
 
+.footerInfo div {
+    line-height: 24px;
+}
+
 .heading {
     margin: 20px 0;
 }

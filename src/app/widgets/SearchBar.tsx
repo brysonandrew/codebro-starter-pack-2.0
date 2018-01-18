@@ -7,7 +7,7 @@ interface IProps {}
 
 export function SearchBar(props: IProps) {
     return (
-        <div className={s.sw}>
+        <div className={s.searchBar}>
             <form>
                 <input type="search" className={s.search} placeholder="Search..." />
                 <button className={s.go}>

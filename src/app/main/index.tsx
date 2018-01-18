@@ -95,8 +95,22 @@ export class Main extends React.Component<IProps, IState> {
 
     }
 
+    clientRectPages(values: ClientRect[]) {
+        console.log(values);
+    }
+
+    docScroll(): number {
+        return document[
+            defined(document.scrollingElement)
+                ? "scrollingElement"
+                : defined(document.documentElement)
+                    ? "documentElement"
+                    : "body"
+            ].scrollTop;
+    }
+
     handleScroll = () => {
-        this.setState({docScroll: document[!!document.scrollingElement ? "scrollingElement" : !!document.documentElement ? "documentElement" : "body"].scrollTop});
+        this.setState({docScroll: this.docScroll()});
     };
 
     render(): JSX.Element {
@@ -110,6 +124,7 @@ export class Main extends React.Component<IProps, IState> {
                     isParentMounted={isMounted}
                     isTablet={isTablet}
                     docScroll={docScroll}
+                    clientRectPages={this.clientRectPages}
                 />
             </div>
         );
