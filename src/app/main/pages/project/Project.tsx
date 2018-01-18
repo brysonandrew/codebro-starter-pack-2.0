@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {SearchBar} from '../../../widgets/SearchBar';
+import {SearchBar} from '../../../widgets/search-bar';
 
 interface IProps {}
 
@@ -14,7 +14,7 @@ export class Project extends React.Component<IProps, IState> {
     render(): JSX.Element {
         return (
             <section>
-                <h2 style={{paddingBottom: 35}}>The Project</h2>
+                <h2>The Project</h2>
                 <SearchBar/>
             </section>
         );

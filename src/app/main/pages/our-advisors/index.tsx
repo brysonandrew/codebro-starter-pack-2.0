@@ -21,7 +21,7 @@ const TEAM: ITeamMemberProps[] = [
 export function OurAdvisors(props: IProps) {
     return (
         <section>
-            <h2 style={{paddingBottom: 35}}>
+            <h2>
                 Our Advisors
             </h2>
             {TEAM.map((member, i) =>

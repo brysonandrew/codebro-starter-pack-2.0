@@ -1,0 +1,38 @@
+.transitionColumn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 650px;
+}
+
+.side {
+    display: block;
+}
+
+.side:first-child {
+    text-align: center;
+    padding-bottom: 100px;
+}
+
+.side:last-child {
+    text-align: center;
+}
+
+@media (min-width: 1000px) {
+    .side {
+        display: inline-block;
+        vertical-align: middle;
+        width: calc(50% - 80px);
+    }
+
+    .side:first-child {
+        margin-right: 80px;
+        text-align: right;
+        padding-bottom: 0;
+    }
+
+    .side:last-child {
+        margin-left: 80px;
+        text-align: left;
+    }
+}

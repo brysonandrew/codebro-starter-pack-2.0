@@ -1,7 +1,11 @@
 import * as React from 'react';
 import {ITeamMemberProps, TeamMember} from '../shared/TeamMember';
+import {defined} from '../../../../utils/variable_evaluation';
 
-interface IProps {}
+interface IProps {
+    docScroll?: number;
+    parentClientRect?: ClientRect;
+}
 
 const IMAGE_ROOT = '/images/team';
 
@@ -29,9 +33,12 @@ const TEAM: ITeamMemberProps[] = [
 ];
 
 export function OurTeam(props: IProps) {
+    const { docScroll, parentClientRect } = props;
+    const springValue = (defined(parentClientRect) && docScroll > parentClientRect.top) ? 1 : 0;
+
     return (
         <section>
-            <h2 style={{paddingBottom: 35}}>Our Team</h2>
+            <h2>Our Team</h2>
             {TEAM.map((member, i) =>
                 <TeamMember
                     key={`TeamMember-${i}`}

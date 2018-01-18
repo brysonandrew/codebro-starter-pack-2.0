@@ -2,6 +2,11 @@
     display: inline-block;
 }
 
+.image {
+    height: 200px;
+    margin-right: 20px;
+}
+
 .name {
     line-height: 22px;
 }
@@ -9,3 +14,4 @@
 .position {
     line-height: 22px;
 }
+

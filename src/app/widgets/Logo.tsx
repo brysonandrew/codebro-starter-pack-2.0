@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {SVG} from '../../data/icons/logo';
+import {LOGO_SVG} from '../../data/icons/logo';
 
 interface IProps {}
 
@@ -12,7 +12,7 @@ export function Logo(props: IProps) {
                 height: 100
             }}
         >
-            {SVG}
+            {LOGO_SVG}
         </div>
     );
 }

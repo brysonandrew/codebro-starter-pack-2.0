@@ -21,10 +21,20 @@ button, input, a {
     outline: none;
     text-decoration: none;
 }
-
 h1, h2, h3, h4 {
-    color: #263238;
+    color: #212121;
     font-family: 'Comfortaa', 'arial', sans-serif;
+}
+
+h1.white, h2.white, h3.white, h4.white {
+    color: #FFFFFF;
+}
+
+h2 {
+    font-family: 'Roboto', 'arial', sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding-bottom: 35px;
 }
 
 code {
@@ -34,6 +44,11 @@ code {
 ul li {
     list-style-position: inside;
     list-style-type: square;
+}
+
+p {
+    font-family: 'Roboto', 'arial', sans-serif;
+    font-size: 24px;
 }
 
 .AppContainer {

@@ -1,0 +1,30 @@
+.section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 285px;
+    color: #FFFFFF;
+    background: #212121 url(/images/backgrounds/img-noise-white.png);
+}
+
+.section h1 {
+    color: #FFFFFF;
+    line-height: 40px;
+    font-size: 32px;
+}
+
+.section p {
+    line-height: 32px;
+    font-size: 24px;
+    margin: 20px 0;
+}
+
+.line {
+    width: 320px;
+}
+
+.boldItalic {
+    font-weight: 900;
+    font-style: italic;
+}
+

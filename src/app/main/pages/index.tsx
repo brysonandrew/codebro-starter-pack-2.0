@@ -8,8 +8,8 @@ import {OurAdvisors} from './our-advisors/index';
 import {OurPartners} from './our-partners/index';
 import {Footer} from './footer/Footer';
 import {Project} from './project/Project';
-import {ExamplePageOne} from './example-page-one/ExamplePageOne';
-import {ExamplePageTwo} from './example-page-two/ExamplePageTwo';
+import {ExamplePageOne} from './example-page-1/ExamplePageOne';
+import {ExamplePageTwo} from './example-page-2/ExamplePageTwo';
 
 interface IProps {
     isParentMounted: boolean;
@@ -39,11 +39,11 @@ export class Pages extends React.Component<IProps, {}> {
     mainPages(): JSX.Element[] {
         const { isParentMounted, isTablet, docScroll } = this.props;
         return [
-            <OurTeam/>,
+            <Project/>,
             <ExamplePageOne/>,
+            <OurTeam/>,
             <OurAdvisors/>,
             <ExamplePageTwo/>,
-            <Project/>,
             <OurPartners/>,
             <Footer
                 isParentMounted={isParentMounted}
@@ -71,7 +71,10 @@ export class Pages extends React.Component<IProps, {}> {
                             ref={el => defined(el) && (this.clientRectPages[i] = el.getBoundingClientRect())}
                         >
                             {line(isParentMounted)}
-                            {page}
+                            {React.cloneElement(page, {
+                                docScroll: docScroll,
+                                parentClientRect: this.clientRectPages[i]
+                            })}
                         </div>)}
                 </div>
             </div>
