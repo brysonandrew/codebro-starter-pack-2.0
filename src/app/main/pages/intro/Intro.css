@@ -12,7 +12,7 @@
     left: 0;
     width: 100%;
     height: 50%;
-    border: 10px solid #64FFDA;
+    border: none;
     z-index: 1;
 }
 
@@ -52,7 +52,7 @@
     margin: 20px 0;
     font-size: 24px;
     color: #616161;
-    max-width: 400px;
+    max-width: 320px;
 }
 
 .description {
@@ -70,6 +70,7 @@
         left: 15%;
         width: 35%;
         height: 75%;
+        border: 10px solid #64FFDA;
     }
 
     .backgroundTwo {

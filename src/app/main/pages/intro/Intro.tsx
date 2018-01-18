@@ -34,7 +34,7 @@ interface IProps {
 }
 
 export function Intro(props: IProps) {
-    const { isParentMounted, docScroll } = props;
+    const { docScroll } = props;
     const springValue = 1;
     return (
         <section
@@ -47,13 +47,6 @@ export function Intro(props: IProps) {
         >
             <div className={s.backgroundOne}/>
             <div className={s.backgroundTwo}/>
-            {/*<div className={s.line}>*/}
-                {/*<Line*/}
-                    {/*orientation={EOrientation.Vertical}*/}
-                    {/*isInvisible={!isParentMounted}*/}
-                    {/*color={colors.gry}*/}
-                {/*/>*/}
-            {/*</div>*/}
             <TransitionColumn
                 springValue={springValue}
                 columns={COLUMNS}

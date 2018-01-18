@@ -22,7 +22,7 @@
     .side {
         display: inline-block;
         vertical-align: middle;
-        width: calc(50% - 80px);
+        width: calc(50% - 160px);
     }
 
     .side:first-child {
