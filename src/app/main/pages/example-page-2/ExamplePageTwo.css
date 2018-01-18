@@ -6,3 +6,18 @@
     width: 100%;
     background: linear-gradient(to right, rgba(255,255,255, 0.88) 0%, rgba(255,255,255, 0.77) 100%), url(/images/backgrounds/components2.jpg) center / cover no-repeat;
 }
+
+.section h1 {
+    display: block;
+    color: #FFFFFF;
+    line-height: 40px;
+    font-size: 32px;
+}
+
+.section p {
+    display: block;
+    line-height: 32px;
+    font-size: 24px;
+    margin: 20px 0;
+    max-width: 600px;
+}

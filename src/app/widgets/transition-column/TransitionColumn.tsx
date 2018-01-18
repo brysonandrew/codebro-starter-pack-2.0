@@ -2,7 +2,7 @@ import * as React from 'react';
 import {StaggeredMotion, spring} from 'react-motion';
 import {TransitionColumnItem} from './TransitionColumnItem';
 const s = require('./TransitionColumn.css');
-export const TRANSITION_SCROLLING_BUFFER = 160;
+export const TRANSITION_SCROLLING_BUFFER = 500;
 
 export interface ITransitionColumnProps {
     springValue: number;

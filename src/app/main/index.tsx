@@ -95,10 +95,6 @@ export class Main extends React.Component<IProps, IState> {
 
     }
 
-    clientRectPages(values: ClientRect[]) {
-        console.log(values);
-    }
-
     docScroll(): number {
         return document[
             defined(document.scrollingElement)
@@ -114,7 +110,8 @@ export class Main extends React.Component<IProps, IState> {
     };
 
     render(): JSX.Element {
-        const { isMounted, isTablet, docScroll } = this.state;
+        const { isMounted, docScroll } = this.state;
+        const { isTablet, height } = this.props;
 
         return (
             <div
@@ -123,8 +120,8 @@ export class Main extends React.Component<IProps, IState> {
                 <Pages
                     isParentMounted={isMounted}
                     isTablet={isTablet}
+                    height={height}
                     docScroll={docScroll}
-                    clientRectPages={this.clientRectPages}
                 />
             </div>
         );

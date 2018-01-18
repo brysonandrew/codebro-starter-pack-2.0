@@ -2,10 +2,10 @@ import * as React from 'react';
 import {ITeamMemberProps, TeamMember} from '../shared/TeamMember';
 import {defined} from '../../../../utils/variable_evaluation';
 import {TransitionColumnItem} from '../../../widgets/transition-column/TransitionColumnItem';
+import {TRANSITION_SCROLLING_BUFFER} from '../../../widgets/transition-column/TransitionColumn';
 
 interface IProps {
-    docScroll?: number;
-    parentClientRect?: ClientRect;
+    isTriggered?: boolean;
 }
 
 const IMAGE_ROOT = '/images/team';
@@ -34,8 +34,7 @@ const TEAM: ITeamMemberProps[] = [
 ];
 
 export function OurTeam(props: IProps) {
-    const { docScroll, parentClientRect } = props;
-    const springValue = (defined(parentClientRect) && docScroll > parentClientRect.top) ? 1 : 0;
+    const springValue = props.isTriggered ? 1 : 0;
 
     return (
         <section>

@@ -7,8 +7,7 @@ import {TransitionColumnItem} from '../../../widgets/transition-column/Transitio
 const s = require('./ExamplePageOne.css');
 
 interface IProps {
-    docScroll?: number;
-    parentClientRect?: ClientRect;
+    isTriggered?: boolean;
 }
 
 interface IState {}
@@ -35,8 +34,7 @@ export class ExamplePageOne extends React.Component<IProps, IState> {
     }
 
     render(): JSX.Element {
-        const { docScroll, parentClientRect } = this.props;
-        const springValue = (defined(parentClientRect) && docScroll > parentClientRect.top - TRANSITION_SCROLLING_BUFFER) ? 1 : 0;
+        const springValue = this.props.isTriggered ? 1 : 0;
 
         return (
             <section className={s.section}>

@@ -1,14 +1,16 @@
 import * as React from 'react';
 import {StaggeredMotion, spring} from 'react-motion';
+import {defined} from '../../../utils/variable_evaluation';
 const s = require('./TransitionColumn.css');
 
 interface IProps {
     springValue: number;
+    display?: string;
     column: JSX.Element[];
 }
 
 export function TransitionColumnItem(props: IProps) {
-    const { column, springValue } = props;
+    const { display, column, springValue } = props;
     return (
 
             <StaggeredMotion
@@ -25,7 +27,7 @@ export function TransitionColumnItem(props: IProps) {
                             <div
                                 key={`component-${index}`}
                                 style={{
-                                    display: 'inline-block',
+                                    display: defined(display) ? display : 'inline-block',
                                     opacity: subStyle.y,
                                     transform: `translate3d(0, ${(subStyle.y - 1) * -100}px, 0)`
                                 }}

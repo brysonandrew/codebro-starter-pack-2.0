@@ -14,8 +14,8 @@ import {ExamplePageTwo} from './example-page-2/ExamplePageTwo';
 interface IProps {
     isParentMounted: boolean;
     isTablet: boolean;
+    height: number;
     docScroll: number;
-    clientRectPages: (values: ClientRect[]) => void;
 }
 
 export const pages: string[] = [
@@ -30,14 +30,14 @@ const line = (isParentMounted) => <Line
 
 export class Pages extends React.Component<IProps, {}> {
 
-    clientRectPages = [];
+    topOffsets = [];
+    triggered = [];
 
     componentDidMount() {
-        console.log(this.clientRectPages);
+        // console.log(this.clientRectPages);
     }
 
     mainPages(): JSX.Element[] {
-        const { isParentMounted, isTablet, docScroll } = this.props;
         return [
             <Project/>,
             <ExamplePageOne/>,
@@ -46,13 +46,25 @@ export class Pages extends React.Component<IProps, {}> {
             <ExamplePageTwo/>,
             <OurPartners/>,
             <Footer
-                isParentMounted={isParentMounted}
+                isParentMounted={this.props.isParentMounted}
             />
         ]
     }
 
+    isTriggered(i: number) {
+        const isAlreadyTriggered = defined(this.triggered[i]);
+        const isAboveThreshold = defined(this.topOffsets[i])
+            ? this.props.docScroll > (this.topOffsets[i] + this.props.height * 0.25)
+            : false;
+        if (!isAlreadyTriggered && isAboveThreshold) {
+            this.triggered.push(true);
+        }
+        return this.triggered[i]
+    }
+
     render(): JSX.Element {
         const { isParentMounted, isTablet, docScroll } = this.props;
+
         return (
             <div>
                 <Intro
@@ -68,12 +80,11 @@ export class Pages extends React.Component<IProps, {}> {
                     {this.mainPages().map((page, i) =>
                         <div
                             key={`page-${i}`}
-                            ref={el => defined(el) && (this.clientRectPages[i] = el.getBoundingClientRect())}
+                            ref={el => defined(el) && (this.topOffsets[i] = el.offsetTop)}
                         >
                             {line(isParentMounted)}
                             {React.cloneElement(page, {
-                                docScroll: docScroll,
-                                parentClientRect: this.clientRectPages[i]
+                                isTriggered: this.isTriggered(i)
                             })}
                         </div>)}
                 </div>
