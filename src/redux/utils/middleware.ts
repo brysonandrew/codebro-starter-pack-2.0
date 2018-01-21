@@ -1,5 +1,4 @@
 import {IAction} from "./actions";
-import * as Immutable from 'immutable';
 import {Middleware} from "redux";
 import {MiddlewareAPI} from "redux";
 
@@ -21,7 +20,7 @@ interface IMiddlewareHandler<S> {
 export function createMiddleware<S>(handlers: IMiddlewareHandler<S>[]): any {
     return (storeAPI: MiddlewareAPI<S>) => next => (action: any = {type: "NONE"}) => {
 
-        const actionHandler = Immutable.List(handlers).find(x => x.action.type === action.type);
+        const actionHandler = handlers.filter(x => x.action.type === action.type).pop();
 
         if (actionHandler && actionHandler.beforeHandler) {
             actionHandler.beforeHandler(storeAPI, action);

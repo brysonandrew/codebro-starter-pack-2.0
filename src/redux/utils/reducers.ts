@@ -1,5 +1,4 @@
 import {IAction} from './actions';
-import * as Immutable from 'immutable';
 
 interface IActionReducer<S> {
     action: IAction
@@ -15,7 +14,7 @@ interface IActionReducer<S> {
  */
 export function createReducer<S>(initialState: S, reducers: IActionReducer<S>[]): (S, Action) => S {
     return (state: S = initialState, action: IAction = {type: 'NONE'}) => {
-        const reducer = Immutable.List(reducers).find(x => x.action.type === action.type);
+        const reducer = reducers.filter(x => x.action.type === action.type).pop();
         if (!!reducer) {
               return reducer.handler(state, action);
         } else {

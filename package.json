@@ -98,7 +98,6 @@
     "extract-text-webpack-plugin": "^2.1.2",
     "file-loader": "^0.9.0",
     "history": "^4.5.1",
-    "immutable": "^3.8.1",
     "isomorphic-fetch": "^2.2.1",
     "isomorphic-style-loader": "^1.1.0",
     "postcss-assets": "^4.1.0",

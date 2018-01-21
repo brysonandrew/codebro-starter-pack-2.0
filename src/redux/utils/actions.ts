@@ -1,5 +1,3 @@
-import * as Immutable from 'immutable';
-
 export interface IAction {
     type: string
 }
@@ -12,7 +10,7 @@ export interface IAction {
  * @returns {IAction}    The action plain object for dispatching
  */
 export function createAction<T>(type: string, data: T): IAction {
-    return Immutable.fromJS(data).set('type', type).toJS();
+    return {...data as any, type: type};
 }
 
 /**

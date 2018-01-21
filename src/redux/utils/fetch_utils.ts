@@ -1,5 +1,4 @@
 import 'whatwg-fetch';
-import * as Immutable from 'immutable';
 import {checkServerError} from './actions';
 
 interface IDictionary<T> {
@@ -47,9 +46,7 @@ function getJSONRequestHeaders(extraHeaders?: IDictionary<string>): IDictionary<
     let requestHeaders: IDictionary<string> = {'Accept': 'application/json', 'Content-Type': 'application/json'};
     if (extraHeaders) {
         // Merge request headers with extra headers if any (extra headers have higher precedence)
-        requestHeaders = Immutable.Map(extraHeaders)
-                            .merge(Immutable.Map(requestHeaders))
-                            .toJS();
+        requestHeaders = {...extraHeaders, ...requestHeaders}
     }
     return requestHeaders;
 }
