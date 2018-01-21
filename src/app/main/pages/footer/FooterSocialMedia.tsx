@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {contactIcon} from '../../../../data/icons/contact';
+import {CONTACT_ICON} from '../../../../data';
 import {FooterSocialMediaItem, ISocialMediaItemProps} from './FooterSocialMediaItem';
 
 interface IProps {}
@@ -8,17 +8,17 @@ const SOCIAL_MEDIA_ITEMS: ISocialMediaItemProps[] = [
     {
         name: 'Facebook',
         link: '/facebook',
-        icon: contactIcon.facebook
+        icon: CONTACT_ICON.facebook
     },
     {
         name: 'LinkedIn',
         link: '/linkedIn',
-        icon: contactIcon.linkedIn
+        icon: CONTACT_ICON.linkedIn
     },
     {
         name: 'Email',
         link: '/email',
-        icon: contactIcon.email
+        icon: CONTACT_ICON.email
     }
 ];
 

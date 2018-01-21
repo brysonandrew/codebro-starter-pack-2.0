@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {ITeamMemberProps} from '../shared/TeamMember';
+import {ITeamMemberProps} from '../shared';
 const s = require('./OurPartners.css');
 
 interface IProps {}

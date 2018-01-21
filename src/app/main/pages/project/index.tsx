@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {SearchBar} from '../../../widgets/search-bar';
+import {SearchBar} from '../../../widgets';
 
 interface IProps {}
 

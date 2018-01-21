@@ -1,8 +1,6 @@
 import * as React from 'react';
-import {ITeamMemberProps, TeamMember} from '../shared/TeamMember';
-import {defined} from '../../../../utils/variable_evaluation';
-import {TransitionColumnItem} from '../../../widgets/transition-column/TransitionColumnItem';
-import {TRANSITION_SCROLLING_BUFFER} from '../../../widgets/transition-column/TransitionColumn';
+import {ITeamMemberProps, TeamMember} from '../shared';
+import {TransitionStaggerItem} from '../../../widgets';
 
 interface IProps {
     isTriggered?: boolean;
@@ -39,7 +37,7 @@ export function OurTeam(props: IProps) {
     return (
         <section>
             <h2>Our Team</h2>
-            <TransitionColumnItem
+            <TransitionStaggerItem
                 springValue={springValue}
                 column={TEAM.map((member, i) =>
                     <TeamMember

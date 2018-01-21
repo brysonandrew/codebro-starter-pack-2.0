@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {StaggeredMotion, spring} from 'react-motion';
 import {Logo} from '../../../widgets/Logo';
-import {TransitionColumn} from '../../../widgets/transition-column/TransitionColumn';
+import {TransitionStaggerNested} from '../../../widgets';
 const s = require('./Intro.css');
 export const INTRO_HEIGHT = 650;
 
@@ -47,7 +47,7 @@ export function Intro(props: IProps) {
         >
             <div className={s.backgroundOne}/>
             <div className={s.backgroundTwo}/>
-            <TransitionColumn
+            <TransitionStaggerNested
                 springValue={springValue}
                 columns={COLUMNS}
             />

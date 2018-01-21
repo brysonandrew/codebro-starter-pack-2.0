@@ -1,15 +1,15 @@
 import * as React from 'react';
-import {colors} from '../../../data/themeOptions';
+import {colors} from '../../../data';
 import {defined} from '../../../utils';
-import {EOrientation, Line} from '../../widgets/Line';
-import {Intro} from './intro/index';
-import {OurTeam} from './our-team/index';
-import {OurAdvisors} from './our-advisors/index';
-import {OurPartners} from './our-partners/index';
-import {Footer} from './footer/Footer';
-import {Project} from './project/Project';
-import {ExamplePageOne} from './example-page-1/ExamplePageOne';
-import {ExamplePageTwo} from './example-page-2/ExamplePageTwo';
+import {ELineOrientation, Line} from '../../widgets';
+import {Intro} from './intro';
+import {OurTeam} from './our-team';
+import {OurAdvisors} from './our-advisors';
+import {OurPartners} from './our-partners';
+import {Footer} from './footer';
+import {Project} from './project';
+import {ExamplePageOne} from './example-page-1';
+import {ExamplePageTwo} from './example-page-2';
 
 interface IProps {
     isParentMounted: boolean;
@@ -25,7 +25,7 @@ export const pages: string[] = [
 
 const line = (isParentMounted) => <Line
     isInvisible={!isParentMounted}
-    orientation={EOrientation.Horizontal}
+    orientation={ELineOrientation.Horizontal}
 />;
 
 export class Pages extends React.Component<IProps, {}> {

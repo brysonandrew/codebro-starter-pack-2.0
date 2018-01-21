@@ -1,9 +1,5 @@
 import * as React from 'react';
-import {
-    TRANSITION_SCROLLING_BUFFER,
-} from '../../../widgets/transition-column/TransitionColumn';
-import {defined} from '../../../../utils/variable_evaluation';
-import {TransitionColumnItem} from '../../../widgets/transition-column/TransitionColumnItem';
+import {TransitionStaggerItem} from '../../../widgets';
 const s = require('./ExamplePageOne.css');
 
 interface IProps {
@@ -38,7 +34,7 @@ export class ExamplePageOne extends React.Component<IProps, IState> {
 
         return (
             <section className={s.section}>
-                <TransitionColumnItem
+                <TransitionStaggerItem
                     springValue={springValue}
                     column={STAGGERED_TEXT}
                 />

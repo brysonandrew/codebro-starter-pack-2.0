@@ -2,7 +2,7 @@ import * as React from 'react';
 
 const COLOR = `#616161`;
 
-export const LOGO_SVG =
+export const LOGO_ICON =
     <svg
         width="100%"
         height="100%"

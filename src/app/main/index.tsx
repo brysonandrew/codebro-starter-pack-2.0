@@ -2,12 +2,11 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import createHistory from 'history/createBrowserHistory';
-import { IParams } from "../../data/models";
-import { IStore } from '../../redux/IStore';
+import { toParams, defined } from '../../utils';
+import { IParams } from "../../data";
+import { IStore } from '../../redux';
 import { changeViewportDimensions, saveParams, toggleScrollAnimation } from './main-action-creators';
 import { Pages } from './pages';
-import { toParams } from '../../utils/routing';
-import {defined} from '../../utils/variable_evaluation';
 
 interface IProperties {
     savedParams?: IParams

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {defined} from '../../../../utils/variable_evaluation';
-import {INTRO_HEIGHT} from '../intro/Intro';
+import {defined} from '../../../../../utils';
+import {INTRO_HEIGHT} from '../../intro';
 const s = require('./TeamMember.css');
 
 export interface ITeamMemberProps {

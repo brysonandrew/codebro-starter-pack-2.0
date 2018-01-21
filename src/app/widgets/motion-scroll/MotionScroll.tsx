@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { ScrollSink } from "./ScrollSink";
 import { Motion, spring } from 'react-motion';
+import {renderIfTrue} from '../../../utils/react';
 
 interface IProps {
     scrollTarget: number
@@ -26,10 +27,10 @@ export class MotionScroll extends React.Component<IProps, any> {
                         onRest={onRest}
                     >
                     {(currentStyles) =>
-                        this.props.isAnimating
-                            &&   <ScrollSink
-                                    scrollTop={currentStyles.scrollTop}
-                                 />}
+                        renderIfTrue(this.props.isAnimating
+                            , () => <ScrollSink
+                                scrollTop={currentStyles.scrollTop}
+                            />)}
                 </Motion>
     }
 }

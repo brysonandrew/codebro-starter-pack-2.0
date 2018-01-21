@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {StaggeredMotion, spring} from 'react-motion';
 import {defined} from '../../../utils/variable_evaluation';
-const s = require('./TransitionColumn.css');
+const s = require('./TransitionStagger.css');
 
 interface IProps {
     springValue: number;
@@ -9,7 +9,7 @@ interface IProps {
     column: JSX.Element[];
 }
 
-export function TransitionColumnItem(props: IProps) {
+export function TransitionStaggerItem(props: IProps) {
     const { display, column, springValue } = props;
     return (
 

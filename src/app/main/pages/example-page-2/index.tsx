@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {TransitionColumnItem} from '../../../widgets/transition-column/TransitionColumnItem';
+import {TransitionStaggerItem} from '../../../widgets';
 const s = require('./ExamplePageTwo.css');
 
 interface IProps {
@@ -19,7 +19,7 @@ export class ExamplePageTwo extends React.Component<IProps, IState> {
 
         return (
             <section className={s.section}>
-                <TransitionColumnItem
+                <TransitionStaggerItem
                     springValue={springValue}
                     display={'block'}
                     column={[

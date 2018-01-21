@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export const SEARCH_SVG =
+export const SEARCH_ICON =
     <svg viewBox="0 0 24 24">
         <path
             fill="#000"

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { FooterInfo } from './FooterInfo';
 import { FooterSocialMedia } from './FooterSocialMedia';
-import {EOrientation, Line} from '../../../widgets/Line';
-import {colors} from '../../../../data/themeOptions';
+import {ELineOrientation, Line} from '../../../widgets';
+import {colors} from '../../../../data';
 const s = require('./Footer.css');
 
 interface IProps {
@@ -26,7 +26,7 @@ export function Footer(props: IProps) {
         <section className={s.footer}>
             <div className={s.line}>
                 <Line
-                    orientation={EOrientation.Vertical}
+                    orientation={ELineOrientation.Vertical}
                     isInvisible={!isParentMounted}
                     color={colors.gry}
                 />
