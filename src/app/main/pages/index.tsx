@@ -2,12 +2,6 @@ import * as React from 'react';
 import {colors} from '../../../data';
 import {defined} from '../../../utils';
 import {ELineOrientation, Line} from '../../widgets';
-import {Intro} from './intro';
-import {OurTeam} from './our-team';
-import {OurAdvisors} from './our-advisors';
-import {OurPartners} from './our-partners';
-import {Footer} from './footer';
-import {Project} from './project';
 import {ExamplePageOne} from './example-page-1';
 import {ExamplePageTwo} from './example-page-2';
 
@@ -19,8 +13,8 @@ interface IProps {
 }
 
 export const pages: string[] = [
-    'Intro',
-    'Our Team'
+    'Hello',
+    'World'
 ];
 
 const line = (isParentMounted) => <Line
@@ -39,15 +33,8 @@ export class Pages extends React.Component<IProps, {}> {
 
     mainPages(): JSX.Element[] {
         return [
-            <Project/>,
             <ExamplePageOne/>,
-            <OurTeam/>,
-            <OurAdvisors/>,
             <ExamplePageTwo/>,
-            <OurPartners/>,
-            <Footer
-                isParentMounted={this.props.isParentMounted}
-            />
         ]
     }
 
@@ -67,11 +54,6 @@ export class Pages extends React.Component<IProps, {}> {
 
         return (
             <div>
-                <Intro
-                    isParentMounted={isParentMounted}
-                    isTablet={isTablet}
-                    docScroll={docScroll}
-                />
                 <div style={{
                     position: 'relative',
                     background: colors.wht,

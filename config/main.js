@@ -9,13 +9,13 @@ var config = {
   // This part goes to React-Helmet for Head of our HTML
   app: {
     head: {
-      title: 'Procurement Risk Management',
-      titleTemplate: 'SourcingBot | %s',
+      title: 'Freelance Web Development',
+      titleTemplate: 'Kosm | %s',
       meta: [
         { charset: 'utf-8' },
         { 'http-equiv': 'x-ua-compatible', content: 'ie=edge' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: 'Procurement Risk Management' },
+        { name: 'description', content: 'Making websites with Typescript, React, Redux, Mobx and THREE.js' },
       ]
     }
   }

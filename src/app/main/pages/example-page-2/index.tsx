@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {TransitionStaggerItem} from '../../../widgets';
 const s = require('./ExamplePageTwo.css');
 
 interface IProps {
@@ -19,16 +18,7 @@ export class ExamplePageTwo extends React.Component<IProps, IState> {
 
         return (
             <section className={s.section}>
-                <TransitionStaggerItem
-                    springValue={springValue}
-                    display={'block'}
-                    column={[
-                        <h2>Our Goal</h2>,
-                        <p>
-                            Procurement and Inventory costs can be substantially reduced if trusted replacement components can be used. And that's what SourcingBot aims at providing in an online platform.
-                        </p>
-                    ]}
-                />
+                World
             </section>
 
         );

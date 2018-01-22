@@ -1,0 +1,71 @@
+@import './config.css';
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Comfortaa', 'arial', sans-serif;
+    -webkit-appearance: none;
+}
+
+body {
+    background: var(--black);
+    color: var(--white);
+}
+
+section {
+    position: relative;
+    padding: 70px 0;
+}
+
+button, input, a {
+    background: none;
+    border: none;
+    outline: none;
+    text-decoration: none;
+}
+h1, h2, h3, h4 {
+    color: var(--black);
+    font-family: 'Comfortaa', 'arial', sans-serif;
+}
+
+h2 {
+    font-family: 'Roboto', 'arial', sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding-bottom: 35px;
+}
+
+code {
+    font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
+}
+
+ul li {
+    list-style-position: inside;
+    list-style-type: square;
+}
+
+p {
+    font-family: 'Roboto', 'arial', sans-serif;
+    font-size: 24px;
+}
+
+.AppContainer {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+@keyframes :global(gradients) {
+    0%   {background-position: 0 0;}
+    25%  {background-position: 50% 0;}
+    50%  {background-position: 90% 0;}
+    60%  {background-position: 60%;}
+    75%  {background-position: 40%;}
+    100% {background-position: 0 0;}
+}
+
+@keyframes :global(fade) {
+    0%   { opacity: 1; }
+    50%  { opacity: 0.4; }
+    100% { opacity: 1; }
+}
