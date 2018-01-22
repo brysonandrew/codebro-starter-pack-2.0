@@ -23,11 +23,6 @@ const TEAM: ITeamMemberProps[] = [
         name: 'Hindol Rakshit',
         position: 'Data Scientist',
         image: `${IMAGE_ROOT}/Hindol.png`
-    },
-    {
-        name: 'Andrew Bryson',
-        position: 'Front-end Dev',
-        image: `${IMAGE_ROOT}/Andrew.png`
     }
 ];
 
