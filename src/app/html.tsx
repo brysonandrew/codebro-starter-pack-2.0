@@ -50,7 +50,7 @@ class Html extends React.Component<IHtmlProps, {}> {
           <meta name="author" content="Andrew Bryson" />
           {/*<meta property="og:image" content="http://example.com/images/logo.svg"/>*/}
           {/*<meta property="og:image:secure_url" content="http://example.com//images/logo.svg"/>*/}
-          <link href="https://fonts.googleapis.com/css?family=Comfortaa|Roboto:400,700i,900i" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet" />
           <link rel="shortcut icon" href="/favicon.ico" />
         </head>
         <body>

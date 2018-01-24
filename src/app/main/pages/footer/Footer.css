@@ -1,0 +1,31 @@
+.footer {
+    background: var(--grey);
+}
+
+.item {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.footerInfo div {
+    line-height: 24px;
+}
+
+.heading {
+    margin: 20px 0;
+}
+
+.line {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 1px;
+    height: 100%;
+}
+
+.footerSocialMediaItem {
+    display: inline-block;
+    vertical-align: middle;
+    height: auto;
+    width: 35px;
+}

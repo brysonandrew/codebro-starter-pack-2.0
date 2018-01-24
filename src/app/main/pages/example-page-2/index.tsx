@@ -18,9 +18,8 @@ export class ExamplePageTwo extends React.Component<IProps, IState> {
 
         return (
             <section className={s.section}>
-                World
+                SUP DOG
             </section>
-
         );
     }
 }

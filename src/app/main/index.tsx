@@ -2,11 +2,13 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import createHistory from 'history/createBrowserHistory';
+const s = require('./Main.css');
 import { toParams, defined } from '../../utils';
 import { IParams } from "../../data";
 import { IStore } from '../../redux';
 import { changeViewportDimensions, saveParams, toggleScrollAnimation } from './main-action-creators';
 import { Pages } from './pages';
+import {Menu} from './menu/Menu';
 
 interface IProperties {
     savedParams?: IParams
@@ -110,18 +112,19 @@ export class Main extends React.Component<IProps, IState> {
 
     render(): JSX.Element {
         const { isMounted, docScroll } = this.state;
-        const { isTablet, height } = this.props;
+        const { isTablet, height, width } = this.props;
 
         return (
-            <div
-                className='main'
-            >
-                <Pages
-                    isParentMounted={isMounted}
-                    isTablet={isTablet}
-                    height={height}
-                    docScroll={docScroll}
-                />
+            <div className={s.main}>
+                <div className={s.container}>
+                    <Menu/>
+                    <Pages
+                        isParentMounted={isMounted}
+                        isTablet={isTablet}
+                        height={height}
+                        docScroll={docScroll}
+                    />
+                </div>
             </div>
         );
     }

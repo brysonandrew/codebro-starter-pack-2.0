@@ -1,9 +1,9 @@
 import * as React from 'react';
-import {colors} from '../../../data';
 import {defined} from '../../../utils';
 import {ELineOrientation, Line} from '../../widgets';
 import {ExamplePageOne} from './example-page-1';
 import {ExamplePageTwo} from './example-page-2';
+import {Footer} from './footer/index';
 
 interface IProps {
     isParentMounted: boolean;
@@ -31,10 +31,11 @@ export class Pages extends React.Component<IProps, {}> {
         // console.log(this.clientRectPages);
     }
 
-    mainPages(): JSX.Element[] {
+    mainPages(isParentMounted): JSX.Element[] {
         return [
             <ExamplePageOne/>,
             <ExamplePageTwo/>,
+            <Footer isParentMounted={isParentMounted}/>
         ]
     }
 
@@ -54,22 +55,17 @@ export class Pages extends React.Component<IProps, {}> {
 
         return (
             <div>
-                <div style={{
-                    position: 'relative',
-                    background: colors.wht,
-                    zIndex: 1
-                }}>
-                    {this.mainPages().map((page, i) =>
-                        <div
-                            key={`page-${i}`}
-                            ref={el => defined(el) && (this.topOffsets[i] = el.offsetTop)}
-                        >
-                            {line(isParentMounted)}
-                            {React.cloneElement(page, {
-                                isTriggered: this.isTriggered(i)
-                            })}
-                        </div>)}
-                </div>
+                {this.mainPages(isParentMounted).map((page, i) =>
+                    <div
+                        key={`page-${i}`}
+                        ref={el => defined(el) && (this.topOffsets[i] = el.offsetTop)}
+                    >
+                        {React.cloneElement(page, {
+                            docScroll: docScroll,
+                            isTriggered: this.isTriggered(i)
+                        })}
+                        {line(isParentMounted)}
+                    </div>)}
             </div>
         );
     }

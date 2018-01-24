@@ -1,9 +1,10 @@
 import * as React from 'react';
-import {TransitionStaggerItem} from '../../../widgets';
+import {TransparentMaskText} from '../../../widgets/transparent-mask-text/index';
 const s = require('./ExamplePageOne.css');
 
 interface IProps {
     isTriggered?: boolean;
+    docScroll?: number;
 }
 
 interface IState {}
@@ -15,11 +16,13 @@ export class ExamplePageOne extends React.Component<IProps, IState> {
     }
 
     render(): JSX.Element {
-        const springValue = this.props.isTriggered ? 1 : 0;
-
         return (
             <section className={s.section}>
-                Hello
+                <div>
+                    <TransparentMaskText
+                        docScroll={this.props.docScroll}
+                    />
+                </div>
             </section>
         );
     }

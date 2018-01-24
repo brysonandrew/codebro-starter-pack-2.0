@@ -1,5 +1,4 @@
 export {MotionScroll} from './motion-scroll';
-export {SearchBar} from './search-bar';
 export {TransitionStaggerNested, TransitionStaggerItem} from './transition-stagger';
 
 export {BackgroundSwitch} from './BackgroundSwitch';
