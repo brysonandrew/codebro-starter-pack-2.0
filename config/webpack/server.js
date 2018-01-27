@@ -1,6 +1,7 @@
 var path = require('path');
 var fs = require('fs');
 var webpack = require('webpack');
+var postcssImport = require('postcss-import');
 var postcssAssets = require('postcss-assets');
 var postcssNext = require('postcss-cssnext');
 var stylelint = require('stylelint');
@@ -74,6 +75,7 @@ var config = {
         options: {
           postcss: function () {
             return [
+              postcssImport(),
               postcssNext(),
               postcssAssets({
                 relative: true

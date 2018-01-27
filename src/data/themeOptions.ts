@@ -1,7 +1,7 @@
 export const colors = {
-    hi: "#212121",
+    hi: "#304FFE",
     std: "#E0E0E0",
-    blk: "#212121",
-    gry: "#E0E0E0",
-    wht: "#FFFFFF",
+    dark: "#212121",
+    faint: "#E0E0E0",
+    light: "#FFFFFF"
 };

@@ -1,16 +1,17 @@
 import * as React from 'react';
-const s = require('./Footer.css');
+const s = require('./FooterSocialMedia.css');
 
 export interface ISocialMediaItemProps {
     name: string;
     link: string;
     icon: JSX.Element;
+    hoverIcon?: JSX.Element;
 }
 
 export function FooterSocialMediaItem(props: ISocialMediaItemProps) {
     const { name, link, icon } = props;
     return (
-        <a className={s.footerSocialMediaItem} href={link}>
+        <a className={s.item} href={link}>
             {icon}
         </a>
     );

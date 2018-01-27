@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {defined} from '../../../utils';
 import {ELineOrientation, Line} from '../../widgets';
-import {ExamplePageOne} from './example-page-1';
-import {ExamplePageTwo} from './example-page-2';
+import {Intro} from './intro';
+import {Work} from './work';
 import {Footer} from './footer/index';
 
 interface IProps {
@@ -12,9 +12,15 @@ interface IProps {
     docScroll: number;
 }
 
-export const pages: string[] = [
-    'Hello',
-    'World'
+export const MAIN_PAGES = [
+    {
+        name: 'Work',
+        component: <Work/>
+    },
+    {
+        name: 'Contact',
+        component: <Footer/>
+    }
 ];
 
 const line = (isParentMounted) => <Line
@@ -29,14 +35,6 @@ export class Pages extends React.Component<IProps, {}> {
 
     componentDidMount() {
         // console.log(this.clientRectPages);
-    }
-
-    mainPages(isParentMounted): JSX.Element[] {
-        return [
-            <ExamplePageOne/>,
-            <ExamplePageTwo/>,
-            <Footer isParentMounted={isParentMounted}/>
-        ]
     }
 
     isTriggered(i: number) {
@@ -55,12 +53,13 @@ export class Pages extends React.Component<IProps, {}> {
 
         return (
             <div>
-                {this.mainPages(isParentMounted).map((page, i) =>
+                <Intro/>
+                {MAIN_PAGES.map((page, i) =>
                     <div
                         key={`page-${i}`}
                         ref={el => defined(el) && (this.topOffsets[i] = el.offsetTop)}
                     >
-                        {React.cloneElement(page, {
+                        {React.cloneElement(page.component, {
                             docScroll: docScroll,
                             isTriggered: this.isTriggered(i)
                         })}

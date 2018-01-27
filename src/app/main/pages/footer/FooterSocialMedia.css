@@ -1,0 +1,44 @@
+@import '../../../style/config.css';
+
+.itemWrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    height: 40px;
+    cursor: pointer;
+}
+
+.itemWrapper:hover .itemCircle {
+    opacity: 0.22;
+    transform: translate(-50%, -50%) rotate(35deg) scale(1.5);
+}
+
+.itemTitle {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    color: var(--faint);
+    transform: translate(-50%, -50%);
+}
+
+.itemCircle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: auto;
+    width: 50px;
+    opacity: 0.11;
+    transform: translate(-50%, -50%) rotate(-35deg) scale(1);
+    transition: 1000ms opacity ease, 1000ms transform ease;
+}
+
+.item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: auto;
+    width: 35px;
+    transform: translate(-50%, -50%);
+}

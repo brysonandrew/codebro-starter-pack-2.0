@@ -1,5 +1,7 @@
+@import '../../../style/config.css';
+
 .footer {
-    background: var(--grey);
+    background: var(--faint);
 }
 
 .item {
@@ -18,14 +20,7 @@
 .line {
     position: absolute;
     top: 0;
-    left: 50%;
-    width: 1px;
+    left: 32%;
+    width: 0;
     height: 100%;
-}
-
-.footerSocialMediaItem {
-    display: inline-block;
-    vertical-align: middle;
-    height: auto;
-    width: 35px;
 }

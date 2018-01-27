@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {TransparentMaskText} from '../../../widgets/transparent-mask-text/index';
-const s = require('./ExamplePageOne.css');
+const s = require('./Intro.css');
 
 interface IProps {
     isTriggered?: boolean;
@@ -9,7 +9,7 @@ interface IProps {
 
 interface IState {}
 
-export class ExamplePageOne extends React.Component<IProps, IState> {
+export class Intro extends React.Component<IProps, IState> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);

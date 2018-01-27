@@ -13,8 +13,8 @@
 }
 
 body {
-    background: #FFFFFF;
-    color: #212121;
+    background: var(--light);
+    color: var(--dark);
 }
 
 section {

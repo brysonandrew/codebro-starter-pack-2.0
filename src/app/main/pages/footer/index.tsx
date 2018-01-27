@@ -6,45 +6,39 @@ import {colors} from '../../../../data';
 const s = require('./Footer.css');
 
 interface IProps {
-    isParentMounted: boolean;
 }
 
 const DIVISIONS = [
     {
-        name: 'Info',
+        name: 'Messsage',
+        widthPercentage: 33,
         component: <FooterInfo/>
     },
     {
-        name: 'Social Media',
+        name: 'Links',
+        widthPercentage: 67,
         component: <FooterSocialMedia/>
     }
 ];
 
 export function Footer(props: IProps) {
-    const { isParentMounted } = props;
     return (
         <section className={s.footer}>
             <div className={s.line}>
                 <Line
                     orientation={ELineOrientation.Vertical}
-                    isInvisible={!isParentMounted}
-                    color={colors.gry}
+                    color={colors.faint}
                 />
             </div>
-            {DIVISIONS.map((div, i) =>
+            {DIVISIONS.map((division, i) =>
                 <div
-                    key={`div-${i}`}
+                    key={`division-${i}`}
                     className={s.item}
                     style={{
-                        width: `${100 / DIVISIONS.length}%`
+                        width: `${division.widthPercentage}%`
                     }}
                 >
-                    {/*<div>*/}
-                        {/*<h4 className={s.heading}>*/}
-                            {/*{div.name}*/}
-                        {/*</h4>*/}
-                    {/*</div>*/}
-                    {div.component}
+                    {division.component}
                 </div>
             )}
         </section>

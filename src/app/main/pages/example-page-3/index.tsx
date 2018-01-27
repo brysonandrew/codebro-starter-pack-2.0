@@ -1,5 +1,5 @@
 import * as React from 'react';
-const s = require('./ExamplePageTwo.css');
+const s = require('./ExamplePageThree.css');
 
 interface IProps {
     isTriggered?: boolean;
@@ -7,7 +7,7 @@ interface IProps {
 
 interface IState {}
 
-export class ExamplePageTwo extends React.Component<IProps, IState> {
+export class ExamplePageThree extends React.Component<IProps, IState> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);
@@ -18,7 +18,7 @@ export class ExamplePageTwo extends React.Component<IProps, IState> {
 
         return (
             <section className={s.section}>
-                SUP DOG
+                Howdy
             </section>
         );
     }
