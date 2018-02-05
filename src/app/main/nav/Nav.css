@@ -1,0 +1,53 @@
+@import '../../style/config.css';
+
+.nav {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    top: 0;
+    left: 0;
+    z-index: 5;
+}
+
+.navLinks {
+    position: relative;
+    text-align: left;
+    transform: scaleY(1);
+    transition: 400ms transform 400ms;
+}
+
+.nav.dot .navLinks {
+    transform: scaleY(0);
+    transition: 400ms transform;
+}
+
+.line {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    height: 2px;
+    width: 100%;
+    opacity: 0;
+    background: var(--faint);
+    transform-origin: 0 50%;
+    transform: translateY(-50%) scaleX(1);
+    transition: 100ms opacity 400ms, transform 400ms;
+}
+
+.nav.dot .line {
+    opacity: 1;
+    transform: translateY(-50%) scaleX(0);
+    transition: 100ms opacity, 400ms transform 400ms;
+}
+
+.item {
+    display: inline-block;
+    vertical-align: top;
+    list-style-type: none;
+}
+
+.item a {
+    padding: var(--margin-small);
+    margin: 0 var(--margin-small);
+}

@@ -1,6 +1,6 @@
-import {workIcon} from '../../../icons/work';
-import {technologyIcon} from '../../../icons/technology';
 import {EClientType, ETeamType, IWorkLabel} from './models';
+import {workIcon} from '../icons/work';
+import {technologyIcon} from '../icons/technology';
 
 export const gulumjanConsultingLabel: IWorkLabel = {
     id      : 'gulumjan-work-svg',

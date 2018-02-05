@@ -54,9 +54,10 @@ export function FooterSocialMedia(props: IProps) {
                     <div className={s.itemTitle}>
                         {item.name.toUpperCase()}
                     </div>
-                    <div className={s.itemCircle}>
+                    <div className={s.itemWatermark}>
                         {item.hoverIcon}
                     </div>
+                    <div className={s.itemCircle}/>
                     <FooterSocialMediaItem
                         name={item.name}
                         link={item.link}

@@ -27,7 +27,7 @@ export function BackgroundMask(props: IProps) {
                 x={config.width * 0.5}
                 y={config.height * 0.6}
             >
-                KOSM
+                KOZM
             </text>
             <text
                 className={s.text}

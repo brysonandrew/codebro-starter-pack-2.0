@@ -1,29 +1,34 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
-import { browserHistory } from 'react-router';
+import {connect} from 'react-redux';
+import {browserHistory} from 'react-router';
 import createHistory from 'history/createBrowserHistory';
 const s = require('./Main.css');
-import { toParams, defined } from '../../utils';
-import { IParams } from "../../data";
-import { IStore } from '../../redux';
-import { changeViewportDimensions, saveParams, toggleScrollAnimation } from './main-action-creators';
-import { Pages } from './pages';
-import {Menu} from './menu/Menu';
+import {toParams, defined} from '../../utils';
+import {IParams} from "../../data";
+import {IStore} from '../../redux';
+import {changeViewportDimensions, saveParams, toggleScrollAnimation, toggleWheel} from './main-action-creators';
+import {Pages} from './pages';
+import {docScroll} from '../../utils/scroll';
 
 interface IProperties {
-    savedParams?: IParams
-    savedLocation?: Location
-    isPreviewExtended?: boolean
-    isMobile?: boolean
-    isTablet?: boolean
-    isLaptop?: boolean
-    width?: number
-    height?: number
+    savedParams?: IParams;
+    savedLocation?: Location;
+    isPreviewExtended?: boolean;
+    isMobile?: boolean;
+    isTablet?: boolean;
+    isLaptop?: boolean;
+    isAnimating?: boolean;
+    width?: number;
+    height?: number;
 }
 
 interface ICallbacks {
     onLocationListen?: (nextParams: IParams) => void
     onLoad?: (nextParams: IParams) => void
+    onWheel?: () => void;
+    onWheelStop?: () => void;
+    onAnimationStart?: () => void;
+    onAnimationEnd?: () => void;
     onResizeViewport?: (width: number, height: number) => void
     onArrowNavigate?: (nextParams: IParams) => void
 }
@@ -39,7 +44,9 @@ export class Main extends React.Component<IProps, IState> {
 
     activeTimeout;
     mountTimeout;
-    home;
+    scrollTimeout;
+    scrollTimeoutStopDelay;
+    isWheelRecorded;
     isIdle = true;
     isFirstRender = true;
 
@@ -73,7 +80,7 @@ export class Main extends React.Component<IProps, IState> {
         this.mountTimeout = setTimeout(() => this.setState({ isMounted: true }), 0);
 
         window.addEventListener("scroll", this.handleScroll);
-        window.addEventListener("wheel", this.handleScroll);
+        window.addEventListener("wheel", this.handleWheel);
         window.addEventListener("resize"
             , () => onResizeViewport(window.innerWidth, window.innerHeight));
         window.addEventListener("load"
@@ -88,7 +95,7 @@ export class Main extends React.Component<IProps, IState> {
             this.activeTimeout = false;
         }
         window.removeEventListener("scroll", this.handleScroll);
-        window.removeEventListener("wheel", this.handleScroll);
+        window.removeEventListener("wheel", this.handleWheel);
         window.removeEventListener("resize"
             , () => onResizeViewport(window.innerWidth, window.innerHeight));
         window.removeEventListener("load"
@@ -96,33 +103,43 @@ export class Main extends React.Component<IProps, IState> {
 
     }
 
-    docScroll(): number {
-        return document[
-            defined(document.scrollingElement)
-                ? "scrollingElement"
-                : defined(document.documentElement)
-                    ? "documentElement"
-                    : "body"
-            ].scrollTop;
+    private handleScroll = () => {
+        this.setState({docScroll: docScroll()});
     }
 
-    handleScroll = () => {
-        this.setState({docScroll: this.docScroll()});
-    };
+    private handleWheel = () => {
+        if (!this.isWheelRecorded) {
+            this.props.onWheel();
+            this.isWheelRecorded = true;
+        }
+        // detect wheel stop
+        clearTimeout(this.scrollTimeout);
+        this.scrollTimeout = setTimeout(() => {
+            this.props.onWheelStop();
+            this.isWheelRecorded = false;
+        }, this.scrollTimeoutStopDelay);
+        if (this.props.isAnimating) {
+            this.setState({docScroll: docScroll()});
+        }
+    }
 
     render(): JSX.Element {
         const { isMounted, docScroll } = this.state;
-        const { isTablet, height, width } = this.props;
+        const { isTablet, width, height, isAnimating, savedParams, onAnimationStart, onAnimationEnd } = this.props;
 
         return (
             <div className={s.main}>
-                <div className={s.container}>
-                    <Menu/>
+                <div className='container'>
                     <Pages
                         isParentMounted={isMounted}
+                        isAnimating={isAnimating}
                         isTablet={isTablet}
+                        width={width}
                         height={height}
                         docScroll={docScroll}
+                        savedParams={savedParams}
+                        onAnimationEnd={onAnimationEnd}
+                        onAnimationStart={onAnimationStart}
                     />
                 </div>
             </div>
@@ -139,6 +156,7 @@ function mapStateToProps(state: IStore): IProperties {
         isMobile: state.homeStore.isMobile,
         isTablet: state.homeStore.isTablet,
         isLaptop: state.homeStore.isLaptop,
+        isAnimating: state.homeStore.isAnimating,
         savedLocation: state.homeStore.savedLocation,
         savedParams: state.homeStore.savedParams
     };
@@ -148,6 +166,18 @@ function mapDispatchToProps(dispatch): ICallbacks {
     return {
         onLoad: (nextParams) => {
             dispatch(saveParams(nextParams));
+        },
+        onWheel: () => {
+            dispatch(toggleWheel(true));
+        },
+        onWheelStop: () => {
+            dispatch(toggleWheel(false));
+        },
+        onAnimationStart: () => {
+            dispatch(toggleScrollAnimation(true));
+        },
+        onAnimationEnd: () => {
+            dispatch(toggleScrollAnimation(false));
         },
         onLocationListen: (nextParams) => {
             dispatch(saveParams(nextParams));

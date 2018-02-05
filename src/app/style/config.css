@@ -1,7 +1,31 @@
 :root {
+
+    --title-font: 'Voice', 'arial', sans-serif;
+    --body-font: 'Didact Gothic', monospace;
+
     --hi: #FFFFFF;
     --std: #E0E0E0;
     --dark: #212121;
     --faint: #E0E0E0;
     --light: #FFFFFF;
+
+    --title: {
+        font-family: var(--title-font);
+        font-size: 88px;
+    };
+
+    --subtitle: {
+        font-size: 22px;
+        text-transform: uppercase;
+    };
+
+    --section-padding-base: 5px;
+    --section-padding-tablet: 45px;
+    --section-padding-wide: 110px;
+
+    --nested-section-multiplier: 0.25;
+
+    --margin-small: 16px;
+    --margin-medium: 35px;
+    --margin-large: 45px;
 }

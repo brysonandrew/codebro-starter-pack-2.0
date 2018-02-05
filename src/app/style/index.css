@@ -8,7 +8,7 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Didact Gothic', 'arial', sans-serif;
+    font-family: var(--body-font);
     -webkit-appearance: none;
 }
 
@@ -19,7 +19,39 @@ body {
 
 section {
     position: relative;
-    padding: 70px 0;
+    padding: var(--section-padding-wide) var(--section-padding-base);
+}
+
+section :global(.sub-section) {
+    padding: calc(var(--section-padding-base) * var(--nested-section-multiplier)) 0;
+}
+
+@media (min-width: 450px) {
+    section {
+        padding: var(--section-padding-wide) var(--section-padding-tablet);
+    }
+
+    section :global(.sub-section) {
+        padding: calc(var(--section-padding-tablet) * var(--nested-section-multiplier)) 0;
+    }
+}
+
+@media (min-width: 992px) {
+    section {
+        padding: var(--section-padding-wide);
+    }
+
+    section :global(.sub-section) {
+        padding: calc(var(--section-padding-wide) * var(--nested-section-multiplier)) 0;
+    }
+}
+
+button, input, a {
+    color: inherit;
+    background: none;
+    border: none;
+    outline: none;
+    text-decoration: none;
 }
 
 button, input, a {
@@ -29,54 +61,55 @@ button, input, a {
     text-decoration: none;
 }
 
-h1, h2, h3, h4 {
-    font-family: 'Didact Gothic', 'arial', sans-serif;
-}
-
 text {
-    font-family: 'Voice', 'arial', sans-serif;
+    font-family: var(--title-font);
 }
 
 h1 {
-    font-family: 'Voice', 'arial', sans-serif;
-    font-size: 88px;
+    @apply(--title);
 }
 
 h2 {
-    font-size: 60px;
-    text-transform: uppercase;
+    @apply(--subtitle);
 }
-
-
-h3 {
-    font-size: 35px;
-    text-transform: uppercase;
-}
-
-h4 {
-    font-size: 18px;
-    text-transform: uppercase;
-}
-
 
 ul li {
     list-style-position: inside;
     list-style-type: square;
 }
 
-a {
-    text-transform: uppercase;
-}
-
-a p {
-    font-family: 'Didact Gothic', 'arial', sans-serif;
-    font-size: 15px;
-}
-
 .AppContainer {
     padding: 0;
     margin: 0;
     text-align: center;
+}
+
+:global(.container) {
+    display: inline-block;
+}
+
+@media (min-width: 768px) {
+    :global(.container) {
+        width: 750px;
+    }
+}
+
+@media (min-width: 992px) {
+    :global(.container) {
+        width: 970px;
+    }
+}
+
+@media (min-width: 1200px) {
+    :global(.container) {
+        width: 1170px;
+    }
+}
+
+@media (min-width: 1440px) {
+    :global(.container) {
+        width: 1400px;
+    }
 }
 
 @keyframes :global(gradients) {
