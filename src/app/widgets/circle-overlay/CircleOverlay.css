@@ -1,0 +1,44 @@
+@import '../../style/config.css';
+
+.circleOverlay {
+    position: relative;
+    display: inline-block;
+}
+
+.circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    border: 2px solid var(--light);
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(-35deg) scale(1.5);
+    transition: 1000ms opacity ease, 1000ms transform ease;
+}
+
+.circleOverlay.isHovered .circle {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(35deg) scale(1);
+}
+
+:global(.light-background) .circle {
+    border: 1px solid var(--faint);
+}
+
+.waterMark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: auto;
+    width: 50px;
+    opacity: 0.11;
+    transform: translate(-50%, -50%) rotate(-35deg) scale(1);
+    transition: 1000ms opacity ease, 1000ms transform ease;
+}
+
+.circleOverlay.isHovered .waterMark {
+    opacity: 0.22;
+    transform: translate(-50%, -50%) rotate(35deg) scale(1.5);
+}

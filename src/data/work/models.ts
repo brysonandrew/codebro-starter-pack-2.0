@@ -12,12 +12,18 @@ export enum EClientType {
     Individual = "Private"
 }
 
+export enum ERoleType {
+    FrontendDeveloper = "Frontend Developer",
+    Developer = "Developer"
+}
+
 export interface IWorkLabel extends ILabelInfo {
-    year: string
-    color: string
-    link: string
-    teamType: ETeamType
-    clientType: EClientType
-    tech: JSX.Element[]
-    description: string[]
+    year: string;
+    color: string;
+    link: string;
+    role: ERoleType;
+    teamType: ETeamType;
+    clientType: EClientType;
+    tech: JSX.Element[];
+    description: string[];
 }

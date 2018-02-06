@@ -2,7 +2,8 @@ import * as React from 'react';
 import {colors} from '../../data/themeOptions';
 
 interface IProps {
-    path: string
+    path: string;
+    color?: string;
 }
 
 export class ExternalLink extends React.Component<IProps, {}> {
@@ -13,8 +14,7 @@ export class ExternalLink extends React.Component<IProps, {}> {
                 style={{
                     display: "inline-block",
                     cursor: "pointer",
-                    textDecoration: "none",
-                    color: colors.light
+                    textDecoration: "none"
                 }}
                 href={this.props.path}
                 target="_blank"

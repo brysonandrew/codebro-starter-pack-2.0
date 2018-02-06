@@ -1,11 +1,11 @@
 import * as THREE from 'three';
-import {FRAGMENT_SHADER, VERTEX_SHADER} from '../../../utils/game/shaders';
+import {VERTEX_SHADER, FRAGMENT_SHADER} from '../../../utils/game/shaders';
 
 const CONFIG = {
     max: 20,
-    amount: 2000,
+    amount: 40,
     radius: 180,
-    size: 6,
+    size: 2,
     gravity: 0.04,
     color: 0xFFFFFF
 };
@@ -35,7 +35,7 @@ export class AirParticles {
 
             sizes[i] = CONFIG.size + CONFIG.size * Math.random();
 
-            color.setHSL(Math.random(), 0.6, 0.4);
+            color.setHSL(0, 1, 1);
             (color as any).toArray(colors, i * 3);
         });
 
@@ -59,7 +59,7 @@ export class AirParticles {
 
         const cluster = new THREE.Points( geometry, material );
 
-        cluster.position.y = 80;
+        cluster.position.y = 160;
         cluster.position.z = -200;
 
         cluster['speed'] = 0.05 * Math.random() - 0.05 * Math.random();
@@ -85,11 +85,23 @@ export class AirParticles {
 
     animate(docScroll) {
         this.time++;
-        this.cluster.rotation.y = docScroll * 0.0005;
+        this.cluster.rotation.y = docScroll * 0.0001;
         this.fire();
     }
 
     render() {
+        const WICK = {
+            width: 55,
+            height: 55,
+            depth: 55,
+            color: 0xFFFFFF
+        };
+
+        const geometry = new THREE.BoxGeometry( WICK.width, WICK.height, WICK.depth );
+        const material = new THREE.MeshBasicMaterial( { color: WICK.color } );
+        let x = new THREE.Mesh( geometry, material );
+
+        this.cluster.add(x);
         return this.cluster;
     }
 

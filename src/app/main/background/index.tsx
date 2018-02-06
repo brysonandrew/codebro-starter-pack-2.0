@@ -39,7 +39,7 @@ export class Background extends React.Component<IProps, IState> {
     }
 
     componentDidMount() {
-        window.addEventListener('mousemove', this.handleMouseMove);
+        // window.addEventListener('mousemove', this.handleMouseMove);
         if (isGL())  {
             this.initGL();
         } else {
@@ -50,7 +50,7 @@ export class Background extends React.Component<IProps, IState> {
     componentWillUnmount() {
         cancelAnimationFrame(this.animateLoop);
 
-        window.removeEventListener('mousemove', this.handleMouseMove);
+        // window.removeEventListener('mousemove', this.handleMouseMove);
 
         if (isGL()) {
             this.props.parentEl.removeChild( this.renderer.domElement );
@@ -118,9 +118,7 @@ export class Background extends React.Component<IProps, IState> {
 
     initScene() {
         this.scene = new THREE.Scene();
-        this.wall.init();
         this.scene.add(this.airParticles.render());
-        this.scene.add(this.wall.render());
     }
 
     animate() {

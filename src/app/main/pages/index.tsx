@@ -10,6 +10,7 @@ import {IParams} from '../../../data/models';
 import {renderIfTrue} from '../../../utils/react';
 import {MotionScroll} from '../../widgets/motion-scroll/MotionScroll';
 import {Nav, NAV_DIMENSIONS} from '../nav/index';
+import {Tech} from './tech/index';
 const APPROACHING_PAGE_BUFFER = 200;
 
 interface IProps {
@@ -25,6 +26,10 @@ interface IProps {
 }
 
 export const MAIN_PAGES = [
+    {
+        name: 'Tech',
+        component: <Tech/>
+    },
     {
         name: 'Work',
         component: <Work/>
@@ -47,8 +52,10 @@ export class Pages extends React.Component<IProps, {}> {
     topOffsets = [];
     triggered = [];
 
-    componentDidMount() {
-        // console.log(this.clientRectPages);
+    componentWillReceiveProps(nextProps) {
+        if (!nextProps.isAnimating && this.props.docScroll !== nextProps.docScroll) {
+            this.changePagePathOnScroll();
+        }
     }
 
     isTriggered(i: number) {
@@ -97,7 +104,8 @@ export class Pages extends React.Component<IProps, {}> {
         const isScrollReady = (isSelected && isOffsetsReady);
 
         return (
-            <div style={{
+            <div
+                style={{
                     position: 'relative',
                     paddingTop: NAV_DIMENSIONS.height + NAV_DIMENSIONS.paddingY * 2
                 }}

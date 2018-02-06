@@ -4,7 +4,7 @@ const CONFIGS = {
     width: 1000,
     height: 500,
     z: -5,
-    color: 0x000000
+    color: 0x123456
 };
 
 export class Wall {

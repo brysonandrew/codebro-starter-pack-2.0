@@ -1,0 +1,118 @@
+@import '../../../style/config.css';
+
+.tech {
+    position: relative;
+    text-align: left;
+}
+
+.techColumn {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    width: 30%;
+    padding: 0 1.5%;
+}
+
+.techRow {
+    padding: var(--margin-medium) 0;
+}
+
+.techItem {
+    position: relative;
+    padding: var(--margin-small);
+    cursor: pointer;
+}
+
+.techItem.basic a {
+    color: var(--basic-color);
+}
+
+.techItem.frontend a, .techItem.style a {
+    color: var(--frontend-color);
+}
+
+.techItem.backend a, .techItem.database a {
+    color: var(--backend-color);
+}
+
+.techRowName {
+    color: var(--faint);
+    text-transform: uppercase;
+    margin-left: 2px;
+}
+
+.techItemScoreName {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.techItemName {
+    position: relative;
+}
+
+.techItemScoreBar {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: calc(100% - 4px);
+    width: calc(100% - 4px);
+    margin: 2px;
+    background: var(--faint);
+    transform-origin: 0 50%;
+    z-index: -1;
+}
+
+.techItem.isHovered {
+    padding: calc(var(--margin-small) - 1px);
+}
+
+.techItem.basic.isHovered {
+    border: 1px solid var(--basic-color);
+}
+
+.techItem.frontend.isHovered, .techItem.style.isHovered {
+    border: 1px solid var(--frontend-color);
+}
+
+.techItem.backend.isHovered, .techItem.database.isHovered {
+    border: 1px solid var(--backend-color);
+}
+
+.tick {
+    position: absolute;
+    top: var(--margin-small);
+    height: 10px;
+    width: 1px;
+    opacity: 0.2;
+    background: var(--dark);
+    transition: 200ms transform;
+}
+
+.tick.active {
+    opacity: 1;
+    transform: scale(2);
+}
+
+.tick.active.basic {
+    background: var(--basic-color);
+    color: var(--basic-color);
+}
+
+.tick.active.frontend, .tick.active.style {
+    background: var(--frontend-color);
+    color: var(--frontend-color);
+}
+
+.tick.active.backend, .tick.active.database {
+    background: var(--backend-color);
+    color: var(--backend-color);
+}
+
+.tickNumber {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, -100%);
+}

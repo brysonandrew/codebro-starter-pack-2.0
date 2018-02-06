@@ -1,7 +1,8 @@
 import * as React from 'react';
 import {renderDefinedTrue} from '../../../utils/react';
-import {Background} from '../../main/background/index';
 import {BackgroundMask} from './BackgroundMask';
+import {defined} from '../../../utils/variable_evaluation';
+import {ElectricBackground} from '../electric-background/ElectricBackground';
 const s = require('./TransparentMaskText.css');
 
 export const config = {
@@ -32,14 +33,14 @@ export class TransparentMaskText extends React.Component<IProps, IState> {
                 className={s.wrapper}
                 style={{height: config.height, width: config.width}}
             >
-                <div className={s.canvas} ref={el => el ? (this.home = el) : null}/>
+                <div
+                    className={s.canvas}
+                    ref={el => defined(el) && (this.home = el)}
+                />
                 {renderDefinedTrue(this.home, () =>
-                    <Background
+                    <ElectricBackground
                         width={config.width}
                         height={config.height}
-                        textBoundary={config.width}
-                        parentEl={this.home}
-                        docScroll={this.props.docScroll}
                     />
                 )}
                 <svg

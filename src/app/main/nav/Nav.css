@@ -13,32 +13,26 @@
 .navLinks {
     position: relative;
     text-align: left;
-    transform: scaleY(1);
-    transition: 400ms transform 400ms;
-}
-
-.nav.dot .navLinks {
-    transform: scaleY(0);
-    transition: 400ms transform;
 }
 
 .line {
     position: absolute;
     left: 0;
     top: 50%;
-    height: 2px;
+    height: 0;
     width: 100%;
     opacity: 0;
     background: var(--faint);
     transform-origin: 0 50%;
     transform: translateY(-50%) scaleX(1);
-    transition: 100ms opacity 400ms, transform 400ms;
+    transition: 100ms height 400ms, 100ms opacity 400ms, transform 400ms;
 }
 
 .nav.dot .line {
     opacity: 1;
+    height: 2px;
     transform: translateY(-50%) scaleX(0);
-    transition: 100ms opacity, 400ms transform 400ms;
+    transition: 100ms height, 100ms opacity, 400ms transform 400ms;
 }
 
 .item {
@@ -50,4 +44,14 @@
 .item a {
     padding: var(--margin-small);
     margin: 0 var(--margin-small);
+}
+
+.itemName {
+    transform: scaleY(1);
+    transition: 400ms transform 400ms;
+}
+
+.nav.dot .itemName {
+    transform: scaleY(0);
+    transition: 400ms transform;
 }

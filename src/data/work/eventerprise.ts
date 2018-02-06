@@ -1,4 +1,4 @@
-import {EClientType, ETeamType, IWorkLabel} from './models';
+import {EClientType, ERoleType, ETeamType, IWorkLabel} from './models';
 import {workIcon} from '../icons/work';
 import {technologyIcon} from '../icons/technology';
 
@@ -11,6 +11,7 @@ export const eventerpriseLabel: IWorkLabel = {
     teamType: ETeamType.FiveToTen,
     clientType: EClientType.StartUp,
     icon: workIcon.eventerprise,
+    role: ERoleType.FrontendDeveloper,
     tech: [
         technologyIcon.html,
         technologyIcon.css,

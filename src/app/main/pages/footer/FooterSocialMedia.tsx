@@ -3,6 +3,7 @@ const s = require('./FooterSocialMedia.css');
 import {CONTACT_ICON} from '../../../../data';
 import {FooterSocialMediaItem, ISocialMediaItemProps} from './FooterSocialMediaItem';
 import {colors} from '../../../../data/themeOptions';
+import {CircleOverlay} from '../../../widgets/circle-overlay/CircleOverlay';
 
 interface IProps {}
 
@@ -54,15 +55,15 @@ export function FooterSocialMedia(props: IProps) {
                     <div className={s.itemTitle}>
                         {item.name.toUpperCase()}
                     </div>
-                    <div className={s.itemWatermark}>
-                        {item.hoverIcon}
-                    </div>
-                    <div className={s.itemCircle}/>
-                    <FooterSocialMediaItem
-                        name={item.name}
-                        link={item.link}
-                        icon={item.icon}
-                    />
+                    <CircleOverlay
+                        waterMark={item.hoverIcon}
+                    >
+                        <FooterSocialMediaItem
+                            name={item.name}
+                            link={item.link}
+                            icon={item.icon}
+                        />
+                    </CircleOverlay>
                 </div>
             )}
         </div>

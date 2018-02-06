@@ -4,7 +4,7 @@ import {ExternalLink} from '../../../widgets/ExternalLink';
 export interface IProjectProps {
     index?: string;
     name: string;
-    year: number;
+    year: number | string;
     link: string;
 }
 

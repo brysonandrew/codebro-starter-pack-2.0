@@ -18,7 +18,7 @@ function navClass(height, docScroll) {
     const additionalClass = isScrolled
         ? s.dot
         : '';
-    return `${s.nav} ${additionalClass}`;
+    return `${s.nav} ${additionalClass} light-background`;
 }
 
 export function Nav(props: IProps) {
@@ -32,6 +32,7 @@ export function Nav(props: IProps) {
             }}
         >
             <NavLinks
+                isScrolled={0 < docScroll}
                 onAnimationStart={props.onAnimationStart}
             />
             <div className={s.line}/>

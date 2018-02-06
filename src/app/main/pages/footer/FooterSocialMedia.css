@@ -18,40 +18,6 @@
     transform: translate(-50%, -50%);
 }
 
-.itemWatermark {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    height: auto;
-    width: 50px;
-    opacity: 0.11;
-    transform: translate(-50%, -50%) rotate(-35deg) scale(1);
-    transition: 1000ms opacity ease, 1000ms transform ease;
-}
-
-.itemWrapper:hover .itemWatermark {
-    opacity: 0.22;
-    transform: translate(-50%, -50%) rotate(35deg) scale(1.5);
-}
-
-.itemCircle {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    border-radius: 50%;
-    height: 100px;
-    width: 100px;
-    border: 1px solid var(--light);
-    opacity: 0;
-    transform: translate(-50%, -50%) rotate(-35deg) scale(1.5);
-    transition: 1000ms opacity ease, 1000ms transform ease;
-}
-
-.itemWrapper:hover .itemCircle {
-    opacity: 1;
-    transform: translate(-50%, -50%) rotate(35deg) scale(1);
-}
-
 .item {
     position: absolute;
     top: 50%;

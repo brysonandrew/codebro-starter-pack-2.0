@@ -84,6 +84,14 @@ ul li {
     text-align: center;
 }
 
+:global(.dark-background) {
+    color: var(--light);
+}
+
+:global(.light-background) {
+    color: var(--dark);
+}
+
 :global(.container) {
     display: inline-block;
 }

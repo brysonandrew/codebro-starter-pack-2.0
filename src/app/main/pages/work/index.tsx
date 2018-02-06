@@ -1,5 +1,7 @@
 import * as React from 'react';
-import {IProjectProps} from './Project';
+import {WORK_LABELS} from '../../../../data/work/index';
+import {Project} from './Project';
+import {IWorkLabel} from '../../../../data/work/models';
 const s = require('./Work.css');
 
 interface IProps {
@@ -8,14 +10,6 @@ interface IProps {
 
 interface IState {}
 
-// const PROJECTS: IProjectProps = [
-//     {
-//         name: 'PhoneTradr',
-//         year: 2017,
-//
-//     }
-// ];
-
 export class Work extends React.Component<IProps, IState> {
 
     public constructor(props?: any, context?: any) {
@@ -23,11 +17,16 @@ export class Work extends React.Component<IProps, IState> {
     }
 
     render(): JSX.Element {
-        const springValue = this.props.isTriggered ? 1 : 0;
-
         return (
             <section className={s.section}>
-                SUP DOG
+                {WORK_LABELS.map((project: IWorkLabel, i) => (
+                    <Project
+                        key={`Project-${i}`}
+                        name={project.title}
+                        year={project.year}
+                        link={project.link}
+                    />
+                ))}
             </section>
         );
     }

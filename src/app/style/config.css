@@ -28,4 +28,8 @@
     --margin-small: 16px;
     --margin-medium: 35px;
     --margin-large: 45px;
+
+    --frontend-color: #EF5350;
+    --backend-color: #42A5F5;
+    --basic-color: #AB47BC;
 }
