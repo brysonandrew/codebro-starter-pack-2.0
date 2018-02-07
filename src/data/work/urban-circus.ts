@@ -2,7 +2,7 @@ import {EClientType, ERoleType, ETeamType, IWorkLabel} from './models';
 import {workIcon} from '../icons/work';
 import {technologyIcon} from '../icons/technology';
 
-export const urbanCircusLabel = {
+export const urbanCircus = {
     id     : 'urban-circus-work-svg',
     title  : 'Urban Circus',
     link   : 'http://urbancircus.com.au/',

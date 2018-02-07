@@ -2,11 +2,11 @@ import {EClientType, ERoleType, ETeamType, IWorkLabel} from './models';
 import {workIcon} from '../icons/work';
 import {technologyIcon} from '../icons/technology';
 
-export const phonetradr: IWorkLabel = {
-    id      : 'phonetradr-work-svg',
-    title   : 'Phonetradr',
-    link    : 'https://www.phonetradr.com/',
-    color   : "#12CCAF",
+export const omnitize: IWorkLabel = {
+    id      : 'omnitize-work-svg',
+    title   : 'Omnitize',
+    link    : 'https://www.omnitize.com/',
+    color   : "#00c2b2",
     year    : "2017",
     role: ERoleType.Developer,
     teamType: ETeamType.TwoToFive,

@@ -1,3 +1,33 @@
+@import '../../../style/config.css';
+
 .section {
 
+}
+
+.project {
+    background: var(--faint);
+    margin: var(--margin-small);
+    padding: var(--margin-small);
+    text-align: left;
+    cursor: pointer;
+}
+
+.projectInfo {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 var(--margin-small);
+}
+
+.projectIndex {
+}
+
+.projectName {
+}
+
+.projectYear {
+}
+
+.projectLive {
+    float: right;
+    text-transform: uppercase;
 }

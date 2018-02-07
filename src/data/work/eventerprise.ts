@@ -2,7 +2,7 @@ import {EClientType, ERoleType, ETeamType, IWorkLabel} from './models';
 import {workIcon} from '../icons/work';
 import {technologyIcon} from '../icons/technology';
 
-export const eventerpriseLabel: IWorkLabel = {
+export const eventerprise: IWorkLabel = {
     id     : 'eventerprise-work-svg',
     title  : 'Eventerprise',
     link   : 'https://www.eventerprise.com/',

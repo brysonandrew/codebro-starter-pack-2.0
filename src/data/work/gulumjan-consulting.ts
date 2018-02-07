@@ -2,7 +2,7 @@ import {EClientType, ERoleType, ETeamType, IWorkLabel} from './models';
 import {workIcon} from '../icons/work';
 import {technologyIcon} from '../icons/technology';
 
-export const gulumjanConsultingLabel: IWorkLabel = {
+export const gulumjanConsulting: IWorkLabel = {
     id      : 'gulumjan-work-svg',
     title   : 'Gulumjan Consulting',
     icon: workIcon.gulumjanConsulting,

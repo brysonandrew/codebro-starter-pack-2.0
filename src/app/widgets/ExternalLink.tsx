@@ -12,7 +12,7 @@ export class ExternalLink extends React.Component<IProps, {}> {
         return (
             <a
                 style={{
-                    display: "inline-block",
+                    display: "block",
                     cursor: "pointer",
                     textDecoration: "none"
                 }}

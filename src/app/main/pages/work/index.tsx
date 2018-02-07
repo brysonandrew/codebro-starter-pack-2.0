@@ -22,9 +22,8 @@ export class Work extends React.Component<IProps, IState> {
                 {WORK_LABELS.map((project: IWorkLabel, i) => (
                     <Project
                         key={`Project-${i}`}
-                        name={project.title}
-                        year={project.year}
-                        link={project.link}
+                        number={i + 1}
+                        {...project}
                     />
                 ))}
             </section>

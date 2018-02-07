@@ -61,5 +61,9 @@ export const workIcon = {
     urbanCircus:            <img
                                 style={{height: "100%", width: "auto"}}
                                 src="/images/work/urban-circus.png"
+                            />,
+    twoPoreGuys:            <img
+                                style={{height: "100%", width: "auto"}}
+                                src="/images/work/urban-circus.png"
                             />
 };
