@@ -10,12 +10,12 @@ var config = {
   app: {
     head: {
       title: 'Freelance Web Development',
-      titleTemplate: 'Kosm | %s',
+      titleTemplate: 'Kozm | %s',
       meta: [
         { charset: 'utf-8' },
         { 'http-equiv': 'x-ua-compatible', content: 'ie=edge' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: 'Making websites with Typescript, React, Redux, Mobx and THREE.js' },
+        { name: 'description', content: 'Web creations from beyond' },
       ]
     }
   }
