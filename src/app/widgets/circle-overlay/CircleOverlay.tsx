@@ -43,6 +43,7 @@ export class CircleOverlay extends React.Component<IProps, IState> {
     };
 
     render(): JSX.Element {
+        const {waterMark, children} = this.props;
         return (
             <div
                 className={`${s.circleOverlay} ${this.state.isHovered ? s.isHovered : ''}`}
@@ -50,11 +51,11 @@ export class CircleOverlay extends React.Component<IProps, IState> {
                 onMouseLeave={this.handleMouseLeave}
             >
                 <div className={s.circle}/>
-                {renderDefinedTrue(this.props.waterMark, () =>
+                {renderDefinedTrue(waterMark, () =>
                     <div className={s.waterMark}>
-                        {this.props.waterMark}
+                        {waterMark}
                     </div>)}
-                {this.props.children}
+                {children}
             </div>
         );
     }

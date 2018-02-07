@@ -30,4 +30,9 @@
 .projectLive {
     float: right;
     text-transform: uppercase;
+    transition: 200ms transform;
+}
+
+.project:hover .projectLive {
+    transform: scale(2);
 }

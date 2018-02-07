@@ -27,7 +27,6 @@ export class TechColumn extends React.Component<IProps, {}> {
                         />
                     </div>
                 )}
-
             </div>
         );
     }

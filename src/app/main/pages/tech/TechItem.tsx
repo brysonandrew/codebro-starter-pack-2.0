@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { ITechnology, ITechnologyLabel } from '.';
 import {ExternalLink} from '../../../widgets/ExternalLink';
+import {CircleOverlay} from '../../../widgets/circle-overlay/CircleOverlay';
 const s = require('./Tech.css');
 
 interface IProps {

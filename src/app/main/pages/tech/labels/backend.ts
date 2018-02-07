@@ -8,7 +8,7 @@ export const backEndTechnologies: ITechnologyLabel[] = [
         score  : 6,
         link   : "https://github.com/nodejs/node",
         icon: technologyIcon.nodeJs
-    },
+    }
     // {
     //     id     : "git-technologies-svg",
     //     title  : "Git",

@@ -50,11 +50,7 @@ export class Project extends React.Component<IProjectProps, IState> {
                     <div className={`${s.projectInfo} ${s.projectName}`}>{title}</div>
                     {/*<div className={`${s.projectInfo} ${s.projectYear}`}>{year}</div>*/}
                     <div className={`${s.projectInfo} ${s.projectLive}`}>
-                        <ExternalLink
-                            path={link}
-                        >
-                            <span>→</span>
-                        </ExternalLink>
+                        <span>→</span>
                     </div>
                 </div>
             </ExternalLink>
