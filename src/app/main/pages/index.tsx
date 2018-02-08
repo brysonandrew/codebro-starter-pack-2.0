@@ -115,7 +115,9 @@ export class Pages extends React.Component<IProps, {}> {
                     docScroll={docScroll}
                     onAnimationStart={onAnimationStart}
                 />
-                <Intro/>
+                <Intro
+                    width={width}
+                />
                 {MAIN_PAGES.map((page, i) =>
                     <div
                         key={`page-${i}`}

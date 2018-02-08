@@ -11,12 +11,10 @@ interface IProps {
 const DIVISIONS = [
     {
         name: 'Messsage',
-        widthPercentage: 33,
         component: <FooterInfo/>
     },
     {
         name: 'Links',
-        widthPercentage: 67,
         component: <FooterSocialMedia/>
     }
 ];
@@ -33,10 +31,7 @@ export function Footer(props: IProps) {
             {DIVISIONS.map((division, i) =>
                 <div
                     key={`division-${i}`}
-                    className={s.item}
-                    style={{
-                        width: `${division.widthPercentage}%`
-                    }}
+                    className={s.division}
                 >
                     {division.component}
                 </div>

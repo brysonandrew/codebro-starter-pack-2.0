@@ -1,5 +1,5 @@
 import * as React from 'react';
-const s = require('./FooterSocialMedia.css');
+const s = require('./Footer.css');
 
 export interface ISocialMediaItemProps {
     name: string;

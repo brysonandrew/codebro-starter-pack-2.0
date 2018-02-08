@@ -19,7 +19,7 @@
         text-transform: uppercase;
     };
 
-    --section-padding-base: 5px;
+    --section-padding-base: 1px;
     --section-padding-tablet: 45px;
     --section-padding-wide: 110px;
 

@@ -5,6 +5,7 @@
 .container {
     position: relative;
     display: inline-block;
+    width: 100%;
 }
 
 @media (min-width: 768px) {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-const s = require('./FooterSocialMedia.css');
+const s = require('./Footer.css');
 import {CONTACT_ICON} from '../../../../data';
 import {FooterSocialMediaItem, ISocialMediaItemProps} from './FooterSocialMediaItem';
 import {colors} from '../../../../data/themeOptions';
@@ -47,10 +47,6 @@ export function FooterSocialMedia(props: IProps) {
                 <div
                     key={`FooterSocialMediaItem-${i}`}
                     className={s.itemWrapper}
-                    style={{
-                        display: 'inline-block',
-                        width: `${100 / SOCIAL_MEDIA_ITEMS.length}%`
-                    }}
                 >
                     <div className={s.itemTitle}>
                         {item.name.toUpperCase()}

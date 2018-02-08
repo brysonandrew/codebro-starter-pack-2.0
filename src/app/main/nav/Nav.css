@@ -25,19 +25,20 @@
     background: var(--faint);
     transform-origin: 0 50%;
     transform: translateY(-50%) scaleX(1);
-    transition: 100ms height 400ms, 100ms opacity 400ms, transform 400ms;
+    transition: height 100ms 400ms, opacity 100ms 400ms, transform 400ms;
 }
 
 .nav.dot .line {
     opacity: 1;
     height: 2px;
     transform: translateY(-50%) scaleX(0);
-    transition: 100ms height, 100ms opacity, 400ms transform 400ms;
+    transition: height 100ms, opacity 100ms, transform 400ms 400ms;
 }
 
 .item {
     display: inline-block;
     vertical-align: top;
+    width: 25%;
     list-style-type: none;
 }
 
@@ -48,10 +49,20 @@
 
 .itemName {
     transform: scaleY(1);
-    transition: 400ms transform 400ms;
+    transition: transform 400ms 400ms;
 }
 
 .nav.dot .itemName {
     transform: scaleY(0);
-    transition: 400ms transform;
+    transition: transform 400ms;
+}
+
+@media (min-width: 768px) {
+
+    .item {
+        display: inline-block;
+        vertical-align: top;
+        width: auto;
+    }
+
 }

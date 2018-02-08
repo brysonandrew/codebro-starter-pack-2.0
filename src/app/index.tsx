@@ -5,15 +5,15 @@ import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import { MainFromStore } from './main';
 
-const style = require('./style/index.css');
+require('./style/index.css');
 
 class App extends React.Component<any, any> {
     public render() {
         return (
-            <section className={style.AppContainer}>
+            <div>
                 <Helmet {...appConfig.app} {...appConfig.app.head}/>
                 {this.props.children}
-            </section>
+            </div>
         );
     }
 }

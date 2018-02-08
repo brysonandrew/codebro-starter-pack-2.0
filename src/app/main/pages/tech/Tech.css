@@ -9,8 +9,7 @@
     position: relative;
     display: inline-block;
     vertical-align: middle;
-    width: 30%;
-    padding: 0 1.5%;
+    width: 100%;
 }
 
 .techRow {
@@ -115,4 +114,13 @@
     left: 50%;
     top: 0;
     transform: translate(-50%, -100%);
+}
+
+@media (min-width: 768px) {
+
+    .techColumn {
+        width: 30%;
+        padding: 0 1.5%;
+    }
+
 }

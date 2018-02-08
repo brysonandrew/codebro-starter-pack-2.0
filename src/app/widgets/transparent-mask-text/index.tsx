@@ -5,14 +5,8 @@ import {defined} from '../../../utils/variable_evaluation';
 import {ElectricBackground} from '../electric-background/ElectricBackground';
 const s = require('./TransparentMaskText.css');
 
-export const config = {
-    width: 992,
-    height: 540,
-    headingFontSize: 280,
-    subHeadingFontSize: 48
-};
-
 interface IProps {
+    width?: number;
     docScroll?: number;
     isTriggered?: boolean;
 }
@@ -27,11 +21,42 @@ export class TransparentMaskText extends React.Component<IProps, IState> {
         super(props, context);
     }
 
+    config() {
+        const defaultWidth = 992;
+        const defaultHeight = 540;
+        const defaultAspectRatio = 540 / 992;
+        const mobileWidth = 420;
+        let width = defaultWidth;
+        let height = defaultHeight;
+        let defaultHeadingFontSize = 280;
+        let defaultSubHeadingFontSize = 48;
+
+        if (this.props.width < defaultWidth) {
+            width = this.props.width;
+            height = this.props.width * defaultAspectRatio;
+            if (this.props.width > mobileWidth) {
+                defaultHeadingFontSize *= 0.5;
+                defaultSubHeadingFontSize *= 0.5;
+            } else {
+                defaultHeadingFontSize *= 0.33;
+                defaultSubHeadingFontSize *= 0.33;
+            }
+        }
+
+        return {
+            width: width,
+            height: height,
+            headingFontSize: defaultHeadingFontSize,
+            subHeadingFontSize: defaultSubHeadingFontSize
+        }
+    };
+
     render(): JSX.Element {
+
         return (
             <div
                 className={s.wrapper}
-                style={{height: config.height, width: config.width}}
+                style={{height: this.config().height, width: this.config().width}}
             >
                 <div
                     className={s.canvas}
@@ -39,26 +64,29 @@ export class TransparentMaskText extends React.Component<IProps, IState> {
                 />
                 {renderDefinedTrue(this.home, () =>
                     <ElectricBackground
-                        width={config.width}
-                        height={config.height}
+                        width={this.config().width}
+                        height={this.config().height}
                     />
                 )}
                 <svg
                     className={s.svg}
-                    width={config.width} height={config.height}
+                    width='100%'
+                    height='100%'
                     xmlns="http://www.w3.org/2000/svg"
-                    viewBox={`0 0 ${config.width} ${config.height}`}
+                    viewBox={`0 0 ${this.config().width} ${this.config().height}`}
                     preserveAspectRatio="xMidYMid slice"
                 >
                     <defs>
-                        <BackgroundMask/>
+                        <BackgroundMask
+                            {...this.config()}
+                        />
                     </defs>
                     <rect
                         className={s.maskWrapper}
                         x="0"
                         y="0"
-                        width={config.width}
-                        height={config.height}
+                        width={this.config().width}
+                        height={this.config().height}
                     />
                 </svg>
             </div>

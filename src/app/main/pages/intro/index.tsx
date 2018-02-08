@@ -3,6 +3,7 @@ import {TransparentMaskText} from '../../../widgets/transparent-mask-text/index'
 const s = require('./Intro.css');
 
 interface IProps {
+    width: number;
     isTriggered?: boolean;
     docScroll?: number;
 }
@@ -20,6 +21,7 @@ export class Intro extends React.Component<IProps, IState> {
             <section className={s.section}>
                 <div>
                     <TransparentMaskText
+                        width={this.props.width}
                         docScroll={this.props.docScroll}
                     />
                 </div>

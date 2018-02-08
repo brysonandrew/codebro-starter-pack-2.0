@@ -61,6 +61,12 @@ button, input, a {
     text-decoration: none;
 }
 
+a {
+    display: block;
+    cursor: pointer;
+    text-decoration: none;
+}
+
 text {
     font-family: var(--title-font);
 }
@@ -78,46 +84,12 @@ ul li {
     list-style-type: square;
 }
 
-.AppContainer {
-    padding: 0;
-    margin: 0;
-    text-align: center;
-}
-
 :global(.dark-background) {
     color: var(--light);
 }
 
 :global(.light-background) {
     color: var(--dark);
-}
-
-:global(.container) {
-    display: inline-block;
-}
-
-@media (min-width: 768px) {
-    :global(.container) {
-        width: 750px;
-    }
-}
-
-@media (min-width: 992px) {
-    :global(.container) {
-        width: 970px;
-    }
-}
-
-@media (min-width: 1200px) {
-    :global(.container) {
-        width: 1170px;
-    }
-}
-
-@media (min-width: 1440px) {
-    :global(.container) {
-        width: 1400px;
-    }
 }
 
 @keyframes :global(gradients) {

@@ -11,11 +11,6 @@ export class ExternalLink extends React.Component<IProps, {}> {
     render(): JSX.Element {
         return (
             <a
-                style={{
-                    display: "block",
-                    cursor: "pointer",
-                    textDecoration: "none"
-                }}
                 href={this.props.path}
                 target="_blank"
             >

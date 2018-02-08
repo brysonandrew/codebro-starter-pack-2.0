@@ -76,7 +76,6 @@ export class Main extends React.Component<IProps, IState> {
             );
 
         });
-
         this.mountTimeout = setTimeout(() => this.setState({ isMounted: true }), 0);
 
         window.addEventListener("scroll", this.handleScroll);
@@ -129,7 +128,7 @@ export class Main extends React.Component<IProps, IState> {
 
         return (
             <div className={s.main}>
-                <div className='container'>
+                <div className={s.container}>
                     <Pages
                         isParentMounted={isMounted}
                         isAnimating={isAnimating}

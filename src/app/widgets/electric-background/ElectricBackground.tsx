@@ -1,24 +1,33 @@
 import * as React from 'react';
 
 interface IProps {
-    width?: number;
-    height?: number;
+    width: number;
+    height: number;
 }
 
 interface IState {}
 
 export class ElectricBackground extends React.Component<IProps, IState> {
 
+    canvas;
+
     public constructor(props?: any, context?: any) {
         super(props, context);
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.width !== this.props.width || nextProps.height !== this.props.height) {
+            this.canvas.width = nextProps.width;
+            this.canvas.height = nextProps.height;
+        }
+    }
+
     componentDidMount() {
         // setup
-        let canvas = (document.getElementById("text") as HTMLCanvasElement);
-        canvas.width = this.props.width || window.innerWidth;
-        canvas.height = this.props.height || window.innerHeight;
-        const context = canvas.getContext('2d');
+        this.canvas = (document.getElementById("electricBackground") as HTMLCanvasElement);
+        this.canvas.width = this.props.width;
+        this.canvas.height = this.props.height;
+        const context = this.canvas.getContext('2d');
         context.translate(0.5, 0.5);
 
         const center = {x: 0 , y: 0 };
@@ -90,6 +99,9 @@ export class ElectricBackground extends React.Component<IProps, IState> {
             this.dir = (Math.floor((Math.random() * 8) + 1));
         }
 
+        const width = this.props.width;
+        const height = this.props.height;
+
 // movement
         function snakeMove() {
             const rand = (Math.floor((Math.random() * 3) - 1));
@@ -99,8 +111,8 @@ export class ElectricBackground extends React.Component<IProps, IState> {
             const lpoint = this.points[this.points.length - 1];
             if (lpoint.x < 10) { dir = 2; }
             if (lpoint.y < 10) { dir = 4; }
-            if (canvas.width  - 10 < lpoint.x) { dir = 6; }
-            if (canvas.height - 10 < lpoint.y) { dir = 0; }
+            if (width  - 10 < lpoint.x) { dir = 6; }
+            if (height - 10 < lpoint.y) { dir = 0; }
             this.dir = dir;
             const npoint = {x: lpoint.x + (dirs[dir].x * size), y: lpoint.y + (dirs[dir].y * size)};
             this.points.push(npoint);
@@ -157,11 +169,8 @@ export class ElectricBackground extends React.Component<IProps, IState> {
     }
 
     render(): JSX.Element {
-        const styles = {
-
-        } as any;
         return (
-            <canvas id="text"/>
+            <canvas id="electricBackground"/>
         );
     }
 }
