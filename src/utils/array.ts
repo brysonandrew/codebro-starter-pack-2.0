@@ -1,3 +1,6 @@
+import {IDictionary} from '../data/models';
+import {toPath} from './routing';
+
 export function createArray(length: number): null[] {
     return Array.apply(null, new Array(length));
 }
@@ -54,3 +57,9 @@ export function isXInArrayOf(x: string, arr: any[], prop: string): boolean {
 export function itemsInArrOf<T>(items: T[], arr: any[], prop): any[] {
     return arr.filter((x: T) => items.indexOf(x[prop]) > -1);
 }
+
+export const arrayToDictionary = <T>(arr: T[], dictionaryIndex: string, dictionaryValue: string): IDictionary<T> =>
+    arr.reduce((acc, curr) => {
+        acc[curr[dictionaryIndex]] = curr[dictionaryValue];
+        return acc;
+    }, {});

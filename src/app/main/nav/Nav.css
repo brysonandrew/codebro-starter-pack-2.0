@@ -49,6 +49,7 @@
 
 .itemName {
     transform: scaleY(1);
+    text-transform: uppercase;
     transition: transform 400ms 400ms;
 }
 

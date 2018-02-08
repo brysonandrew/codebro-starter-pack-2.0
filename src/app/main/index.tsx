@@ -104,7 +104,7 @@ export class Main extends React.Component<IProps, IState> {
 
     private handleScroll = () => {
         this.setState({docScroll: docScroll()});
-    }
+    };
 
     private handleWheel = () => {
         if (!this.isWheelRecorded) {
@@ -120,7 +120,7 @@ export class Main extends React.Component<IProps, IState> {
         if (this.props.isAnimating) {
             this.setState({docScroll: docScroll()});
         }
-    }
+    };
 
     render(): JSX.Element {
         const { isMounted, docScroll } = this.state;

@@ -6,13 +6,15 @@ import {Intro} from './intro';
 import {Work} from './work';
 import {Footer} from './footer/index';
 import {toPath} from '../../../utils/routing';
-import {IParams} from '../../../data/models';
+import {IDictionary, IParams} from '../../../data/models';
 import {renderIfTrue} from '../../../utils/react';
 import {MotionScroll} from '../../widgets/motion-scroll/MotionScroll';
 import {Nav, NAV_DIMENSIONS} from '../nav/index';
 import {Tech} from './tech/index';
 import {docScroll} from '../../../utils/scroll';
-const APPROACHING_PAGE_BUFFER = 200;
+import {arrayToDictionary} from '../../../utils/array';
+import {exists} from '../../../utils/variable_evaluation';
+export const APPROACHING_PAGE_BUFFER = 200;
 
 interface IProps {
     isParentMounted: boolean;
@@ -26,22 +28,26 @@ interface IProps {
     onAnimationStart?: () => void;
 }
 
-export const MAIN_PAGES = [
-    {
-        name: 'Tech',
-        component: <Tech/>
-    },
-    {
-        name: 'Work',
-        component: <Work/>
-    },
-    {
-        name: 'Contact',
-        component: <Footer/>
-    }
+export interface IPage {
+    name: string;
+    path: string;
+    component: JSX.Element;
+}
+
+function Page(name, component) {
+    this.name = name;
+    this.path = toPath(this.name);
+    this.component = component;
+}
+
+export const MAIN_PAGES: IPage[] = [
+    new Page('Tech', <Tech/>),
+    new Page('Work', <Work/>),
+    new Page('Contact', <Footer/>)
 ];
 
-export const MAIN_PAGE_PATHS = MAIN_PAGES.map((page) => toPath(page.name));
+export const MAIN_PAGE_PATHS = MAIN_PAGES.map((page) => page.path);
+export const MAIN_PAGES_NAME_DICT: IDictionary<IPage> = arrayToDictionary(MAIN_PAGES, "path", "name");
 
 const line = (isParentMounted) => <Line
     isInvisible={!isParentMounted}
@@ -89,12 +95,12 @@ export class Pages extends React.Component<IProps, {}> {
                 browserHistory.push(nextPath);
             }
 
-        } else if (savedParams.activePagePath !== '') {
+        } else if (exists(savedParams.activePagePath)) {
             browserHistory.push('/');
         }
     }
 
-    topOffsetDictionary() {
+    topOffsetDictionary(): IDictionary<number> {
         return this.topOffsets.reduce((acc, curr, i) => {
             acc[MAIN_PAGE_PATHS[i]] = curr;
             return acc;
@@ -117,6 +123,8 @@ export class Pages extends React.Component<IProps, {}> {
                 <Nav
                     height={height}
                     docScroll={docScroll}
+                    savedParams={savedParams}
+                    topOffsetDictionary={this.topOffsetDictionary()}
                     onAnimationStart={onAnimationStart}
                 />
                 <Intro
