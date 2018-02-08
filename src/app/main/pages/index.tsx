@@ -11,6 +11,7 @@ import {renderIfTrue} from '../../../utils/react';
 import {MotionScroll} from '../../widgets/motion-scroll/MotionScroll';
 import {Nav, NAV_DIMENSIONS} from '../nav/index';
 import {Tech} from './tech/index';
+import {docScroll} from '../../../utils/scroll';
 const APPROACHING_PAGE_BUFFER = 200;
 
 interface IProps {
@@ -72,7 +73,8 @@ export class Pages extends React.Component<IProps, {}> {
     private changePagePathOnScroll() {
         const { savedParams } = this.props;
 
-        const pagesScrolledPastOffsets = this.topOffsets.filter(offset => (offset - APPROACHING_PAGE_BUFFER) < (!!document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop);
+        const pagesScrolledPastOffsets = this.topOffsets.filter(offset =>
+            (offset - APPROACHING_PAGE_BUFFER) < docScroll());
 
         const currentIndex = (pagesScrolledPastOffsets.length > 0)
             ?   pagesScrolledPastOffsets.length - 1
@@ -85,8 +87,10 @@ export class Pages extends React.Component<IProps, {}> {
             if (currentPath !== savedParams.activePagePath) {
                 const nextPath = `/${currentPath}`;
                 browserHistory.push(nextPath);
-
             }
+
+        } else if (savedParams.activePagePath !== '') {
+            browserHistory.push('/');
         }
     }
 
@@ -98,7 +102,7 @@ export class Pages extends React.Component<IProps, {}> {
     }
 
     render(): JSX.Element {
-        const { isParentMounted, isTablet, docScroll, width, height, isAnimating, savedParams, onAnimationStart, onAnimationEnd } = this.props;
+        const { isParentMounted, docScroll, width, height, isAnimating, savedParams, onAnimationStart, onAnimationEnd } = this.props;
         const isSelected = "activePagePath" in savedParams;
         const isOffsetsReady = (this.topOffsetDictionary != null);
         const isScrollReady = (isSelected && isOffsetsReady);
