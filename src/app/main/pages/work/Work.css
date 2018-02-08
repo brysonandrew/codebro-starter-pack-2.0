@@ -5,6 +5,7 @@
 }
 
 .project {
+    position: relative;
     background: var(--faint);
     margin: var(--margin-small);
     padding: var(--margin-small);
@@ -15,7 +16,7 @@
 .projectInfo {
     display: inline-block;
     vertical-align: middle;
-    padding: 0 calc(var(--margin-small) * 0.5);
+    margin: 0 calc(var(--margin-small) * 0.5);
 }
 
 .projectIndex {
@@ -27,12 +28,58 @@
 .projectYear {
 }
 
-.projectLive {
-    float: right;
-    text-transform: uppercase;
-    transition: 200ms transform;
+.projectDetails {
+    position: relative;
 }
 
-.project:hover .projectLive {
-    transform: scale(2);
+.projectDetailsInfo {
+    float: right;
+}
+
+.projectDetailsLineDown {
+    position: absolute;
+    top: 100%;
+    left: calc(50% + 160px + 40px + var(--margin-small));
+    width: 2px;
+    height: 42px;
+    background: var(--dark);
+    transform-origin: 50% 0;
+    transform: scaleY(0);
+    transition: transform 200ms 200ms;
+    z-index: 1;
+}
+
+.project.isHovered .projectDetailsLineDown {
+    transform: scaleY(1);
+    transition: transform 200ms;
+}
+
+.projectDetailsLineLeft {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 40px;
+    height: 2px;
+    background: var(--dark);
+    transform-origin: 100% 50%;
+    transform: scaleX(0);
+    transition: transform 200ms;
+}
+
+.project.isHovered .projectDetailsLineLeft {
+    transform: scaleX(1);
+    transition: transform 200ms 200ms;
+}
+
+.details {
+    position: absolute;
+    top: 42px;
+    left: 50%;
+    width: 320px;
+    padding: var(--margin-small);
+    color: var(--dark);
+    border: 2px solid var(--dark);
+    background: rgba(255,255,255, 0.66);
+    transform: translateX(-50%);
+    z-index: 1;
 }

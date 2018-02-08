@@ -84,6 +84,10 @@ ul li {
     list-style-type: square;
 }
 
+:global(.monospace) {
+    font-family: var(--monospace-font);
+}
+
 :global(.dark-background) {
     color: var(--light);
 }

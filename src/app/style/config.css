@@ -2,6 +2,10 @@
 
     --title-font: 'Voice', 'arial', sans-serif;
     --body-font: 'Didact Gothic', monospace;
+    --monospace-font: 'Space Mono', monospace;
+
+    --title-font-size: 88px;
+    --subtitle-font-size: 22px;
 
     --hi: #FFFFFF;
     --std: #E0E0E0;
@@ -11,12 +15,12 @@
 
     --title: {
         font-family: var(--title-font);
-        font-size: 88px;
+        font-size: var(--title-font-size);
     };
 
     --subtitle: {
-        font-size: 22px;
         text-transform: uppercase;
+        font-size: var(--subtitle-font-size);
     };
 
     --section-padding-base: 1px;
