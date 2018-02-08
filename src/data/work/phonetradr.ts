@@ -1,4 +1,4 @@
-import {EClientType, ERoleType, ETeamType, IWorkLabel} from './models';
+import {EClientType, ECreationType, ERoleType, ETeamType, IWorkLabel} from './models';
 import {workIcon} from '../icons/work';
 import {technologyIcon} from '../icons/technology';
 
@@ -8,6 +8,7 @@ export const phonetradr: IWorkLabel = {
     link    : 'https://www.phonetradr.com/',
     color   : "#12CCAF",
     year    : "2017",
+    creation: ECreationType.Website,
     role: ERoleType.Developer,
     teamType: ETeamType.TwoToFive,
     clientType: EClientType.StartUp,

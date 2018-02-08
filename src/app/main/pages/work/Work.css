@@ -39,10 +39,9 @@
 .projectDetailsLineDown {
     position: absolute;
     top: 100%;
-    left: calc(50% + 160px + 40px + var(--margin-small));
-    width: 2px;
+    right: calc(var(--margin-small) * 1.5);
+    width: 1px;
     height: 42px;
-    background: var(--dark);
     transform-origin: 50% 0;
     transform: scaleY(0);
     transition: transform 200ms 200ms;
@@ -56,14 +55,14 @@
 
 .projectDetailsLineLeft {
     position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 40px;
-    height: 2px;
-    background: var(--dark);
+    bottom: -42px;
+    right: calc(var(--margin-small) * 1.5);
+    width: calc(50% - 160px - var(--margin-small) * 2.5);
+    height: 1px;
     transform-origin: 100% 50%;
     transform: scaleX(0);
     transition: transform 200ms;
+    z-index: 1;
 }
 
 .project.isHovered .projectDetailsLineLeft {
@@ -78,8 +77,8 @@
     width: 320px;
     padding: var(--margin-small);
     color: var(--dark);
-    border: 2px solid var(--dark);
     background: rgba(255,255,255, 0.66);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     transform: translateX(-50%);
     z-index: 1;
 }

@@ -17,8 +17,9 @@ export class Details extends React.Component<IDetailsProps, IState> {
         return (
             <div className={s.details}>
                 <TypingTextInterval textContent={`Role: ${this.props.role}`}/>
-                <TypingTextInterval textContent={`Client Type: ${this.props.clientType}`}/>
-                <TypingTextInterval textContent={`Team Type: ${this.props.teamType}`}/>
+                <TypingTextInterval textContent={`Creation: ${this.props.creation}`}/>
+                <TypingTextInterval textContent={`Client: ${this.props.clientType}`}/>
+                <TypingTextInterval textContent={`Team: ${this.props.teamType}`}/>
                 <TypingTextInterval textContent={`Year: ${this.props.year}`}/>
             </div>
         );

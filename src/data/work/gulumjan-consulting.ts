@@ -1,4 +1,4 @@
-import {EClientType, ERoleType, ETeamType, IWorkLabel} from './models';
+import {EClientType, ECreationType, ERoleType, ETeamType, IWorkLabel} from './models';
 import {workIcon} from '../icons/work';
 import {technologyIcon} from '../icons/technology';
 
@@ -9,6 +9,7 @@ export const gulumjanConsulting: IWorkLabel = {
     link    : 'http://www.gulumjan-consulting.de/home/de',
     year    : "2017",
     color   : "#3F51B5",
+    creation: ECreationType.Website,
     teamType: ETeamType.Individual,
     clientType: EClientType.Individual,
     role: ERoleType.Developer,

@@ -56,14 +56,13 @@ export class Project extends React.Component<IProjectProps, IState> {
                         {title}
                     </div>
                     <div className={`${s.projectInfo} ${s.projectDetailsInfo}`}>
-                        info
+                        {isHovered ? 'view' : '+'}
                     </div>
                     {renderIfTrue(isHovered, () => (
                         <Details {...this.props}/>
                     ))}
-                    <div className={s.projectDetailsLineDown}>
-                        <div className={s.projectDetailsLineLeft}/>
-                    </div>
+                    <div style={{background: color}} className={s.projectDetailsLineDown}/>
+                    <div style={{background: color}} className={s.projectDetailsLineLeft}/>
                 </div>
             </ExternalLink>
         );

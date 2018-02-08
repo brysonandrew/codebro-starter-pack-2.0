@@ -1,4 +1,4 @@
-import {EClientType, ERoleType, ETeamType, IWorkLabel} from './models';
+import {EClientType, ECreationType, ERoleType, ETeamType, IWorkLabel} from './models';
 import {workIcon} from '../icons/work';
 import {technologyIcon} from '../icons/technology';
 
@@ -8,6 +8,7 @@ export const urbanCircus = {
     link   : 'http://urbancircus.com.au/',
     color  : "#F7921E",
     year   : "2017",
+    creation: ECreationType.AdminPanel,
     teamType: ETeamType.TwoToFive,
     clientType: EClientType.Company,
     icon: workIcon.urbanCircus,

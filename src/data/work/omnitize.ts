@@ -1,4 +1,4 @@
-import {EClientType, ERoleType, ETeamType, IWorkLabel} from './models';
+import {EClientType, ECreationType, ERoleType, ETeamType, IWorkLabel} from './models';
 import {workIcon} from '../icons/work';
 import {technologyIcon} from '../icons/technology';
 
@@ -8,6 +8,7 @@ export const omnitize: IWorkLabel = {
     link    : 'https://www.omnitize.com/',
     color   : "#00c2b2",
     year    : "2017",
+    creation: ECreationType.Wizard,
     role: ERoleType.Developer,
     teamType: ETeamType.TwoToFive,
     clientType: EClientType.StartUp,

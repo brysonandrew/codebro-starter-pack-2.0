@@ -1,4 +1,4 @@
-import {EClientType, ERoleType, ETeamType, IWorkLabel} from './models';
+import {EClientType, ECreationType, ERoleType, ETeamType, IWorkLabel} from './models';
 import {workIcon} from '../icons/work';
 import {technologyIcon} from '../icons/technology';
 
@@ -8,6 +8,7 @@ export const twoPoreGuys: IWorkLabel = {
     link    : 'http://twoporeguys.com',
     color   : "#102e50",
     year    : "2017",
+    creation: ECreationType.Table,
     role: ERoleType.Developer,
     teamType: ETeamType.Individual,
     clientType: EClientType.Company,
