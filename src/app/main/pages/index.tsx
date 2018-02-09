@@ -4,7 +4,7 @@ import {defined} from '../../../utils';
 import {ELineOrientation, Line} from '../../widgets';
 import {Intro} from './intro';
 import {Work} from './work';
-import {Footer} from './footer/index';
+import {Contact} from './contact/index';
 import {toPath} from '../../../utils/routing';
 import {IDictionary, IParams} from '../../../data/models';
 import {renderIfTrue} from '../../../utils/react';
@@ -15,6 +15,7 @@ import {docScroll} from '../../../utils/scroll';
 import {arrayToDictionary} from '../../../utils/array';
 import {exists} from '../../../utils/variable_evaluation';
 export const APPROACHING_PAGE_BUFFER = 200;
+const TOTAL_NAV_HEIGHT = (NAV_DIMENSIONS.height + NAV_DIMENSIONS.paddingY * 2);
 
 interface IProps {
     isParentMounted: boolean;
@@ -43,7 +44,7 @@ function Page(name, component) {
 export const MAIN_PAGES: IPage[] = [
     new Page('Tech', <Tech/>),
     new Page('Work', <Work/>),
-    new Page('Contact', <Footer/>)
+    new Page('Contact', <Contact/>)
 ];
 
 export const MAIN_PAGE_PATHS = MAIN_PAGES.map((page) => page.path);
@@ -68,7 +69,7 @@ export class Pages extends React.Component<IProps, {}> {
     isTriggered(i: number) {
         const isAlreadyTriggered = defined(this.triggered[i]);
         const isAboveThreshold = defined(this.topOffsets[i])
-            ? this.props.docScroll > (this.topOffsets[i] + this.props.height * 0.25)
+            ? this.props.docScroll > (this.topOffsets[i] - TOTAL_NAV_HEIGHT - APPROACHING_PAGE_BUFFER)
             : false;
         if (!isAlreadyTriggered && isAboveThreshold) {
             this.triggered.push(true);
@@ -112,12 +113,13 @@ export class Pages extends React.Component<IProps, {}> {
         const isSelected = "activePagePath" in savedParams;
         const isOffsetsReady = (this.topOffsetDictionary != null);
         const isScrollReady = (isSelected && isOffsetsReady);
+        const scrollTarget = this.topOffsetDictionary()[savedParams.activePagePath] - TOTAL_NAV_HEIGHT;
 
         return (
             <div
                 style={{
                     position: 'relative',
-                    paddingTop: NAV_DIMENSIONS.height + NAV_DIMENSIONS.paddingY * 2
+                    paddingTop: TOTAL_NAV_HEIGHT
                 }}
             >
                 <Nav
@@ -136,7 +138,9 @@ export class Pages extends React.Component<IProps, {}> {
                         ref={el => defined(el) && (this.topOffsets[i] = el.offsetTop)}
                     >
                         {React.cloneElement(page.component, {
+                            scrollTarget: scrollTarget,
                             docScroll: docScroll,
+                            sectionScroll: exists(this.topOffsets[i]) ? (docScroll - this.topOffsets[i] - TOTAL_NAV_HEIGHT) : 0,
                             isTriggered: this.isTriggered(i)
                         })}
                         {line(isParentMounted)}
@@ -145,7 +149,7 @@ export class Pages extends React.Component<IProps, {}> {
                     <MotionScroll
                         docScroll={docScroll}
                         isAnimating={isAnimating}
-                        scrollTarget={this.topOffsetDictionary()[savedParams.activePagePath] - (NAV_DIMENSIONS.height + NAV_DIMENSIONS.paddingY * 2)}
+                        scrollTarget={scrollTarget}
                         onRest={onAnimationEnd}
                     />)}
             </div>

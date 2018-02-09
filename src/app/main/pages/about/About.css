@@ -1,0 +1,25 @@
+@import '../../../style/config.css';
+
+.section {
+    position: relative;
+    transition: opacity 200ms;
+    mask: url('http://www.supah.it/dribbble/video-clip-mask.png?v=1');
+    mask-size: 1800% 100%;
+}
+
+.image {
+    vertical-align: top;
+    width: 240px;
+    border-radius: 50%;
+}
+
+.description {
+    display: inline-block;
+    vertical-align: top;
+    width: 200px;
+    padding: var(--margin-small);
+}
+
+.description p {
+    margin: var(--margin-small) 0;
+}

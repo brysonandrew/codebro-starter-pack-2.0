@@ -1,11 +1,11 @@
 import * as React from 'react';
-const s = require('./Footer.css');
+const s = require('./Contact.css');
 
 interface IProps {}
 
-export function FooterInfo(props: IProps) {
+export function ContactInfo(props: IProps) {
     return (
-        <div className={s.footerInfo}>
+        <div className={s.contactInfo}>
             <div>If you</div>
             <div>wish to</div>
             <div>make contact</div>

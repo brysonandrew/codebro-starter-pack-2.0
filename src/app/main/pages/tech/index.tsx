@@ -21,6 +21,10 @@ export interface ITechnology {
     technologies: ITechnologyLabel[];
 }
 
+interface IProps {
+    isTriggered?: boolean;
+}
+
 const COLUMNS: ITechnology[][] = [
     [
         {
@@ -60,7 +64,7 @@ interface IState {
     activeTickConfig: ITickConfig;
 }
 
-export class Tech extends React.Component<{}, IState> {
+export class Tech extends React.Component<IProps, IState> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);

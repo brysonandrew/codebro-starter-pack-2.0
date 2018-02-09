@@ -1,14 +1,40 @@
 @import '../../../style/config.css';
 
-.footer {
+.contact {
     background: var(--faint);
+    position: relative;
+    transition: opacity 200ms;
+    mask: url('http://www.supah.it/dribbble/video-clip-mask.png?v=1');
+    mask-size: 1800% 100%;
+}
+
+.image {
+    vertical-align: top;
+    width: 240px;
+    border-radius: 50%;
+}
+
+.description {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    width: 200px;
+    padding: var(--margin-small);
+}
+
+.description p {
+    margin: var(--margin-small) 0;
+}
+
+.contactSocialMedia {
+    margin: var(--section-padding-wide) 0;
 }
 
 .division {
     padding: var(--margin-large) 0;
 }
 
-.footerInfo div {
+.contactInfo div {
     display: inline-block;
     vertical-align: middle;
     padding: 0 var(--margin-small);
@@ -38,12 +64,18 @@
     cursor: pointer;
 }
 
+.itemWrapper:hover .itemTitle {
+    transform: translate(-50%, -50%) scale(1.11);
+}
+
 .itemTitle {
     position: absolute;
-    top: -40px;
+    top: 100px;
     left: 50%;
-    color: var(--faint);
+    color: var(--light);
+    text-transform: uppercase;
     transform: translate(-50%, -50%);
+    transition: transform 200ms;
 }
 
 .item {
@@ -55,6 +87,14 @@
     transform: translate(-50%, -50%);
 }
 
+.arrow {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    height: 40px;
+    transform: translateX(-50%);
+}
+
 @media (min-width: 768px) {
     .division {
         display: inline-block;
@@ -63,7 +103,7 @@
         padding: 0;
     }
 
-    .footerInfo div {
+    .contactInfo div {
         display: block;
         padding: 0 var(--margin-small);
         line-height: 24px;
