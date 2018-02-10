@@ -1,66 +1,55 @@
 import * as React from 'react';
-import {Link} from 'react-router';
-import {IPage, MAIN_PAGES, MAIN_PAGES_NAME_DICT} from '../pages';
-import {toPath} from '../../../utils';
-import {CircleOverlay} from '../../widgets/circle-overlay/CircleOverlay';
-import {renderIf} from '../../../utils/react';
+import {IPage, MAIN_PAGES} from '../pages';
+import {NavLink} from './NavLink';
 const s = require('./Nav.css');
+import {NavBackIcon} from './NavBackIcon';
 
 interface IProps {
-    docScroll: number;
+    isSingleMenu: boolean;
     activePagePath: string;
     onAnimationStart?: () => void;
 }
 
-interface IState {}
+export class NavLinks extends React.Component<IProps, {}> {
 
-export class NavLinks extends React.Component<IProps, IState> {
+    private renderNavLinkItems = (page: IPage, i: number) =>  {
+        const { isSingleMenu, activePagePath } = this.props;
 
-    private handleClick = () => {
-        this.props.onAnimationStart();
+        if (i > 0) {
+            if (isSingleMenu) {
+                if (activePagePath === page.path) {
+                    return [
+                        this.renderNavLink(page, i),
+                        <NavBackIcon
+                            key={`NavBackIcon-${i}`}
+                            onClick={this.props.onAnimationStart}
+                        />
+                    ];
+                }
+            } else {
+                return this.renderNavLink(page, i);
+            }
+        }
     };
 
+    private renderNavLink(page: IPage, i: number) {
+        const { isSingleMenu, onAnimationStart } = this.props;
+
+        return  <NavLink
+                    key={`link-${i}`}
+                    isCircleDisabled={isSingleMenu}
+                    name={page.name}
+                    path={page.path}
+                    onClick={onAnimationStart}
+                />
+    }
+
     render(): JSX.Element {
-        const { docScroll, activePagePath, } = this.props;
+        const { isSingleMenu } = this.props;
+
         return (
-            <ul className={s.navLinks}>
-                {renderIf(docScroll > 200, {
-                    ifTrue: () => (
-                        <li className={s.item}>
-                            <Link
-                                to={`/${activePagePath}`}
-                                onClick={this.handleClick}
-                            >
-                                <CircleOverlay
-                                    isDisabled={docScroll > 0}
-                                >
-                                    <div className={s.itemName}>
-                                        {MAIN_PAGES_NAME_DICT[activePagePath]}
-                                    </div>
-                                </CircleOverlay>
-                            </Link>
-                        </li>
-                    ),
-                    ifFalse: () => MAIN_PAGES.map((page: IPage, i) => (
-                        <li
-                            key={`link-${i}`}
-                            className={s.item}
-                        >
-                            <Link
-                                to={`/${toPath(page.path)}`}
-                                onClick={this.handleClick}
-                            >
-                                <CircleOverlay
-                                    isDisabled={docScroll > 0}
-                                >
-                                    <div className={s.itemName}>
-                                        {page.name}
-                                    </div>
-                                </CircleOverlay>
-                            </Link>
-                        </li>
-                    ))
-                })}
+            <ul className={`${s.navLinks} ${isSingleMenu ? s.singleMenu : ''}`}>
+                {MAIN_PAGES.map(this.renderNavLinkItems)}
             </ul>
         );
     }

@@ -3,7 +3,7 @@ import {TransparentMaskText} from '../../../widgets/transparent-mask-text/index'
 const s = require('./Intro.css');
 
 interface IProps {
-    width: number;
+    width?: number;
     isTriggered?: boolean;
     docScroll?: number;
 }

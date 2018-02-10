@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { ITechnology, ITechnologyLabel } from '.';
 import {ExternalLink} from '../../../widgets/ExternalLink';
-import {CircleOverlay} from '../../../widgets/circle-overlay/CircleOverlay';
+import {renderIfFalse, renderIfTrue} from '../../../../utils/react';
+import {createArray} from '../../../../utils/array';
 const s = require('./Tech.css');
 
 interface IProps {
@@ -48,22 +49,23 @@ export class TechItem extends React.Component<IProps, IState> {
                 <div
                     className={s.techItemScoreBar}
                     style={{
-                        transform: `scaleX(${tech.score / 10})`
+                        width: `calc(${tech.score * 10}% - 4px)`
                     }}
-                />
-                <div className={s.techItemName}>
-                    <ExternalLink
-                        path={tech.link}
-                    >
-                        {tech.title}
-                    </ExternalLink>
+                >
+                    <div className={s.techItemScoreBarInner}/>
+                    {renderIfTrue(this.state.isHovered, () =>
+                        <div className={s.techItemScoreName}>
+                            {this.props.tech.score}
+                        </div>)}
+
                 </div>
-                {/*<div*/}
-                    {/*className={s.techItemScoreName}*/}
-                    {/*style={{color: this.props.techRow.backgroundColor}}*/}
-                {/*>*/}
-                    {/*{this.props.tech.score}*/}
-                {/*</div>*/}
+                    <div className={`${s.techItemName} ${this.state.isHovered ? s.hide : ''}`}>
+                        <ExternalLink
+                            path={tech.link}
+                        >
+                            {tech.title}
+                        </ExternalLink>
+                    </div>
             </div>
         );
     }

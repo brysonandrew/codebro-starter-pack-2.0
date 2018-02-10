@@ -53,21 +53,19 @@ export function ContactSocialMedia(props: IProps) {
                     key={`ContactSocialMediaItem-${i}`}
                     className={s.itemWrapper}
                 >
-                    <div
-                        className={s.itemTitle}
-                        style={{color: item.color}}
-                    >
-                        {item.name}
-                    </div>
-                    <CircleOverlay
-                        waterMark={item.hoverIcon}
-                    >
-                        <ContactSocialMediaItem
-                            name={item.name}
-                            link={item.link}
-                            icon={item.icon}
-                        />
-                    </CircleOverlay>
+                    <a className={s.item} href={item.link}>
+                        <CircleOverlay
+                            waterMark={item.hoverIcon}
+                        >
+                            <div
+                                className={s.itemTitle}
+                                style={{color: item.color}}
+                            >
+                                {item.name}
+                            </div>
+                            {item.icon}
+                        </CircleOverlay>
+                    </a>
                 </div>
             )}
         </div>

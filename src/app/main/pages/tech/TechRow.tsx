@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { ITechnology } from '.';
 import { TechItem } from './TechItem';
+import {createArray} from '../../../../utils/array';
 const s = require('./Tech.css');
 
 interface IProps {
@@ -27,6 +28,14 @@ export class TechRow extends React.Component<IProps, {}> {
                         onMouseEnter={onMouseEnter}
                         onMouseLeave={onMouseLeave}
                     />)}
+                {/*{createArray(11)*/}
+                    {/*.map((_, i) => (*/}
+                        {/*<div*/}
+                            {/*key={`tick-${i}`}*/}
+                            {/*className={s.tick}*/}
+                            {/*style={{left: `${i * 10}%`}}*/}
+                        {/*/>*/}
+                    {/*))}*/}
             </div>
         );
     }

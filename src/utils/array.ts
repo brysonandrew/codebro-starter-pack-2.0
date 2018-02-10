@@ -58,7 +58,7 @@ export function itemsInArrOf<T>(items: T[], arr: any[], prop): any[] {
     return arr.filter((x: T) => items.indexOf(x[prop]) > -1);
 }
 
-export const arrayToDictionary = <T>(arr: T[], dictionaryIndex: string, dictionaryValue: string): IDictionary<T> =>
+export const arrayToDictionary = <T>(arr: T[], dictionaryIndex: string, dictionaryValue: string): IDictionary<string> =>
     arr.reduce((acc, curr) => {
         acc[curr[dictionaryIndex]] = curr[dictionaryValue];
         return acc;

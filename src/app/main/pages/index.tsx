@@ -19,8 +19,9 @@ const TOTAL_NAV_HEIGHT = (NAV_DIMENSIONS.height + NAV_DIMENSIONS.paddingY * 2);
 
 interface IProps {
     isParentMounted: boolean;
-    isAnimating: boolean;
     isTablet: boolean;
+    isAnimating: boolean;
+    isWheel: boolean;
     width: number;
     height: number;
     docScroll: number;
@@ -42,13 +43,14 @@ function Page(name, component) {
 }
 
 export const MAIN_PAGES: IPage[] = [
+    new Page('Intro', <Intro/>),
     new Page('Tech', <Tech/>),
     new Page('Work', <Work/>),
     new Page('Contact', <Contact/>)
 ];
 
 export const MAIN_PAGE_PATHS = MAIN_PAGES.map((page) => page.path);
-export const MAIN_PAGES_NAME_DICT: IDictionary<IPage> = arrayToDictionary(MAIN_PAGES, "path", "name");
+export const MAIN_PAGES_NAME_DICT: IDictionary<string> = arrayToDictionary(MAIN_PAGES, "path", "name");
 
 const line = (isParentMounted) => <Line
     isInvisible={!isParentMounted}
@@ -87,7 +89,7 @@ export class Pages extends React.Component<IProps, {}> {
             ?   pagesScrolledPastOffsets.length - 1
             :   -1;
 
-        if (currentIndex > -1) {
+        if (currentIndex > 0) {
 
             const currentPath = MAIN_PAGE_PATHS[currentIndex];
 
@@ -109,11 +111,13 @@ export class Pages extends React.Component<IProps, {}> {
     }
 
     render(): JSX.Element {
-        const { isParentMounted, docScroll, width, height, isAnimating, savedParams, onAnimationStart, onAnimationEnd } = this.props;
+        const { isParentMounted, docScroll, width, height, isWheel, isAnimating, savedParams, onAnimationStart, onAnimationEnd } = this.props;
         const isSelected = "activePagePath" in savedParams;
         const isOffsetsReady = (this.topOffsetDictionary != null);
         const isScrollReady = (isSelected && isOffsetsReady);
-        const scrollTarget = this.topOffsetDictionary()[savedParams.activePagePath] - TOTAL_NAV_HEIGHT;
+        const scrollTarget = (exists(savedParams.activePagePath))
+                                ?   this.topOffsetDictionary()[savedParams.activePagePath] - TOTAL_NAV_HEIGHT
+                                :   this.topOffsetDictionary()['intro'] - TOTAL_NAV_HEIGHT;
 
         return (
             <div
@@ -126,11 +130,10 @@ export class Pages extends React.Component<IProps, {}> {
                     height={height}
                     docScroll={docScroll}
                     savedParams={savedParams}
+                    isWheel={isWheel}
+                    isAnimating={isAnimating}
                     topOffsetDictionary={this.topOffsetDictionary()}
                     onAnimationStart={onAnimationStart}
-                />
-                <Intro
-                    width={width}
                 />
                 {MAIN_PAGES.map((page, i) =>
                     <div
@@ -138,6 +141,7 @@ export class Pages extends React.Component<IProps, {}> {
                         ref={el => defined(el) && (this.topOffsets[i] = el.offsetTop)}
                     >
                         {React.cloneElement(page.component, {
+                            width: width,
                             scrollTarget: scrollTarget,
                             docScroll: docScroll,
                             sectionScroll: exists(this.topOffsets[i]) ? (docScroll - this.topOffsets[i] - TOTAL_NAV_HEIGHT) : 0,

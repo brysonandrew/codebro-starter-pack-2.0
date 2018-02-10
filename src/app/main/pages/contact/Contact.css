@@ -9,21 +9,30 @@
 }
 
 .image {
-    vertical-align: top;
-    width: 240px;
+    vertical-align: middle;
+    width: 180px;
     border-radius: 50%;
 }
 
 .description {
     position: relative;
     display: inline-block;
-    vertical-align: top;
+    vertical-align: middle;
     width: 200px;
     padding: var(--margin-small);
 }
 
 .description p {
     margin: var(--margin-small) 0;
+}
+
+.description h2 {
+    display: inline-block;
+}
+
+.description h1 {
+    display: inline-block;
+    font-size: var(--subtitle-font-size);
 }
 
 .contactSocialMedia {
@@ -60,6 +69,7 @@
     justify-content: center;
     vertical-align: middle;
     height: 120px;
+    margin: var(--margin-small) 0;
     width: 100%;
     cursor: pointer;
 }
@@ -70,7 +80,7 @@
 
 .itemTitle {
     position: absolute;
-    top: 100px;
+    top: 60px;
     left: 50%;
     color: var(--light);
     text-transform: uppercase;
@@ -95,6 +105,11 @@
     transform: translateX(-50%);
 }
 
+.middle {
+    display: inline-block;
+    vertical-align: middle;
+}
+
 @media (min-width: 768px) {
     .division {
         display: inline-block;
@@ -112,6 +127,7 @@
     .itemWrapper {
         height: 40px;
         width: 20%;
+        margin: 0;
     }
 
 }

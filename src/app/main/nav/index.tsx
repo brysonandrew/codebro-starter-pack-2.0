@@ -12,6 +12,8 @@ export const NAV_DIMENSIONS = {
 };
 
 interface IProps {
+    isWheel: boolean;
+    isAnimating: boolean;
     height: number;
     docScroll: number;
     savedParams: IParams;
@@ -19,23 +21,14 @@ interface IProps {
     onAnimationStart: () => void;
 }
 
-function navClass(savedParams, topOffsetDictionary, docScroll) {
-    let additionalClass = '';
+function navClass(savedParams, topOffsetDictionary, docScroll, isWheel, isAnimating) {
+    const path = exists(savedParams.activePagePath)
+        ? savedParams.activePagePath
+        : 'intro';
+    const offset = topOffsetDictionary[path] - (NAV_DIMENSIONS.height + NAV_DIMENSIONS.paddingY * 2) - APPROACHING_PAGE_BUFFER;
+    const isInRouteRange = isBetween(offset, offset + 400, docScroll);
 
-    if (exists(savedParams)) {
-        const isScrolled = 0 < docScroll;
-        const offset = topOffsetDictionary[savedParams.activePagePath] - (NAV_DIMENSIONS.height + NAV_DIMENSIONS.paddingY * 2) - APPROACHING_PAGE_BUFFER;
-        const isInRouteRange = isBetween(offset, offset + 400, docScroll);
-
-        if (isScrolled) {
-            additionalClass = s.dot;
-
-            if (isInRouteRange) {
-                additionalClass = '';
-            }
-
-        }
-    }
+    const additionalClass = isInRouteRange && !isWheel && !isAnimating ? '' : s.dot;
 
     return `${s.nav} ${additionalClass} light-background`;
 }
@@ -45,17 +38,17 @@ function isBetween(min: number, max: number, val: number) {
 }
 
 export function Nav(props: IProps) {
-    const { savedParams, topOffsetDictionary, docScroll } = props;
+    const { savedParams, topOffsetDictionary, docScroll, isWheel, isAnimating } = props;
     return (
         <div
-            className={navClass(savedParams, topOffsetDictionary, docScroll)}
+            className={navClass(savedParams, topOffsetDictionary, docScroll, isWheel, isAnimating)}
             style={{
                 height: NAV_DIMENSIONS.height,
                 padding: `${NAV_DIMENSIONS.paddingY}px ${NAV_DIMENSIONS.paddingX}px`
             }}
         >
             <NavLinks
-                docScroll={docScroll}
+                isSingleMenu={docScroll > 200}
                 activePagePath={savedParams.activePagePath}
                 onAnimationStart={props.onAnimationStart}
             />

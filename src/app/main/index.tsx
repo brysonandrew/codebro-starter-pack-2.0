@@ -17,6 +17,7 @@ interface IProperties {
     isMobile?: boolean;
     isTablet?: boolean;
     isLaptop?: boolean;
+    isWheel?: boolean;
     isAnimating?: boolean;
     width?: number;
     height?: number;
@@ -124,13 +125,14 @@ export class Main extends React.Component<IProps, IState> {
 
     render(): JSX.Element {
         const { isMounted, docScroll } = this.state;
-        const { isTablet, width, height, isAnimating, savedParams, onAnimationStart, onAnimationEnd } = this.props;
+        const { isTablet, width, height, isAnimating, isWheel, savedParams, onAnimationStart, onAnimationEnd } = this.props;
 
         return (
             <div className={s.main}>
                 <div className={s.container}>
                     <Pages
                         isParentMounted={isMounted}
+                        isWheel={isWheel}
                         isAnimating={isAnimating}
                         isTablet={isTablet}
                         width={width}
@@ -155,6 +157,7 @@ function mapStateToProps(state: IStore): IProperties {
         isMobile: state.homeStore.isMobile,
         isTablet: state.homeStore.isTablet,
         isLaptop: state.homeStore.isLaptop,
+        isWheel: state.homeStore.isWheel,
         isAnimating: state.homeStore.isAnimating,
         savedLocation: state.homeStore.savedLocation,
         savedParams: state.homeStore.savedParams

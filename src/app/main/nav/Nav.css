@@ -15,6 +15,10 @@
     text-align: left;
 }
 
+.navLinks.singleMenu .navLink.backIcon {
+    display: inline-block;
+}
+
 .line {
     position: absolute;
     left: 0;
@@ -35,35 +39,37 @@
     transition: height 100ms, opacity 100ms, transform 400ms 400ms;
 }
 
-.item {
+.navLink {
     display: inline-block;
-    vertical-align: top;
-    width: 25%;
+    vertical-align: middle;
     list-style-type: none;
 }
 
-.item a {
+.navLink a {
     padding: var(--margin-small);
     margin: 0 var(--margin-small);
 }
 
-.itemName {
+.nav.dot .backIcon {
+    transform: scale(0);
+    opacity: 0;
+}
+
+.backIcon {
+    display: none;
+    vertical-align: middle;
+    opacity: 1;
+    transform: scale(1);
+    transition: transform 400ms 400ms, opacity 400ms 400ms;
+}
+
+.navLinkName {
     transform: scaleY(1);
     text-transform: uppercase;
     transition: transform 400ms 400ms;
 }
 
-.nav.dot .itemName {
+.nav.dot .navLinkName {
     transform: scaleY(0);
     transition: transform 400ms;
-}
-
-@media (min-width: 768px) {
-
-    .item {
-        display: inline-block;
-        vertical-align: top;
-        width: auto;
-    }
-
 }

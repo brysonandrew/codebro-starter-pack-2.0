@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { ContactSocialMedia } from './ContactSocialMedia';
 import {createArray} from '../../../../utils/array';
-import {ARROW_DOWN_SVG} from '../../../widgets/ArrowDown';
+import {ARROW_CSS} from '../../../../data/icons/arrows';
 const s = require('./Contact.css');
+
 const MASK_CONFIGS = {
     frames: 17,
     size: 500
@@ -27,7 +28,7 @@ interface IProps {
 export function Contact(props: IProps) {
     const { sectionScroll, isTriggered } = props;
 
-    const startSecitonScroll = sectionScroll + 200 + MASK_CONFIGS.size;
+    const startSecitonScroll = sectionScroll + 150 + MASK_CONFIGS.size;
 
     const maskPercentage = frameBreak(startSecitonScroll) / MASK_CONFIGS.size * 100;
     const maskPosition = `${maskPercentage}% 50%`;
@@ -43,10 +44,12 @@ export function Contact(props: IProps) {
         >
             <img className={s.image} src='/images/about/profile.jpg'/>
             <div className={s.description}>
-                <h2>Andrew [KOZM]</h2>
+                <h2>Andrew</h2> <h1>[ KOZM ]</h1>
                 <p>Driven by the satisfaction producing something that is both pleasing to the eye and does something useful.</p>
                 <p>Wish to make contact? Send a sign.</p>
-                <div className={s.arrow}>{ARROW_DOWN_SVG}</div>
+                <div className={s.arrow}>
+                    {ARROW_CSS('bottom')}
+                </div>
             </div>
             <ContactSocialMedia/>
         </section>

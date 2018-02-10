@@ -13,7 +13,20 @@
 }
 
 .techRow {
-    padding: var(--margin-medium) 0;
+    border: 2px solid var(--faint);
+    margin: var(--margin-small) 0;
+}
+
+.techRow.basic {
+    border: 2px solid var(--basic-color);
+}
+
+.techRow.frontend, .techRow.style {
+    border: 2px solid var(--frontend-color);
+}
+
+.techRow.backend, .techRow.database {
+    border: 2px solid var(--backend-color);
 }
 
 .techItem {
@@ -34,10 +47,22 @@
     color: var(--backend-color);
 }
 
+.techRow.basic .techRowName {
+    background: var(--basic-color);
+}
+
+.techRow.frontend .techRowName, .techRow.style .techRowName {
+    background: var(--frontend-color);
+}
+
+.techRow.backend .techRowName, .techRow.database .techRowName {
+    background: var(--backend-color);
+}
+
 .techRowName {
-    color: var(--faint);
+    color: var(--light);
     text-transform: uppercase;
-    margin-left: 2px;
+    padding-left: 2px;
 }
 
 .techItemScoreName {
@@ -45,10 +70,18 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    font-size: var(--title-font);
+    color: var(--light);
 }
 
 .techItemName {
     position: relative;
+    opacity: 1;
+    transition: opacity 200ms;
+}
+
+.techItemName.hide {
+    opacity: 0;
 }
 
 .techItemScoreBar {
@@ -56,32 +89,41 @@
     left: 0;
     bottom: 0;
     height: calc(100% - 4px);
-    width: calc(100% - 4px);
     margin: 2px;
     background: var(--faint);
-    transform-origin: 0 50%;
     z-index: -1;
 }
 
-.techItem.isHovered {
-    padding: calc(var(--margin-small) - 1px);
+.techItemScoreBarInner {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    transform-origin: 0 50%;
+    transform: scaleX(0);
+    transition: transform 200ms;
 }
 
-.techItem.basic.isHovered {
-    border: 1px solid var(--basic-color);
+.techItem.isHovered .techItemScoreBarInner {
+    transform: scaleX(1);
 }
 
-.techItem.frontend.isHovered, .techItem.style.isHovered {
-    border: 1px solid var(--frontend-color);
+.techItem.basic.isHovered .techItemScoreBarInner {
+    background: var(--basic-color);
 }
 
-.techItem.backend.isHovered, .techItem.database.isHovered {
-    border: 1px solid var(--backend-color);
+.techItem.frontend.isHovered .techItemScoreBarInner, .techItem.style.isHovered .techItemScoreBarInner {
+    background: var(--frontend-color);
+}
+
+.techItem.backend.isHovered .techItemScoreBarInner, .techItem.database.isHovered .techItemScoreBarInner {
+    background: var(--backend-color);
 }
 
 .tick {
     position: absolute;
-    top: var(--margin-small);
+    bottom: 0;
     height: 10px;
     width: 1px;
     opacity: 0.2;
@@ -109,6 +151,19 @@
     color: var(--backend-color);
 }
 
+.progressBar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: var(--margin-small);
+    height: 100%;
+    width: 100%;
+    background: var(--frontend-color);
+    transform-origin: 0 50%;
+    transition: transform 200ms;
+    z-index: -1;
+}
+
 .tickNumber {
     position: absolute;
     left: 50%;
@@ -120,7 +175,7 @@
 
     .techColumn {
         width: 30%;
-        padding: 0 1.5%;
+        margin: 0 1.5%;
     }
 
 }

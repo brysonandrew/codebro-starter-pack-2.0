@@ -67,6 +67,10 @@ a {
     text-decoration: none;
 }
 
+p {
+    font-size: var(--text-font-size);
+}
+
 text {
     font-family: var(--title-font);
 }

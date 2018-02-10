@@ -8,7 +8,6 @@ import {
 } from './labels';
 import { TechColumn } from './TechColumn';
 import {ILabelInfo} from '../../../../data/models';
-import {createArray} from '../../../../utils/array';
 import {defined} from '../../../../utils/variable_evaluation';
 const s = require('./Tech.css');
 
@@ -82,22 +81,35 @@ export class Tech extends React.Component<IProps, IState> {
         }
     }
 
+    progressBarStyle() {
+        const { activeTickConfig } = this.state;
+        if (defined(activeTickConfig) && activeTickConfig.index > -1) {
+            return {transform: `scaleX(${activeTickConfig.index / 10})`}
+        } else {
+            return {transform: 'scaleX(0)'}
+        }
+    }
+
     render(): JSX.Element {
 
         return (
             <section className={s.tech}>
-                {createArray(11)
-                    .map((_, i) => (
-                        <div
-                            key={`tick-${i}`}
-                            className={this.tickClass(i)}
-                            style={{left: `${i * 10}%`}}
-                        >
-                            <div className={s.tickNumber}>
-                                {i}
-                            </div>
-                        </div>
-                    ))}
+                {/*{createArray(11)*/}
+                    {/*.map((_, i) => (*/}
+                        {/*<div*/}
+                            {/*key={`tick-${i}`}*/}
+                            {/*className={this.tickClass(i)}*/}
+                            {/*style={{left: `${i * 10}%`}}*/}
+                        {/*>*/}
+                            {/*<div className={s.tickNumber}>*/}
+                                {/*{i}*/}
+                            {/*</div>*/}
+                        {/*</div>*/}
+                    {/*))}*/}
+                {/*<div*/}
+                    {/*className={s.progressBar}*/}
+                    {/*style={this.progressBarStyle()}*/}
+                {/*/>*/}
                 {COLUMNS.map((techCol, i) =>
                     <TechColumn
                         key={`colTech-${i}`}

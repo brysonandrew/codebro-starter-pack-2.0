@@ -14,5 +14,5 @@ export const ARROW_DOWN_SVG =
         style={{enableBackground: 'new 0 0 22 35'}}
         xmlSpace="preserve"
     >
-        <polygon className="arrow" style={{fill: '#000000'}} points="20.58,11.584 12.004,20.158 12.004,0 9.996,0 9.996,20.158 1.42,11.584 0,13.004 11,24 22,13.004 "/>
+        <polygon className="arrow" fill='#000000' points="20.58,11.584 12.004,20.158 12.004,0 9.996,0 9.996,20.158 1.42,11.584 0,13.004 11,24 22,13.004"/>
     </svg>;
