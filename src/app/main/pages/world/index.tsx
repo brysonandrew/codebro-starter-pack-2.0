@@ -1,5 +1,5 @@
 import * as React from 'react';
-const s = require('./Intro.css');
+const s = require('./World.css');
 
 interface IProps {
     isTriggered?: boolean;
@@ -7,7 +7,7 @@ interface IProps {
 
 interface IState {}
 
-export class Intro extends React.Component<IProps, IState> {
+export class World extends React.Component<IProps, IState> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);
@@ -17,7 +17,7 @@ export class Intro extends React.Component<IProps, IState> {
 
         return (
             <section className={s.section}>
-                Welcome to the KOZM redux starter pack!
+                World
             </section>
         );
     }

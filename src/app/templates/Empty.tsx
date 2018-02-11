@@ -11,9 +11,6 @@ export class Empty extends React.Component<IProps, IState> {
     }
 
     render(): JSX.Element {
-        const styles = {
-
-        } as any;
         return (
             <div/>
         );

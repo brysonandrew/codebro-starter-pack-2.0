@@ -10,7 +10,7 @@ var config = {
   app: {
     head: {
       title: 'Freelance Web Development',
-      titleTemplate: 'Kozm | %s',
+      titleTemplate: 'Kozm redux-starter-pack | %s',
       meta: [
         { charset: 'utf-8' },
         { 'http-equiv': 'x-ua-compatible', content: 'ie=edge' },

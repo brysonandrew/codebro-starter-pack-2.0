@@ -2,18 +2,17 @@ import * as React from 'react';
 import { browserHistory } from 'react-router';
 import {defined} from '../../../utils';
 import {ELineOrientation, Line} from '../../widgets';
-import {Intro} from './intro';
-import {Work} from './work';
-import {Contact} from './contact/index';
+import {Hello} from './hello';
+import {World} from './world';
 import {toPath} from '../../../utils/routing';
 import {IDictionary, IParams} from '../../../data/models';
 import {renderIfTrue} from '../../../utils/react';
 import {MotionScroll} from '../../widgets/motion-scroll/MotionScroll';
 import {Nav, NAV_DIMENSIONS} from '../nav/index';
-import {Tech} from './tech/index';
 import {docScroll} from '../../../utils/scroll';
 import {arrayToDictionary} from '../../../utils/array';
 import {exists} from '../../../utils/variable_evaluation';
+import {Intro} from './intro/index';
 export const APPROACHING_PAGE_BUFFER = 200;
 const TOTAL_NAV_HEIGHT = (NAV_DIMENSIONS.height + NAV_DIMENSIONS.paddingY * 2);
 
@@ -44,9 +43,8 @@ function Page(name, component) {
 
 export const MAIN_PAGES: IPage[] = [
     new Page('Intro', <Intro/>),
-    new Page('Tech', <Tech/>),
-    new Page('Work', <Work/>),
-    new Page('Contact', <Contact/>)
+    new Page('Hello', <Hello/>),
+    new Page('World', <World/>)
 ];
 
 export const MAIN_PAGE_PATHS = MAIN_PAGES.map((page) => page.path);
